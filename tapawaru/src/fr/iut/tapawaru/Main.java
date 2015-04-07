@@ -1,4 +1,4 @@
-package tapawaru;
+package fr.iut.tapawaru;
 
 public class Main
 {
