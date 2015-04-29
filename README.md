@@ -6,9 +6,11 @@ Projet S2 IUT Valence
 ## Développeurs
 
 Groupe n°4
-- Axel CÉARD (chef de projet)
-- Julie MOUNIER
-- Olivier PRADELLE
+- [Axel CÉARD](https://github.com/Axce) (chef de projet)
+- [Thomas MATHEY](https://github.com/matheyt)
+- [Julie MOUNIER](https://github.com/mounieju)
+- [Jules PELLOUX-PRAYER](https://github.com/jpelloux)
+- [Olivier PRADELLE](https://github.com/pradello)
 
 ## Principe
 
