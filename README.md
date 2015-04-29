@@ -12,6 +12,8 @@ Groupe n°4
 - [Jules PELLOUX-PRAYER](https://github.com/jpelloux)
 - [Olivier PRADELLE](https://github.com/pradello)
 
+Carnet de bord : https://docs.google.com/spreadsheets/d/1Oz2CknqqLAyacCYE2h1dauEoF-r6G6K9U-mdFNTQFWM/
+
 ## Principe
 
 C'est un jeu de plateau faisant s'affronter deux joueurs.
