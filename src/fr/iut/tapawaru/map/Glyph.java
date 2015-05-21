@@ -12,6 +12,51 @@ package fr.iut.tapawaru.map;
  */
 public class Glyph extends MapElement
 {
+	
+	/**
+	 * positionX d'un cell sur la map
+	 */
+	private int positionGlyphX;
+	
+	/**
+	 * positionY d'un cell sur la map
+	 */
+	private int positionGlyphY;
+	/**
+	 * type de Glyph
+	 */
+	private TypeGlyph typeGlyph;
+
+	public Glyph(int lineNumber, int columnNumber) 
+	{
+		this.positionGlyphX=lineNumber;
+		this.positionGlyphY=columnNumber;
+		this.typeGlyph=null;
+	}
 	//TODO Un enum des différents types de glyphes.
+
+	public int getPositionGlyphY() {
+		return this.positionGlyphY;
+	}
+
+	public void setPositionGlyphY(int positionGlyphY) {
+		this.positionGlyphY = positionGlyphY;
+	}
+
+	public int getPositionGlyphX() {
+		return this.positionGlyphX;
+	}
+
+	public void setPositionGlyphX(int positionGlyphX) {
+		this.positionGlyphX = positionGlyphX;
+	}
+
+	public TypeGlyph getTypeGlyph() {
+		return this.typeGlyph;
+	}
+
+	public void setTypeGlyph(TypeGlyph typeGlyph) {
+		this.typeGlyph = typeGlyph;
+	}
 	
 }
