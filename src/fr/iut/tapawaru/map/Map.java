@@ -9,6 +9,16 @@ package fr.iut.tapawaru.map;
 public class Map
 {
 	/**
+	 * taille (longueur) par defaut
+	 */
+	private static final int  DEFAULT_LENGHT = 20;
+	
+	/**
+	 * taille (largeur) par defaut
+	 */
+	private static final int DEFAULT_WIDTH = 20;
+	
+	/**
 	 * longueur de la map
 	 */
 	private final int length;
@@ -23,20 +33,21 @@ public class Map
 	 */
 	private final Cell[][] map;
 	
-	
 	/**
-	 * creation de la map
+	 * creer une map par defaut
 	 */
 	public Map()
 	{
-		this.map = new Cell[this.length][this.width];
-		for(int lineNumber =0; lineNumber<this.length;lineNumber++)
+		this.map = new Cell[DEFAULT_LENGHT][DEFAULT_WIDTH];
+		for(int lineNumber =0; lineNumber<DEFAULT_LENGHT;lineNumber++)
 		{
-			for(int columnNumber = 0; columnNumber < this.width; columnNumber++)
+			for(int columnNumber = 0; columnNumber < DEFAULT_WIDTH; columnNumber++)
 			{
 				this.map[lineNumber][columnNumber]= new Cell(lineNumber,columnNumber);
 			}
 		}
+		this.length = DEFAULT_LENGHT;
+		this.width = DEFAULT_WIDTH;
 	}
 	
 }
