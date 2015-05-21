@@ -38,7 +38,7 @@ public class Map
 	 */
 	public Map()
 	{
-		this.map = new Cell[DEFAULT_LENGHT][DEFAULT_WIDTH];
+		this.map = new Cell[this.DEFAULT_LENGHT][this.DEFAULT_WIDTH];
 		for(int lineNumber =0; lineNumber<DEFAULT_LENGHT;lineNumber++)
 		{
 			for(int columnNumber = 0; columnNumber < DEFAULT_WIDTH; columnNumber++)
