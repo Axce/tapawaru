@@ -1,10 +1,11 @@
 package fr.iut.tapawaru.map;
 
 /**
- * Éléments constituant la Map.
- * Glyph et Cell en sont héritées.
+ * Elements constituting the Map.
+ * Classes Glyph & Cell are inherited.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public abstract class MapElement
 {

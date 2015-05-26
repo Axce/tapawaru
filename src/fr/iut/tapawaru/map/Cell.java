@@ -1,33 +1,40 @@
 package fr.iut.tapawaru.map;
 
 /**
- * Case praticable constituant la Map.
- * Un character peut marcher sur une Cell.
- * Une Cell est entourée de 4 Glyphs.
+ * Practicable Cell forming the Map.
+ * One character can walk on Cell.
+ * One cell surrounded by 4 Glyphs.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public class Cell extends MapElement
 {
-	/**
-	 * positionX d'un cell sur la map
-	 */
+	/////// Attributes ////////////////////////////////////////
+	/** Cell's X position on Map. */
 	private int positionX;
 	
-	/**
-	 * positionY d'un cell sur la map
-	 */
+	/** Cell's Y position on Map. */
 	private int positionY;
 	
+	
+	/////// Constructor ////////////////////////////////////////
+	/**
+	 * Constructor for the Cell.
+	 * @param positionX: Cell's X position.
+	 * @param positionY: Cell's Y position.
+	 */
 	public Cell(int positionX, int positionY)
 	{
 		this.positionX = positionX;
 		this.positionY = positionY;
 	}
 
+	
+	/////// Methods //////////////////////////////////////// 
 	/**
-	 * obtention de la positionX de la cell courante
-	 * @return positionX courante
+	 * Get X position from current Cell.
+	 * @return position x : current X position.
 	 */
 	public int getPositionX() 
 	{
@@ -35,8 +42,8 @@ public class Cell extends MapElement
 	}
 	
 	/**
-	 * modification de la positionX de la cell
-	 * @param int positionX
+	 * Sets Cell's X position.
+	 * @param int positionX: future Cell's X position.
 	 */
 	public void setPositionX(int positionX) 
 	{
@@ -44,8 +51,8 @@ public class Cell extends MapElement
 	}
 	
 	/**
-	 * oBtention de la positionY de la cell courante
-	 * @return positionY courante
+	 * Get Y position from current Cell.
+	 * @return positionY : current Y position.
 	 */
 	public int getPositionY() 
 	{
@@ -53,8 +60,8 @@ public class Cell extends MapElement
 	}
 
 	/**
-	 * modification de la positionY de la cell 
-	 * @param int positionY
+	 * Sets Cell's Y position.
+	 * @param int positionY : future Cell's Y position.
 	 */
 	public void setPositionY(int positionY) 
 	{

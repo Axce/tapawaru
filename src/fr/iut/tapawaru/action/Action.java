@@ -1,12 +1,14 @@
 package fr.iut.tapawaru.action;
 
 /**
- * Super-classe des sorts et déplacements.
- * Classe abstraite.
- * Les classes Spell (Attack, Terra) et Move en sont héritées.
+ * Superclass for spells and movements.
+ * Abstract class.
+ * Spell classes (Attack, Terra) & Move are inherited.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
+ 
 public class Action
 {
 	

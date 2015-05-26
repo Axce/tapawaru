@@ -1,47 +1,56 @@
 package fr.iut.tapawaru.team;
 
 /**
- * Équipe de persos. 2 équipes s'affrontent dans une partie. Une équipe contient
- * un nombre de persos déterminé au début de la partie (à confirmer). Chaque
- * équipe a une couleur.
+ * Team of Characters. 
+ * Two Teams compete in a game. 
+ * A Team contains a default number of characters at the beginning of the game. (To confirm)
+ * Every Team has its representing color.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public class Team
 {
-	// TODO un enum des couleurs possibles.
+	/////// Attributes ////////////////////////////////////////
+
+	// TODO check enum
 	
 	public final static int	DEFAULT_NB_CHARACTER	= 3;
 	
-	/**
-	 * Nombre de persos dans la Team.
-	 * À mettre en static si il doit être identique pour les deux équipes.
-	 */
-	private final int		nbCharacter;
+	/** Team's number of characters   (set to static if same in every Team). */
+	private final int nbCharacter;
 	
-	/**
-	 * Liste des persos.
-	 */
-	private Character[]		listCharacter;
+	/** Team's list of characters. */
+	private Character[]	listCharacter;
 	
+	/** Team's enumeration of possible colors. */
+	public enum ColorTeam { RED, BLUE, GREEN, YELLOW, PINK, ;};;
+	private ColorTeam colorTeam;
+	
+	
+	/////// Constructor ////////////////////////////////////////
+
+	// TODO check colorTeam in constructor
+
 	/**
-	 * Constructeur Team.
-	 * 
-	 * @param nb	Le nombre de persos.
+	 * Constructor for the Team.
+	 * @param nb : number of characters.
 	 */
-	public Team(int nb)
+	public Team(int nb, ColorTeam color)
 	{
-		nbCharacter = nb;
-		listCharacter = new Character[nbCharacter];
+		this.nbCharacter = nb;
+		this.listCharacter = new Character[nbCharacter];
+		this.colorTeam = color;
 	}
 	
 	/**
-	 * Constructeur default Team.
-	 * 
-	 * @param nb	Le nombre de persos.
+	 * Constructor for a default Team.
+	 * @param nb : number of characters.
 	 */
-	public Team()
+	public Team( ColorTeam color)
 	{
-		this(DEFAULT_NB_CHARACTER);
+		this.nbCharacter = DEFAULT_NB_CHARACTER;
+		this.listCharacter = new Character[nbCharacter];
+		this.colorTeam = color;	
 	}
 }

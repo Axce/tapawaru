@@ -1,54 +1,69 @@
 package fr.iut.tapawaru.team;
 
 /**
- * Personnage d'une Ã©quipe.
- * Contenu dans l'attribut listCharacter.
+ * Character of a team.
+ * Contained in the listCharacter attribute.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public class Character
 {
- /**
-  * team d'appartenance du character	
-  */
+	/////// Attributes ////////////////////////////////////////
+
+	/** Character's team of appurtenance. */
 	private Team team;
 	
- /**
-  * point de vie du character 
-  */
+	/** Character's life points. */
 	private int healthPoint;
+
 	
-  public Character(Team team, int healthpoint)
-  {
-	  this.team = team;
-	  this.healthPoint = healthpoint;
-  }
-  
+	/////// Constructor ////////////////////////////////////////
+
   /**
-   * 
+   * Constructor of the Character.
+   * @param team : Character's team.
+   * @param healthpoint: Character's life points.
    */
-  public void castSpell()
-  {
-	  //TODO  faire la méthode
-  }
+	public Character(Team team, int healthpoint)
+	  {
+		  this.team = team;
+		  this.healthPoint = healthpoint;
+	  }
+	
   
-  /**
-   * test si le character est en vie 
-   */
-  public boolean isAlive()
-  {
-	  if (this.healthPoint <= 0)
-		  return false;
-	  return true;
-  }
+	/////// Methods //////////////////////////////////////// 
+
+	  /**
+	   * Method to cast a spell. 
+	   */
+	 public void castSpell()
+	  {
+		  //TODO  faire la méthode
+	  }
   
-  /**
-   * supprime l'objet character courant
-   */
-  public void kill()
-  {
-	  if (!this.isAlive())
-		  //TODO faire la méthode;
-  }
+	 
+	  /**
+	   * Method to check that character's still alive. 
+	   */
+	  public boolean isAlive()
+	  {
+		  if (this.healthPoint <= 0)
+			  return false;
+		  return true;
+	  }
+  
+	  
+	  /**
+	   * Method to delete the current Character object.
+	   */
+	  public void kill()
+	  {
+		  if (!this.isAlive())
+		  { 
+			  //TODO faire la méthode;
+		}
+			 
+	  }
 }
 

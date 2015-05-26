@@ -1,11 +1,12 @@
 package fr.iut.tapawaru.action;
 
 /**
- * Sorts de terraformation.
- * Librairie regroupant les méthodes statiques des différents sorts de terra.
- * Classe héritée de Spell, comme les sorts Attack.
+ * Terraforming spells.
+ * Library gathering static methods of the different Terra spells.
+ * Inherited class from Spell, likewise Attack spells.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public class Terra extends Spell
 {

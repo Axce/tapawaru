@@ -1,11 +1,12 @@
 package fr.iut.tapawaru.action;
 
 /**
- * Super-classe des sorts.
- * Classe abstraite.
- * Les classes Attack et Terra en sont héritées.
+ * Superclass for spells.
+ * Abstract class.
+ * Spell classes (Attack, Terra) are inherited.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public abstract class Spell extends Action
 {

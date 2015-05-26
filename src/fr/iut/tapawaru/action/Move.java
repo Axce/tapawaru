@@ -1,12 +1,13 @@
 package fr.iut.tapawaru.action;
 
 /**
- * Déplacements.
- * Un déplacment est une action, au même titre su'un sort.
- * En réalité, il n'y a qu'un seul type de déplacement : vers une case adjacente.
- * Cette classe existe pour qu'on puisse rajouter des types de déplacement si besoin.
+ * Movements.
+ * One movement is an action, just as a spell.
+ * In fact, there's only one possible movement: towards an adjacent box.
+ * This class only exists to add other possible movements if necessary.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public class Move extends Action
 {

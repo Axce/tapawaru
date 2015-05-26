@@ -1,5 +1,11 @@
 package fr.iut.tapawaru;
 
+/**
+ * Class containing main
+ * 
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
+ */
 public class Main
 {
 	

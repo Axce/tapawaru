@@ -1,11 +1,12 @@
 package fr.iut.tapawaru.action;
 
 /**
- * Sorts d'attaque.
- * Librairie regroupant les méthodes statiques des différents sorts d'attaque.
- * Classe héritée de Spell, comme les sorts Terra.
+ * Attack spells.
+ * Library gathering static methods of the different attack spells.
+ * Inherited class from Spell, likewise Terra spells.
  * 
- * @author Axce
+ * @authors CEARD, MATHEY, MOUNIER, 
+ * @authors PELLOUX-PRAYER, PRADELLE
  */
 public class Attack extends Spell
 {
