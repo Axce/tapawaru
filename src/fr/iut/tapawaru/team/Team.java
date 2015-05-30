@@ -25,6 +25,8 @@ public class Team
 	
 	/** Team's enumeration of possible colors. */
 	public enum ColorTeam { RED, BLUE, GREEN, YELLOW, PINK, ;};;
+	
+	/** Team's color. */
 	private ColorTeam colorTeam;
 	
 	

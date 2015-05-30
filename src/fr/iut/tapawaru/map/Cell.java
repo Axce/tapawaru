@@ -11,11 +11,9 @@ package fr.iut.tapawaru.map;
 public class Cell extends MapElement
 {
 	/////// Attributes ////////////////////////////////////////
-	/** Cell's X position on Map. */
-	private int positionX;
 	
-	/** Cell's Y position on Map. */
-	private int positionY;
+	/** Cell's position on Map. */
+	private CellPosition position;
 	
 	
 	/////// Constructor ////////////////////////////////////////
@@ -26,19 +24,18 @@ public class Cell extends MapElement
 	 */
 	public Cell(int positionX, int positionY)
 	{
-		this.positionX = positionX;
-		this.positionY = positionY;
+		this.position = new CellPosition(positionX, positionY);
 	}
 
 	
 	/////// Methods //////////////////////////////////////// 
 	/**
-	 * Get X position from current Cell.
-	 * @return position x : current X position.
+	 * Get position from current Cell.
+	 * @return position  : current position.
 	 */
-	public int getPositionX() 
+	public CellPosition getPosition() 
 	{
-		return this.positionX;
+		return this.position;
 	}
 	
 	/**
@@ -47,25 +44,16 @@ public class Cell extends MapElement
 	 */
 	public void setPositionX(int positionX) 
 	{
-		this.positionX = positionX;
+		this.position.setPositionX(positionX);
 	}
 	
-	/**
-	 * Get Y position from current Cell.
-	 * @return positionY : current Y position.
-	 */
-	public int getPositionY() 
-	{
-		return positionY;
-	}
-
 	/**
 	 * Sets Cell's Y position.
 	 * @param int positionY : future Cell's Y position.
 	 */
 	public void setPositionY(int positionY) 
 	{
-		this.positionY = positionY;
+		this.position.setPositionY(positionY);
 	}
 
 	@Override

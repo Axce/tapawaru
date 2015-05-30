@@ -10,5 +10,5 @@ package fr.iut.tapawaru.action;
  */
 public class Terra extends Spell
 {
-	
+	public final static void rotate()
 }
