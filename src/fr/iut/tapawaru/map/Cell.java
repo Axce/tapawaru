@@ -67,7 +67,14 @@ public class Cell extends MapElement
 	{
 		this.positionY = positionY;
 	}
+
+	@Override
+	public String toString()
+	{
+		return " C ";
+	}
 	
-	//TODO vérifier le code
+	
+	//TODO vï¿½rifier le code
 	
 }

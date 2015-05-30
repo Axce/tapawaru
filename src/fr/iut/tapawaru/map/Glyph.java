@@ -27,6 +27,7 @@ public class Glyph extends MapElement
 	/////// Constructor ////////////////////////////////////////
 	/**
 	 * Constructor for the Glyph.
+	 * The type of the glyph is random.
 	 * @param lineNumber
 	 * @param columnNumber
 	 */
@@ -34,7 +35,7 @@ public class Glyph extends MapElement
 	{
 		this.positionGlyphX=lineNumber;
 		this.positionGlyphY=columnNumber;
-		this.typeGlyph=null;
+		this.typeGlyph= TypeGlyph.getRandomType();
 	}
 	
 	
@@ -89,5 +90,13 @@ public class Glyph extends MapElement
 	public void setTypeGlyph(TypeGlyph typeGlyph) {
 		this.typeGlyph = typeGlyph;
 	}
+
+
+	@Override
+	public String toString()
+	{
+		return typeGlyph.toString();
+	}
+	
 	
 }

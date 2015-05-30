@@ -1,5 +1,6 @@
 package fr.iut.tapawaru.map;
 
+
 /**
  * All Types of Glyphs.
  * Enumeration of all the different types of glyphs.
@@ -24,6 +25,8 @@ public enum TypeGlyph {
 	/** Displays Glyph's type. */
     private final String display;
     
+    /** The number of type available. */
+    public final static int NUMBER_OF_TYPE = 6; 
     
 	/////// Constructor ////////////////////////////////////////
 
@@ -43,5 +46,31 @@ public enum TypeGlyph {
     public String toString() 
     {
     	return display;
+    }
+    
+    /**
+     * Return one TypeGlyph at random.
+     * @return TypeGlyph
+     */
+    public final static TypeGlyph getRandomType()
+    {
+    	int type = (int) (Math.random() * NUMBER_OF_TYPE );
+    	
+    	switch (type)
+		{
+		case 0:
+			return TypeGlyph.FIRE;
+		case 1:
+			return TypeGlyph.EARTH;
+		case 2:
+			return TypeGlyph.WATER;
+		case 3:
+			return TypeGlyph.AIR;
+		case 4:
+			return TypeGlyph.THUNDER;
+		case 5:
+			return TypeGlyph.ICE;
+		}
+		return null;
     }
 }
