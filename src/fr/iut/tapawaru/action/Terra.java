@@ -1,5 +1,8 @@
 package fr.iut.tapawaru.action;
 
+import fr.iut.tapawaru.map.CellPosition;
+import fr.iut.tapawaru.map.GlyphPosition;
+
 /**
  * Terraforming spells.
  * Library gathering static methods of the different Terra spells.
@@ -10,5 +13,11 @@ package fr.iut.tapawaru.action;
  */
 public class Terra extends Spell
 {
-	public final static void rotate()
+
+	public final static void rotate(CellPosition cellPosition,boolean direction)
+	{
+		GlyphPosition[] glyphPosition =cellPosition.generateAdjacentGlyphPosition();
+		// TODO lunch rotate fx
+		
+	}
 }

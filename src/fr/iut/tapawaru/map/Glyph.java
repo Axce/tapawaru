@@ -14,11 +14,9 @@ package fr.iut.tapawaru.map;
 public class Glyph extends MapElement
 {
 	/////// Attributes ////////////////////////////////////////
-	/** Glyph's X position on Map. */
-	private int positionGlyphX;
-	
-	/** Glyph's Y position on Map. */
-	private int positionGlyphY;
+
+	/** Glyph's position on Map. */
+	private GlyphPosition glyphPosition;
 	
 	/** Glyph's type. */
 	private TypeGlyph typeGlyph;
@@ -33,8 +31,7 @@ public class Glyph extends MapElement
 	 */
 	public Glyph(int lineNumber, int columnNumber) 
 	{
-		this.positionGlyphX=lineNumber;
-		this.positionGlyphY=columnNumber;
+		this.glyphPosition=new GlyphPosition(lineNumber,columnNumber);
 		this.typeGlyph= TypeGlyph.getRandomType();
 	}
 	
@@ -45,8 +42,8 @@ public class Glyph extends MapElement
 	 * Gets X position from current Glyph.
 	 * @return position x : current X position.
 	 */
-	public int getPositionGlyphX() {
-		return this.positionGlyphX;
+	public GlyphPosition getPositionGlyph() {
+		return this.glyphPosition;
 	}
 
 	/**
@@ -54,24 +51,15 @@ public class Glyph extends MapElement
 	 * @param int positionGlyphX: future Glyph's X position.
 	 */
 	public void setPositionGlyphX(int positionGlyphX) {
-		this.positionGlyphX = positionGlyphX;
+		this.glyphPosition.setPositionX(positionGlyphX);
 	}
 	
-	
-	/**
-	 * Gets Y position from current Glyph.
-	 * @return position x : current X position.
-	 */
-	public int getPositionGlyphY() {
-		return this.positionGlyphY;
-	}
-
 	/**
 	 * Sets Glyph's Y position.
 	 * @param int positionGlyphY: future Glyph's Y position.
 	 */
 	public void setPositionGlyphY(int positionGlyphY) {
-		this.positionGlyphY = positionGlyphY;
+		this.glyphPosition.setPositionX(positionGlyphY);
 	}
 
 	

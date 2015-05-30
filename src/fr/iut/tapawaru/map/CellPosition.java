@@ -48,7 +48,7 @@ public class CellPosition
 	/**
 	 * Generate the 4 position of adjacent glyphs. .
 	 * GlyphePosition[] like [ TopLeft,TopRight,BotRight,BotLeft].
-	 * @return GlyphPosition[4].
+	 * @return GlyphPosition[3].
 	 */
 	public GlyphPosition[] generateAdjacentGlyphPosition()
 	{
