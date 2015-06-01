@@ -16,10 +16,10 @@ public class Map
 	/////// Attributes ////////////////////////////////////////
 
 	/** Map's default length. */
-	public static final int  DEFAULT_LENGTH = 20;
+	public static final int  DEFAULT_LENGTH = 30;
 	
 	/** Map's default width. */
-	public static final int DEFAULT_WIDTH = 20;
+	public static final int DEFAULT_WIDTH = 15;
 	
 	/** Map's length. */
 	private final int length;
@@ -61,6 +61,22 @@ public class Map
 		}
 	}
 
+	
+	
+	public int getLength()
+	{
+		return length;
+	}
+
+
+
+	public int getWidth()
+	{
+		return width;
+	}
+
+
+
 	/**
 	 * ToString override
 	 * Print the map with cells and glyphs
@@ -91,7 +107,12 @@ public class Map
 		}
 		return strMap.toString();
 	}
-
+	
+	public TypeGlyph getTypeOfGlyph(GlyphPosition pos)
+	{
+		return this.glyph[pos.getPositionX()][pos.getPositionY()].getTypeGlyph();
+		
+	}
 	
 }
 

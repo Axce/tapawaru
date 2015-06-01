@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 
 import org.omg.CORBA.portable.RemarshalException;
 
+import fr.iut.tapawaru.map.Map;
+
 public class TryWindow {
 
 	public static void main(String[] args) {
@@ -30,34 +32,43 @@ public class TryWindow {
 //			JLabel image = new JLabel(new ImageIcon( "random"+i+".jpg") );
 //			myPane.add(image);
 //		}
-		
-		MapGUI map = new MapGUI();
-		map.setPreferredSize(new Dimension(400, 400));
+
+		MapGUI mapGui = new MapGUI( new Map());
+		mapGui.setPreferredSize(new Dimension(mapGui.guiMapSize()[0], mapGui.guiMapSize()[1]));
 		c.fill = GridBagConstraints.BOTH;
 		c.ipady =0 ;
 		c.weightx = 0;
 		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = 0;
-		frameTry.add(map,c);
+		frameTry.add(mapGui,c);
 		
-		JButton exit = new JButton("Exit");
-		c.fill = GridBagConstraints.HORIZONTAL;
+		BottomPanel botPanel = new BottomPanel();
+		botPanel.setPreferredSize(new Dimension(400, 250));
+		c.fill = GridBagConstraints.BOTH;
 		c.ipady = 0;
-		c.weightx = 200;
-		c.gridwidth = 1;
+		c.weightx = 0;
+		c.gridwidth = 2;
 		c.gridx = 0;
 		c.gridy = 1;
-		frameTry.add(exit, c);
-
-		JButton loadMap = new JButton("LoadMap");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 0;
-		c.weightx = 200;
-		c.gridwidth = 1;
-		c.gridx = 1;
-		c.gridy = 1;
-		frameTry.add(loadMap, c);
+		frameTry.add(botPanel,c);
+//		JButton exit = new JButton("Exit");
+//		c.fill = GridBagConstraints.HORIZONTAL;
+//		c.ipady = 0;
+//		c.weightx = 200;
+//		c.gridwidth = 1;
+//		c.gridx = 0;
+//		c.gridy = 1;
+//		frameTry.add(exit, c);
+//
+//		JButton loadMap = new JButton("LoadMap");
+//		c.fill = GridBagConstraints.HORIZONTAL;
+//		c.ipady = 0;
+//		c.weightx = 200;
+//		c.gridwidth = 1;
+//		c.gridx = 1;
+//		c.gridy = 1;
+//		frameTry.add(loadMap, c);
 		
 	//	frameTry.add(myPane);
 		frameTry.pack();

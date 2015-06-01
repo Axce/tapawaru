@@ -1,5 +1,6 @@
 package fr.iut.tapawaru;
 
+import fr.iut.tapawaru.gui.MainFrame;
 import fr.iut.tapawaru.map.Map;
 
 /**
@@ -15,6 +16,7 @@ public class Main
 	{
 		// TODO Auto-generated method stub
 		Map map = new Map();
+		MainFrame mainFrame = new MainFrame(map);
 		System.out.println(map);
 		
 	}
