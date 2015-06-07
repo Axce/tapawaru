@@ -31,7 +31,6 @@ public class Character
 	/** Character's life points. */
 	private int healthPoint;
 
-	private TeamColor color;
 
 	private String picture;
 
@@ -43,13 +42,12 @@ public class Character
    * @param team : Character's team.
    * @param healthpoint: Character's life points.
    */
-	public Character(Team team, int healthpoint,TeamColor color)
+	public Character(Team team, int healthpoint)
 	  {
 		  this.team = team;
 		  this.healthPoint = healthpoint;
-		  this.color = color;
 		  
-		  this.picture = "img/perso/"+color.toString()+".png";
+		  this.picture = "img/perso/"+ this.team.getColorTeam().toString()+".png";
 		
 	  }
 	

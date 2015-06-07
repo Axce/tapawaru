@@ -33,6 +33,11 @@ public class Team
 
 	// TODO check colorTeam in constructor
 
+	public TeamColor getColorTeam()
+	{
+		return colorTeam;
+	}
+
 	/**
 	 * Constructor for the Team.
 	 * @param nb : number of characters.
@@ -44,7 +49,7 @@ public class Team
 		this.colorTeam = color;
 		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
 		{
-			this.listCharacter[nbCharacterCreated] = new Character(this, 100, color);
+			this.listCharacter[nbCharacterCreated] = new Character(this, 100);
 		}
 	}
 	
@@ -59,7 +64,7 @@ public class Team
 		this.colorTeam = color;	
 		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
 		{
-			this.listCharacter[nbCharacterCreated] = new Character(this, 100, color);
+			this.listCharacter[nbCharacterCreated] = new Character(this, 100);
 		}
 	}
 

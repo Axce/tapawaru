@@ -8,9 +8,9 @@ import fr.iut.tapawaru.team.TeamController;
 /**
  * Map hosting the game.
  * It's editable with the Terra' Spells.
- * X-axis is length
- * Y-axis is width
- * [length][width] 
+ * X-axis is xSize
+ * Y-axis is ySize
+ * [xSize][ySize] 
  * @authors CEARD, MATHEY, MOUNIER, 
  * @authors PELLOUX-PRAYER, PRADELLE
  */
@@ -18,17 +18,17 @@ public class Map
 {
 	/////// Attributes ////////////////////////////////////////
 
-	/** Map's default length. */
-	public static final int  DEFAULT_LENGTH = 30;
+	/** Map's default xSize. */
+	public static final int  DEFAULT_X_SIZE = 30;
 	
-	/** Map's default width. */
-	public static final int DEFAULT_WIDTH = 15;
+	/** Map's default ySize. */
+	public static final int DEFAULT_Y_SIZE = 15;
 	
-	/** Map's length. */
-	private final int length;
+	/** Map's xSize. */
+	private final int xSize;
 	
-	/** Map's width. */
-	private final int width;
+	/** Map's ySize. */
+	private final int ySize;
 	
 	/** Glyphs'grid. */
 	private final Glyph[][] glyph;
@@ -46,21 +46,21 @@ public class Map
 	 */
 	public Map()
 	{ 
-		this.length=DEFAULT_LENGTH;
-		this.width=DEFAULT_WIDTH;
-		this.map = new Cell[this.length][this.width];
+		this.xSize=DEFAULT_X_SIZE;
+		this.ySize=DEFAULT_Y_SIZE;
+		this.map = new Cell[this.xSize][this.ySize];
 		
-		for(int lineNumber =0; lineNumber<this.length;lineNumber++)
+		for(int lineNumber =0; lineNumber<this.xSize;lineNumber++)
 		{
-			for(int columnNumber = 0; columnNumber < this.width; columnNumber++)
+			for(int columnNumber = 0; columnNumber < this.ySize; columnNumber++)
 			{
 				this.map[lineNumber][columnNumber]= new Cell(lineNumber,columnNumber);
 			}
 		}	
-		this.glyph = new Glyph[this.length+1][this.width+1];
-		for(int lineNumber =0; lineNumber< this.length+1; lineNumber++)
+		this.glyph = new Glyph[this.xSize+1][this.ySize+1];
+		for(int lineNumber =0; lineNumber< this.xSize+1; lineNumber++)
 		{
-			for(int columnNumber = 0; columnNumber < this.width+1; columnNumber++)
+			for(int columnNumber = 0; columnNumber < this.ySize+1; columnNumber++)
 			{
 				this.glyph[lineNumber][columnNumber] = new Glyph(lineNumber,columnNumber);
 			}
@@ -85,14 +85,14 @@ public class Map
 	
 	public int getLength()
 	{
-		return length;
+		return xSize;
 	}
 
 
 
 	public int getWidth()
 	{
-		return width;
+		return ySize;
 	}
 
 
@@ -106,19 +106,19 @@ public class Map
 	{
 		StringBuilder strMap = new StringBuilder();
 		
-		for (int cellWidth = 0; cellWidth < this.width+1; cellWidth++)
+		for (int cellWidth = 0; cellWidth < this.ySize+1; cellWidth++)
 		{
 			strMap.append(this.glyph[0][cellWidth]+"   " );
 		}
 		strMap.append("\n");
-		for (int cellLength = 0; cellLength < this.length; cellLength++)
+		for (int cellLength = 0; cellLength < this.xSize; cellLength++)
 		{
-			for (int cellWidth = 0; cellWidth < this.width; cellWidth++)
+			for (int cellWidth = 0; cellWidth < this.ySize; cellWidth++)
 			{
 				strMap.append(" " + this.map[cellLength][cellWidth]);
 			}
 			strMap.append( "\n");
-			for (int cellWidth = 0; cellWidth < this.width+1; cellWidth++)
+			for (int cellWidth = 0; cellWidth < this.ySize+1; cellWidth++)
 			{
 				strMap.append(this.glyph[cellLength+1][cellWidth]+"   " );
 			}
