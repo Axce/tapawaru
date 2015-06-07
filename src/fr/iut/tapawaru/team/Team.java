@@ -1,5 +1,7 @@
 package fr.iut.tapawaru.team;
 
+import fr.iut.tapawaru.map.TeamColor;
+
 /**
  * Team of Characters. 
  * Two Teams compete in a game. 
@@ -23,11 +25,8 @@ public class Team
 	/** Team's list of characters. */
 	private Character[]	listCharacter;
 	
-	/** Team's enumeration of possible colors. */
-	public enum ColorTeam { RED, BLUE, GREEN, YELLOW, PINK, ;};;
-	
 	/** Team's color. */
-	private ColorTeam colorTeam;
+	private TeamColor colorTeam;
 	
 	
 	/////// Constructor ////////////////////////////////////////
@@ -38,21 +37,41 @@ public class Team
 	 * Constructor for the Team.
 	 * @param nb : number of characters.
 	 */
-	public Team(int nb, ColorTeam color)
+	public Team(int nb, TeamColor color)
 	{
 		this.nbCharacter = nb;
 		this.listCharacter = new Character[nbCharacter];
 		this.colorTeam = color;
+		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
+		{
+			this.listCharacter[nbCharacterCreated] = new Character(this, 100, color);
+		}
 	}
 	
 	/**
 	 * Constructor for a default Team.
 	 * @param nb : number of characters.
 	 */
-	public Team( ColorTeam color)
+	public Team( TeamColor color)
 	{
 		this.nbCharacter = DEFAULT_NB_CHARACTER;
 		this.listCharacter = new Character[nbCharacter];
 		this.colorTeam = color;	
+		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
+		{
+			this.listCharacter[nbCharacterCreated] = new Character(this, 100, color);
+		}
+	}
+
+	public int getNbCharacter()
+	{
+		// TODO Auto-generated method stub
+		return nbCharacter;
+	}
+
+	public Character[] getCharacter()
+	{
+		// TODO Auto-generated method stub
+		return this.listCharacter;
 	}
 }

@@ -1,5 +1,17 @@
 package fr.iut.tapawaru.team;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import fr.iut.tapawaru.map.CellPosition;
+import fr.iut.tapawaru.map.TeamColor;
+
+
+
+
 /**
  * Character of a team.
  * Contained in the listCharacter attribute.
@@ -7,6 +19,8 @@ package fr.iut.tapawaru.team;
  * @authors CEARD, MATHEY, MOUNIER, 
  * @authors PELLOUX-PRAYER, PRADELLE
  */
+import java.awt.Image;
+
 public class Character
 {
 	/////// Attributes ////////////////////////////////////////
@@ -17,6 +31,10 @@ public class Character
 	/** Character's life points. */
 	private int healthPoint;
 
+	private TeamColor color;
+
+	private String picture;
+
 	
 	/////// Constructor ////////////////////////////////////////
 
@@ -25,10 +43,14 @@ public class Character
    * @param team : Character's team.
    * @param healthpoint: Character's life points.
    */
-	public Character(Team team, int healthpoint)
+	public Character(Team team, int healthpoint,TeamColor color)
 	  {
 		  this.team = team;
 		  this.healthPoint = healthpoint;
+		  this.color = color;
+		  
+		  this.picture = "img/perso/"+color.toString()+".png";
+		
 	  }
 	
   
@@ -39,7 +61,7 @@ public class Character
 	   */
 	 public void castSpell()
 	  {
-		  //TODO  faire la méthode
+		  //TODO  faire la mï¿½thode
 	  }
   
 	 
@@ -52,7 +74,12 @@ public class Character
 			  return false;
 		  return true;
 	  }
-  
+ 
+	  
+	  public String toString()
+	  {
+		 return this.picture;
+	  }
 	  
 	  /**
 	   * Method to delete the current Character object.
@@ -61,9 +88,11 @@ public class Character
 	  {
 		  if (!this.isAlive())
 		  { 
-			  //TODO faire la méthode;
+			  //TODO faire la mï¿½thode;
 		}
 			 
 	  }
+
+
 }
 

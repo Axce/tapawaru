@@ -15,6 +15,8 @@ public class Cell extends MapElement
 	/** Cell's position on Map. */
 	private CellPosition position;
 	
+	private fr.iut.tapawaru.team.Character character;
+	
 	
 	/////// Constructor ////////////////////////////////////////
 	/**
@@ -25,6 +27,7 @@ public class Cell extends MapElement
 	public Cell(int positionX, int positionY)
 	{
 		this.position = new CellPosition(positionX, positionY);
+		this.character = null;
 	}
 
 	
@@ -60,6 +63,20 @@ public class Cell extends MapElement
 	public String toString()
 	{
 		return " C ";
+	}
+
+
+	public void addCharacter(fr.iut.tapawaru.team.Character character2)
+	{
+		// TODO EXCEPTION IF ONE CHAR ALREADY ON CELL? Or return old char?
+		this.character = character2;
+		
+	}
+
+
+	public fr.iut.tapawaru.team.Character getCharacter()
+	{
+		return this.character;
 	}
 	
 	

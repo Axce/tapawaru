@@ -2,6 +2,9 @@ package fr.iut.tapawaru.map;
 
 import java.util.Arrays;
 
+import fr.iut.tapawaru.team.Team;
+import fr.iut.tapawaru.team.TeamController;
+
 /**
  * Map hosting the game.
  * It's editable with the Terra' Spells.
@@ -33,6 +36,8 @@ public class Map
 	/** Cells'grid. */
 	private final Cell[][] map;
 	
+	private TeamController teamController;
+	
 	
 	/////// Constructor ////////////////////////////////////////
 
@@ -44,6 +49,7 @@ public class Map
 		this.length=DEFAULT_LENGTH;
 		this.width=DEFAULT_WIDTH;
 		this.map = new Cell[this.length][this.width];
+		
 		for(int lineNumber =0; lineNumber<this.length;lineNumber++)
 		{
 			for(int columnNumber = 0; columnNumber < this.width; columnNumber++)
@@ -59,9 +65,23 @@ public class Map
 				this.glyph[lineNumber][columnNumber] = new Glyph(lineNumber,columnNumber);
 			}
 		}
+		this.teamController = new TeamController(this);
+		
 	}
 
 	
+	public void putCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
+	{
+		// TODO EXCEPTIONS
+
+		this.map[position.getPositionX()][position.getPositionY()].addCharacter(character);
+		
+	}
+	
+	public fr.iut.tapawaru.team.Character getCharacter(int posX, int posY)
+	{
+		return this.map[posX][posY].getCharacter();
+	}
 	
 	public int getLength()
 	{

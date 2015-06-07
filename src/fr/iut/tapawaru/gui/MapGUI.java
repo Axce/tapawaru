@@ -2,6 +2,7 @@ package fr.iut.tapawaru.gui;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -10,7 +11,9 @@ import javax.swing.JPanel;
 
 import fr.iut.tapawaru.map.GlyphPosition;
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.team.Character;
 import fr.iut.tapawaru.map.TypeGlyph;
+
 
 public class MapGUI extends JPanel {
 
@@ -57,8 +60,26 @@ public class MapGUI extends JPanel {
 		for (int length = 0; length < this.map.getLength(); length++) {
 			for (int width = 0; width < this.map.getWidth(); width++) {
 
-				g.drawImage(octo, length * DEFAULT_OCTO_SIZE, width
+				g.drawImage(this.octo, length * DEFAULT_OCTO_SIZE, width
 						* DEFAULT_OCTO_SIZE, this);
+				
+				if(!(this.map.getCharacter(length,width) ==null) )
+				{
+					Image imageBuffer = null;
+					
+					try
+					{
+						imageBuffer = ImageIO.read(new File(this.map.getCharacter(length, width).toString()));
+					} catch (IOException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					g.drawImage(imageBuffer, length * DEFAULT_OCTO_SIZE, width
+							* DEFAULT_OCTO_SIZE, this);
+					
+				}
 
 			}
 
