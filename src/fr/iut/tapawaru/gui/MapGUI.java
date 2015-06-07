@@ -49,34 +49,34 @@ public class MapGUI extends JPanel {
 
 	public int[] guiMapSize()
 	{
-		int[] i = new int[2]; 
-		i[0] =this.map.getLength()*DEFAULT_OCTO_SIZE;
-		i[1] =this.map.getWidth()*DEFAULT_OCTO_SIZE;
-		return i;
+		int[] mapSize = new int[2]; 
+		mapSize[0] =this.map.getXSize()*DEFAULT_OCTO_SIZE;
+		mapSize[1] =this.map.getYSize()*DEFAULT_OCTO_SIZE;
+		return mapSize;
 	}
 	
 	public void printCell(Graphics g)
 	{
-		for (int length = 0; length < this.map.getLength(); length++) {
-			for (int width = 0; width < this.map.getWidth(); width++) {
+		for (int xSize = 0; xSize < this.map.getXSize(); xSize++) {
+			for (int ySize = 0; ySize < this.map.getYSize(); ySize++) {
 
-				g.drawImage(this.octo, length * DEFAULT_OCTO_SIZE, width
+				g.drawImage(this.octo, xSize * DEFAULT_OCTO_SIZE, ySize
 						* DEFAULT_OCTO_SIZE, this);
 				
-				if(!(this.map.getCharacter(length,width) ==null) )
+				if(!(this.map.getCharacter(xSize,ySize) ==null) )
 				{
 					Image imageBuffer = null;
 					
 					try
 					{
-						imageBuffer = ImageIO.read(new File(this.map.getCharacter(length, width).toString()));
+						imageBuffer = ImageIO.read(new File(this.map.getCharacter(xSize, ySize).toString()));
 					} catch (IOException e)
 					{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
-					g.drawImage(imageBuffer, length * DEFAULT_OCTO_SIZE, width
+					g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize
 							* DEFAULT_OCTO_SIZE, this);
 					
 				}
@@ -88,37 +88,37 @@ public class MapGUI extends JPanel {
 	
 	public void printGlyph(Graphics g)
 	{
-		for (int length = 0; length < this.map.getLength()+1; length++) {
-			for (int width = 0; width < this.map.getWidth()+1; width++) {
+		for (int xSize = 0; xSize < this.map.getXSize()+1; xSize++) {
+			for (int ySize = 0; ySize < this.map.getYSize()+1; ySize++) {
 
-				if(this.map.getTypeOfGlyph(new GlyphPosition(length, width))==TypeGlyph.FIRE)
+				if(this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize))==TypeGlyph.FIRE)
 				{
-					g.drawImage(glyphFire, length * DEFAULT_OCTO_SIZE-15, width
+					g.drawImage(glyphFire, xSize * DEFAULT_OCTO_SIZE-15, ySize
 							* DEFAULT_OCTO_SIZE-15, this);
 				}
-				if(this.map.getTypeOfGlyph(new GlyphPosition(length, width))==TypeGlyph.AIR)
+				if(this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize))==TypeGlyph.AIR)
 				{
-					g.drawImage(glyphAir, length * DEFAULT_OCTO_SIZE-15, width
+					g.drawImage(glyphAir, xSize * DEFAULT_OCTO_SIZE-15, ySize
 							* DEFAULT_OCTO_SIZE-15, this);
 				}
-				if(this.map.getTypeOfGlyph(new GlyphPosition(length, width))==TypeGlyph.EARTH)
+				if(this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize))==TypeGlyph.EARTH)
 				{
-					g.drawImage(glyphEarth, length * DEFAULT_OCTO_SIZE-15, width
+					g.drawImage(glyphEarth, xSize * DEFAULT_OCTO_SIZE-15, ySize
 							* DEFAULT_OCTO_SIZE-15, this);
 				}
-				if(this.map.getTypeOfGlyph(new GlyphPosition(length, width))==TypeGlyph.ICE)
+				if(this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize))==TypeGlyph.ICE)
 				{
-					g.drawImage(glyphIce, length * DEFAULT_OCTO_SIZE-15, width
+					g.drawImage(glyphIce, xSize * DEFAULT_OCTO_SIZE-15, ySize
 							* DEFAULT_OCTO_SIZE-15, this);
 				}
-				if(this.map.getTypeOfGlyph(new GlyphPosition(length, width))==TypeGlyph.THUNDER)
+				if(this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize))==TypeGlyph.THUNDER)
 				{
-					g.drawImage(glyphThunder, length * DEFAULT_OCTO_SIZE-15, width
+					g.drawImage(glyphThunder, xSize * DEFAULT_OCTO_SIZE-15, ySize
 							* DEFAULT_OCTO_SIZE-15, this);
 				}
-				if(this.map.getTypeOfGlyph(new GlyphPosition(length, width))==TypeGlyph.WATER)
+				if(this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize))==TypeGlyph.WATER)
 				{
-					g.drawImage(glyphWater, length * DEFAULT_OCTO_SIZE-15, width
+					g.drawImage(glyphWater, xSize * DEFAULT_OCTO_SIZE-15, ySize
 							* DEFAULT_OCTO_SIZE-15, this);
 				}
 

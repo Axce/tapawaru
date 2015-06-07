@@ -83,14 +83,14 @@ public class Map
 		return this.map[posX][posY].getCharacter();
 	}
 	
-	public int getLength()
+	public int getXSize()
 	{
 		return xSize;
 	}
 
 
 
-	public int getWidth()
+	public int getYSize()
 	{
 		return ySize;
 	}
@@ -106,21 +106,21 @@ public class Map
 	{
 		StringBuilder strMap = new StringBuilder();
 		
-		for (int cellWidth = 0; cellWidth < this.ySize+1; cellWidth++)
+		for (int ySize = 0; ySize < this.ySize+1; ySize++)
 		{
-			strMap.append(this.glyph[0][cellWidth]+"   " );
+			strMap.append(this.glyph[0][ySize]+"   " );
 		}
 		strMap.append("\n");
-		for (int cellLength = 0; cellLength < this.xSize; cellLength++)
+		for (int xSize = 0; xSize < this.xSize; xSize++)
 		{
-			for (int cellWidth = 0; cellWidth < this.ySize; cellWidth++)
+			for (int ySize = 0; ySize < this.ySize; ySize++)
 			{
-				strMap.append(" " + this.map[cellLength][cellWidth]);
+				strMap.append(" " + this.map[xSize][ySize]);
 			}
 			strMap.append( "\n");
-			for (int cellWidth = 0; cellWidth < this.ySize+1; cellWidth++)
+			for (int ySize = 0; ySize < this.ySize+1; ySize++)
 			{
-				strMap.append(this.glyph[cellLength+1][cellWidth]+"   " );
+				strMap.append(this.glyph[xSize+1][ySize]+"   " );
 			}
 			strMap.append( "\n");
 
