@@ -17,6 +17,14 @@ import fr.iut.tapawaru.team.Character;
 public class Attack extends Spell
 {
 	
+	private static void inflictDamages(Map map, ArrayList<CellPosition> posList, int damages)
+	{
+		for (CellPosition cellPos : posList)
+		{
+			map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(damages);
+		}
+	}
+	
 	/**
 	 * laserBeam
 	 * o: caster
@@ -81,6 +89,8 @@ public class Attack extends Spell
 			}
 		}
 		
+		inflictDamages(map, cellList, 1);
+		
 		return cellList;
 	}
 	
@@ -110,6 +120,8 @@ public class Attack extends Spell
 			}
 		}
 		
+		inflictDamages(map, cellList, 2);
+
 		return cellList;
 	}
 	
@@ -154,6 +166,8 @@ public class Attack extends Spell
 			x < map.getXSize() && y < map.getYSize())
 			cellList.add(new CellPosition(x, y));
 		
+		inflictDamages(map, cellList, 1);
+
 		return cellList;
 	}
 }
