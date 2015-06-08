@@ -413,6 +413,7 @@ public class BottomPanel extends JPanel implements KeyListener
 				Move.simpleMove(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
 				this.repaint();
 				this.mapGui.printCell(this.mapGui.getGraphics());
+				this.characterSelected=null;
 				break;
 			default:
 			}	
