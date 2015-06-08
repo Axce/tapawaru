@@ -8,9 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+
+import fr.iut.tapawaru.team.Character;
+
+
 
 import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
@@ -36,6 +41,8 @@ public class BottomPanel extends JPanel implements KeyListener
 
 	private boolean caseSelected;
 	private MapGUI mapGui;
+	private Character characterSelected;
+	private Image right;
 	
 	public BottomPanel(Map map)
 	{
@@ -47,6 +54,8 @@ public class BottomPanel extends JPanel implements KeyListener
 			this.apLeft1 = ImageIO.read(new File("img/players/apLeft1.png"));
 			this.apLeft0 = ImageIO.read(new File("img/players/apLeft0.png"));
 			this.apLeft5 = ImageIO.read(new File("img/players/apLeft5.png"));
+			
+			this.right = ImageIO.read(new File("img/botScreen/right.png"));
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -161,18 +170,10 @@ public class BottomPanel extends JPanel implements KeyListener
 	public void paintComponent(Graphics g)
 	{
 		this.paintTerraStateUnselected(g);
-		Image tmp = null;
-		try
-		{
-			tmp = ImageIO.read(new File("img/botScreen/right.png"));
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		g.drawImage(tmp,750, 0, this);
+		
+		g.drawImage(right,750, 0, this);
 
-		paintPA(g, tmp);
+		paintPA(g, right);
 
 	}
 	
@@ -235,6 +236,148 @@ public class BottomPanel extends JPanel implements KeyListener
 			default:
 			}	
 		}
+		switch (e.getKeyChar())
+		{
+		case 'a':
+			
+			if(this.characterSelected==null)
+			{
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
+				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[0];
+				this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right0selected.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}else if(this.characterSelected==this.map.getTeamController().getPlayingTeam().getCharacter()[0])
+			{
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam().toString());
+				this.characterSelected = null;
+				this.mapGui.setSelectedCharacterPosition(null);
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}else
+			{
+				this.mapGui.paintGivenCell(this.characterSelected.getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam().toString());
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
+				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[0];
+				this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right0selected.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+			this.repaint();
+			//this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition());
+			break;
+		case 'z':
+			if(this.characterSelected==null)
+			{
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[1].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
+				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[1];
+				this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[1].getCellTraveled().getPosition());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right1selected.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}else if(this.characterSelected==this.map.getTeamController().getPlayingTeam().getCharacter()[1])
+			{
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[1].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam().toString());
+				this.characterSelected = null;
+				this.mapGui.setSelectedCharacterPosition(null);
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}else
+			{
+				this.mapGui.paintGivenCell(this.characterSelected.getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam().toString());
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[1].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
+				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[1];
+				this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[1].getCellTraveled().getPosition());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right1selected.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			this.repaint();
+			break;
+		case 'e':
+			if(this.characterSelected==null)
+			{
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[2].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
+				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[2];
+				this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[2].getCellTraveled().getPosition());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right2selected.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}else if(this.characterSelected==this.map.getTeamController().getPlayingTeam().getCharacter()[2])
+			{
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[2].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam().toString());
+				this.characterSelected = null;
+				this.mapGui.setSelectedCharacterPosition(null);
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}else
+			{
+				this.mapGui.paintGivenCell(this.characterSelected.getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam().toString());
+				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[2].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
+				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[2];
+				this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[2].getCellTraveled().getPosition());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right2selected.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			this.repaint();
+			break;
+		default:
+		}	
 		
 	}
 	@Override

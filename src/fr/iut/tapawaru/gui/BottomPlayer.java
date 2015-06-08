@@ -37,36 +37,35 @@ public class BottomPlayer extends JPanel implements ActionListener
 
 	public BottomPlayer(TeamColor color, fr.iut.tapawaru.team.Character character)
 	{
+//		try
+//		{
+//			this.apLeft4 = ImageIO.read(new File("img/players/apLeft4.png"));
+//			this.apLeft3 = ImageIO.read(new File("img/players/apLeft3.png"));
+//			this.apLeft2 = ImageIO.read(new File("img/players/apLeft2.png"));
+//			this.apLeft1 = ImageIO.read(new File("img/players/apLeft1.png"));
+//			this.apLeft0 = ImageIO.read(new File("img/players/apLeft0.png"));
+//			this.apLeft5 = ImageIO.read(new File("img/players/apLeft5.png"));
+//		} catch (IOException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+	}
+	
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		Image tmp = null;
 		try
 		{
-			this.apLeft4 = ImageIO.read(new File("img/players/apLeft4.png"));
-			this.apLeft3 = ImageIO.read(new File("img/players/apLeft3.png"));
-			this.apLeft2 = ImageIO.read(new File("img/players/apLeft2.png"));
-			this.apLeft1 = ImageIO.read(new File("img/players/apLeft1.png"));
-			this.apLeft0 = ImageIO.read(new File("img/players/apLeft0.png"));
-			this.apLeft5 = ImageIO.read(new File("img/players/apLeft5.png"));
+			tmp = ImageIO.read(new File("img/botScreen/right.png"));
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		this.teamColor = color;
-		this.character = character;
-		this.setLayout(new GridLayout(3, 1));
-		JProgressBar hp = new JProgressBar(0, character.getDefaultHealthPoint());
-		hp.setValue(character.getHealthPoint());
-		hp.setString(character.getHealthPoint() + " Hp");
-		hp.setStringPainted(true);
-		hp.setBackground(Color.black);
-		hp.setForeground(Color.red);
-		this.add(hp);
-
-		this.selectChamp = new JButton("select champ");
-		selectChamp.addActionListener(this);
-		this.add(selectChamp);
-		
-		
+		g.drawImage(tmp,750, 0, this);
 
 	}
 

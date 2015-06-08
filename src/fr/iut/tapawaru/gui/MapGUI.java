@@ -322,6 +322,7 @@ public class MapGUI extends JPanel implements MouseListener
 		
 	}
 	
+	
 	public BottomPanel getBottomPanel()
 	{
 		return this.botPanel;
