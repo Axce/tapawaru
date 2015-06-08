@@ -133,6 +133,13 @@ public class Map
 		return this.glyph[pos.getPositionX()][pos.getPositionY()].getTypeGlyph();
 		
 	}
+
+
+	public Cell getCell(CellPosition pos)
+	{
+		// TODO Auto-generated method stub
+		return this.map[pos.getPositionX()][pos.getPositionY()];
+	}
 	
 }
 

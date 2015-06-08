@@ -17,7 +17,7 @@ public class Cell extends MapElement
 	
 	private fr.iut.tapawaru.team.Character character;
 	
-	
+	private boolean isSelected;
 	/////// Constructor ////////////////////////////////////////
 	/**
 	 * Constructor for the Cell.
@@ -28,6 +28,7 @@ public class Cell extends MapElement
 	{
 		this.position = new CellPosition(positionX, positionY);
 		this.character = null;
+		this.isSelected = false;
 	}
 
 	
@@ -73,6 +74,15 @@ public class Cell extends MapElement
 		
 	}
 
+	public boolean isSelected()
+	{
+		return this.isSelected;
+	}
+	
+	public void setIsSelected(boolean state)
+	{
+		this.isSelected = state;
+	}
 
 	public fr.iut.tapawaru.team.Character getCharacter()
 	{
