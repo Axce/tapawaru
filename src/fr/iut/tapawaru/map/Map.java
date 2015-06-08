@@ -82,10 +82,20 @@ public class Map
 	}
 
 	
-	public void moveCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
+	public void putCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
 	{
 		// TODO EXCEPTIONS
 
+		this.map[position.getPositionX()][position.getPositionY()].setCharacter(character);
+		character.setCell(this.getCell(position));
+		
+		
+	}
+	
+	public void moveCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
+	{
+
+		this.map[character.getCellTraveled().getPosition().getPositionX()][character.getCellTraveled().getPosition().getPositionY()].setCharacter(null);
 		this.map[position.getPositionX()][position.getPositionY()].setCharacter(character);
 		character.setCell(this.getCell(position));
 		
