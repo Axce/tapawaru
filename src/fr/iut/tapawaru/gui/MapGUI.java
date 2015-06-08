@@ -314,6 +314,13 @@ public class MapGUI extends JPanel implements MouseListener
 		
 	}
 	
+	public void paintGivenCell(CellPosition position,Image img)
+	{
+		this.getGraphics().drawImage(img, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE, this);
+
+		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY());
+		
+	}
 	public void setSelectedCharacterPosition(CellPosition position)
 	{
 		if(!(this.selectedCharacterPosition==null))
