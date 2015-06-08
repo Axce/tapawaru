@@ -39,11 +39,11 @@ public class Move extends Action
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 
 		for (int y = pers.getCellTraveled().getPosition().getPositionY() - map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
-			 y < pers.getCellTraveled().getPosition().getPositionY() + map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
+			 y < pers.getCellTraveled().getPosition().getPositionY() + map.getTeamController().getPlayingTeam().getActionPointsLeft() + 1 ;
 			 y++)
 		 {
 				for (int x = pers.getCellTraveled().getPosition().getPositionX() - map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
-					 x < pers.getCellTraveled().getPosition().getPositionX() + map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
+					 x < pers.getCellTraveled().getPosition().getPositionX() + map.getTeamController().getPlayingTeam().getActionPointsLeft() + 1 ;
 					 x++)
 				 {
 					 
