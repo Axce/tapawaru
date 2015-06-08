@@ -72,13 +72,6 @@ public class Character
 	
 	// ///// Methods ////////////////////////////////////////
 	
-	/**
-	 * Method to cast a spell.
-	 */
-	public void castSpell()
-	{
-		// TODO faire la m�thode
-	}
 	
 	/**
 	 * Method to check that character's still alive.
@@ -100,11 +93,7 @@ public class Character
 	 */
 	public void kill()
 	{
-		if (!this.isAlive())
-		{
-			// TODO faire la m�thode;
-		}
-		
+		// TODO complete
 	}
 	
 	public Cell getCellTraveled()
@@ -142,5 +131,14 @@ public class Character
 	public Map getMap()
 	{
 		return this.map;
+	}
+
+	public void inflict(int damages)
+	{
+		this.healthPoint -= damages;
+		if (!this.isAlive())
+		{
+			this.kill();
+		}
 	}
 }

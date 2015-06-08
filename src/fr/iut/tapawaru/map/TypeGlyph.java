@@ -18,15 +18,15 @@ public enum TypeGlyph {
 	WATER ("W"),
 	AIR ("A"),
 	THUNDER ("T"),
-	ICE ("I");
-	// HOLY ("H"),
-	// DARK ("D");  //
+	ICE ("I"),
+	HOLY ("H"),
+	DARK ("D"); 
 	
 	/** Displays Glyph's type. */
     private final String display;
     
     /** The number of type available. */
-    public final static int NUMBER_OF_TYPE = 6; 
+    public final static int NUMBER_OF_TYPE = 8; 
     
 	/////// Constructor ////////////////////////////////////////
 
@@ -70,6 +70,10 @@ public enum TypeGlyph {
 			return TypeGlyph.THUNDER;
 		case 5:
 			return TypeGlyph.ICE;
+		case 6:
+			return TypeGlyph.HOLY;
+		case 7:
+			return TypeGlyph.DARK;
 		}
 		return null;
     }

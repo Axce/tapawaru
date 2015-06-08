@@ -21,7 +21,6 @@ public class TeamController
 		this.team1 = new Team(TeamColor.GREEN,map);
 		this.team2 = new Team(TeamColor.RED,map);
 		this.playingTeam = team1;
-		this.map.setPlayingTeam(team1);
 		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
 		{
 			this.map.moveCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
@@ -38,13 +37,21 @@ public class TeamController
 	 * If a team is at 0, the playingTeam changes. 
 	 * @param deductedPoints
 	 */
-	public void deduct(int deductedPoints)
+	public boolean deduct(int deductedPoints)
 	{
-		//TODO exceptions & all
+		if (deductedPoints > playingTeam.getActionPointsLeft())
+			return false;
+		
 		this.playingTeam.setActionPointsLeft(this.playingTeam.getActionPointsLeft() - deductedPoints);
 		
 		if (this.playingTeam.getActionPointsLeft() == 0)
 			changePlayingTeam();
+		return true;
+	}
+	
+	public void skipTurn()
+	{
+		deduct(playingTeam.getActionPointsLeft());
 	}
 
 	private void changePlayingTeam()
@@ -52,16 +59,14 @@ public class TeamController
 		if (playingTeam == team1)
 		{
 			playingTeam = team2;
-			this.map.setPlayingTeam(team2);
 			this.map.getBottomPanel().chooseDisplayTeam();
 
 		}
 		else
 		{
 			playingTeam = team1;
-			this.map.setPlayingTeam(team1);
 			this.map.getBottomPanel().chooseDisplayTeam();
-			}
+		}
 		
 		playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);
 	}
