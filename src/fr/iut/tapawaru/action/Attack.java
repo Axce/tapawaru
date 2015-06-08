@@ -16,7 +16,17 @@ import fr.iut.tapawaru.team.Character;
  */
 public class Attack extends Spell
 {
-	public static ArrayList<CellPosition> straightLine(Map map, Character caster, CellPosition target)
+	
+	/**
+	 * laserBeam
+	 * o: caster
+	 * x: target
+	 * *: impact
+	 * 
+	 * o****x****
+	 * 
+	 */
+	public static ArrayList<CellPosition> laserBeam(Map map, Character caster, CellPosition target)
 	{
 		int deltaX = target.getPositionX() - caster.getCellTraveled().getPosition().getPositionX();
 		int deltaY = target.getPositionY() - caster.getCellTraveled().getPosition().getPositionY();
@@ -74,6 +84,14 @@ public class Attack extends Spell
 		return cellList;
 	}
 	
+	/**
+	 * aroundCaster
+	 * o: caster
+	 * *: impact
+	 *   ***
+	 *   *o*
+	 *   ***
+	 */
 	public static ArrayList<CellPosition> aroundCaster(Map map, Character caster)
 	{
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
@@ -95,6 +113,15 @@ public class Attack extends Spell
 		return cellList;
 	}
 	
+	/**
+	 * flowerBomb
+	 * o: caster
+	 * X: target/impact
+	 * *: impact
+	 *      *
+	 * o   *X*
+	 *      *
+	 */
 	public static ArrayList<CellPosition> flowerBomb(Map map, Character caster, CellPosition target)
 	{
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
@@ -118,6 +145,11 @@ public class Attack extends Spell
 			cellList.add(new CellPosition(x, y));
 		
 		x = xTarget-1; y = yTarget;
+		if (x >= 0 && y >= 0 &&
+				x < map.getXSize() && y < map.getYSize())
+			cellList.add(new CellPosition(x, y));
+		
+		x = xTarget; y = yTarget;
 		if (x >= 0 && y >= 0 &&
 			x < map.getXSize() && y < map.getYSize())
 			cellList.add(new CellPosition(x, y));
