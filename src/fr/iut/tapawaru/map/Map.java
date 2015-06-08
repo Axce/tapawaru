@@ -140,6 +140,18 @@ public class Map
 		// TODO Auto-generated method stub
 		return this.map[pos.getPositionX()][pos.getPositionY()];
 	}
+
+
+	public Glyph getGlyph(GlyphPosition pos)
+	{
+		return this.glyph[pos.getPositionX()][pos.getPositionY()];
+	}
+
+
+	public void setGlyph(GlyphPosition pos, Glyph glyph)
+	{
+		this.glyph[pos.getPositionX()][pos.getPositionY()] = glyph;		
+	}
 	
 }
 

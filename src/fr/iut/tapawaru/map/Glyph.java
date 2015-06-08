@@ -46,6 +46,12 @@ public class Glyph extends MapElement
 		return this.glyphPosition;
 	}
 
+	public void setGlyphPosition(GlyphPosition glyphPosition)
+	{
+		this.glyphPosition = glyphPosition;
+	}
+
+
 	/**
 	 * Sets Glyph's X position.
 	 * @param int positionGlyphX: future Glyph's X position.

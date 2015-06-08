@@ -47,16 +47,20 @@ public class CellPosition
 	
 	/**
 	 * Generate the 4 position of adjacent glyphs. .
-	 * GlyphePosition[] like [ TopLeft,TopRight,BotRight,BotLeft].
+	 * GlyphePosition[] like [TopLeft,TopRight,BotRight,BotLeft].
+	 * 
+	 * 0 1
+	 * 3 2
+	 * 
 	 * @return GlyphPosition[3].
 	 */
 	public GlyphPosition[] generateAdjacentGlyphPosition()
 	{
-		GlyphPosition[] glyphPosition = new GlyphPosition[3];
-		glyphPosition[0] = new GlyphPosition(this.positionX-1 , this.positionY -1);
-		glyphPosition[1] = new GlyphPosition(this.positionX , this.positionY -1);
-		glyphPosition[2] = new GlyphPosition(this.positionX , this.positionY );
-		glyphPosition[3] = new GlyphPosition(this.positionX-1 , this.positionY);
+		GlyphPosition[] glyphPosition = new GlyphPosition[4];
+		glyphPosition[0] = new GlyphPosition(this.positionX   , this.positionY   );
+		glyphPosition[1] = new GlyphPosition(this.positionX +1, this.positionY   );
+		glyphPosition[2] = new GlyphPosition(this.positionX +1, this.positionY +1);
+		glyphPosition[3] = new GlyphPosition(this.positionX   , this.positionY +1);
 		return glyphPosition;
 	}
 	

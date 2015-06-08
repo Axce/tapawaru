@@ -90,6 +90,6 @@ public class Cell extends MapElement
 	}
 	
 	
-	//TODO v�rifier le code
+	//TODO vérifier le code
 	
 }
