@@ -9,7 +9,7 @@ package fr.iut.tapawaru.action;
  * @authors PELLOUX-PRAYER, PRADELLE
  */
  
-public class Action
+public abstract class Action
 {
 	
 }

@@ -75,7 +75,7 @@ public class Map
 	}
 
 	
-	public void putCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
+	public void moveCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
 	{
 		// TODO EXCEPTIONS
 
