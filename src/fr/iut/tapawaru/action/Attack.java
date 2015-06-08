@@ -94,4 +94,34 @@ public class Attack extends Spell
 		
 		return cellList;
 	}
+	
+	public static ArrayList<CellPosition> flowerBomb(Map map, Character caster, CellPosition target)
+	{
+		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
+		int x, y,
+			xTarget = target.getPositionX(),
+			yTarget = target.getPositionY();
+		
+		x = xTarget; y = yTarget+1;
+		if (x >= 0 && y >= 0 &&
+			x < map.getXSize() && y < map.getYSize())
+			cellList.add(new CellPosition(x, y));
+		
+		x = xTarget; y = yTarget-1;
+		if (x >= 0 && y >= 0 &&
+			x < map.getXSize() && y < map.getYSize())
+			cellList.add(new CellPosition(x, y));
+		
+		x = xTarget+1; y = yTarget;
+		if (x >= 0 && y >= 0 &&
+			x < map.getXSize() && y < map.getYSize())
+			cellList.add(new CellPosition(x, y));
+		
+		x = xTarget-1; y = yTarget;
+		if (x >= 0 && y >= 0 &&
+			x < map.getXSize() && y < map.getYSize())
+			cellList.add(new CellPosition(x, y));
+		
+		return cellList;
+	}
 }

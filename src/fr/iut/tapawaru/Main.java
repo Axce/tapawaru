@@ -2,7 +2,9 @@ package fr.iut.tapawaru;
 
 import fr.iut.tapawaru.action.Attack;
 import fr.iut.tapawaru.gui.MainFrame;
+import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.team.Character;
 
 /**
  * Class containing main
@@ -18,7 +20,7 @@ public class Main
 		Map map = new Map();
 		//MainFrame mainFrame = new MainFrame(map);
 		System.out.println(map);
-		System.out.println(Attack.aroundCaster(map, map.getCharacter(1, 1)));
+		System.out.println(Attack.flowerBomb(map, null, new CellPosition(0, 0)));
 	}
 	
 }
