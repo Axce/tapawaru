@@ -32,7 +32,7 @@ public class MainFrame extends JFrame
 		this.add(mapGui,c);
 		
 		
-		BottomPanel botPanel = new BottomPanel(listener);
+		BottomPanel botPanel = new BottomPanel(listener,map);
 		botPanel.setPreferredSize(new Dimension(1280,250));
 		c.fill = GridBagConstraints.BOTH;
 		c.ipady = 0;
@@ -50,4 +50,6 @@ public class MainFrame extends JFrame
 		this.setVisible(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
+	
+	
 }

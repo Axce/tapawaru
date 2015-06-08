@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
-import fr.iut.tapawaru.map.TeamColor;
+
 
 /**
  * Character of a team. Contained in the listCharacter attribute.

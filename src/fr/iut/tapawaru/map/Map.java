@@ -39,6 +39,8 @@ public class Map
 	private TeamController teamController;
 
 	private Cell selectedCell;
+
+	private Team playingTeam;
 	
 	
 	/////// Constructor ////////////////////////////////////////
@@ -71,6 +73,7 @@ public class Map
 		this.teamController = new TeamController(this);
 		
 		this.selectedCell=null;
+		this.playingTeam = null;
 		
 	}
 
@@ -181,6 +184,15 @@ public class Map
 		this.selectedCell = cell;
 	}
 	
+	public void setPlayingTeam(Team team)
+	{
+		this.playingTeam = team;
+	}
+	
+	public Team getPlayingTeam()
+	{
+		return this.playingTeam ;
+	}
 	
 }
 

@@ -37,23 +37,31 @@ public class MyButtonListener implements ActionListener
 		if (source == this.glyphCWspin)
 		{
 			Terra.glyphCWspin(this.map, map.getSelectedCell().getPosition());
+			this.map.getTeamController().deduct(1);
 			this.mapGui.printGlyph(this.mapGui.getGraphics());
 			this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 					.getPositionY());
+			this.botPanel.paint(this.botPanel.getGraphics());
+
 		}
 		if (source == this.glyphCCWspin)
 		{
 			Terra.glyphCCWspin(this.map, map.getSelectedCell().getPosition());
+			this.map.getTeamController().deduct(1);
 			this.mapGui.printGlyph(this.mapGui.getGraphics());
 			this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 					.getPositionY());
+			this.botPanel.paint(this.botPanel.getGraphics());
+
 		}
 		if (source == this.glyphRandom)
 		{
 			Terra.glyphRandom(this.map, map.getSelectedCell().getPosition());
+			this.map.getTeamController().deduct(1);
 			this.mapGui.printGlyph(this.mapGui.getGraphics());
 			this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 					.getPositionY());
+			this.botPanel.paint(this.botPanel.getGraphics());
 		}
 
 	}

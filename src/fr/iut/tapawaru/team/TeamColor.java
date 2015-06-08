@@ -1,4 +1,4 @@
-package fr.iut.tapawaru.map;
+package fr.iut.tapawaru.team;
 
 
 /**

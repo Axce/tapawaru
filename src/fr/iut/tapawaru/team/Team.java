@@ -1,6 +1,5 @@
 package fr.iut.tapawaru.team;
 
-import fr.iut.tapawaru.map.TeamColor;
 
 /**
  * Team of Characters. 

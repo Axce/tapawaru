@@ -2,7 +2,6 @@ package fr.iut.tapawaru.team;
 
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Map;
-import fr.iut.tapawaru.map.TeamColor;
 
 public class TeamController
 {
@@ -22,6 +21,7 @@ public class TeamController
 		this.team1 = new Team(TeamColor.GREEN);
 		this.team2 = new Team(TeamColor.RED);
 		this.playingTeam = team1;
+		this.map.setPlayingTeam(team1);
 		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
 		{
 			this.map.moveCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
@@ -52,13 +52,20 @@ public class TeamController
 		if (playingTeam == team1)
 		{
 			playingTeam = team2;
+			this.map.setPlayingTeam(team2);
 		}
 		else
 		{
 			playingTeam = team1;
-		}
+			this.map.setPlayingTeam(team1);
+			}
 		
 		playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);
+	}
+	
+	public Team getPlayingTeam()
+	{
+		return this.playingTeam;
 	}
 	
 	

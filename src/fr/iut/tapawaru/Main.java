@@ -18,9 +18,9 @@ public class Main
 	public static void main(String[] args)
 	{
 		Map map = new Map();
-		//MainFrame mainFrame = new MainFrame(map);
+		MainFrame mainFrame = new MainFrame(map);
 		System.out.println(map);
-		System.out.println(Attack.flowerBomb(map, null, new CellPosition(0, 0)));
+		//System.out.println(Attack.flowerBomb(map, null, new CellPosition(0, 0)));
 	}
 	
 }
