@@ -128,7 +128,7 @@ public class BottomPanel extends JPanel implements KeyListener
 		Image tmp = null;
 		try
 		{
-			tmp = ImageIO.read(new File("img/botScreen/left2Selected.png"));
+			tmp = ImageIO.read(new File("img/botScreen/left2"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"Selected.png"));
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -145,7 +145,7 @@ public class BottomPanel extends JPanel implements KeyListener
 		Image tmp = null;
 		try
 		{
-			tmp = ImageIO.read(new File("img/botScreen/left2.png"));
+			tmp = ImageIO.read(new File("img/botScreen/left2"+this.map.getTeamController().getPlayingTeam().getColorTeam()+".png"));
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -212,7 +212,6 @@ public class BottomPanel extends JPanel implements KeyListener
 			{
 			case 'w':
 				Terra.glyphCWspin(this.map, map.getSelectedCell().getPosition());
-				this.map.getTeamController().deduct(1);
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
 				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 						.getPositionY());
@@ -221,7 +220,6 @@ public class BottomPanel extends JPanel implements KeyListener
 				break;
 			case 'x':
 				Terra.glyphCCWspin(this.map, map.getSelectedCell().getPosition());
-				this.map.getTeamController().deduct(1);
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
 				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 						.getPositionY());
@@ -229,7 +227,6 @@ public class BottomPanel extends JPanel implements KeyListener
 				break;
 			case 'c':
 				Terra.glyphRandom(this.map, map.getSelectedCell().getPosition());
-				this.map.getTeamController().deduct(1);
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
 				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 						.getPositionY());

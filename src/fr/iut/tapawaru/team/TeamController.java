@@ -18,7 +18,7 @@ public class TeamController
 	public TeamController(Map map)
 	{
 		this.map = map;
-		this.team1 = new Team(TeamColor.GREEN,map);
+		this.team1 = new Team(TeamColor.BLUE,map);
 		this.team2 = new Team(TeamColor.RED,map);
 		this.playingTeam = team1;
 		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
@@ -39,7 +39,6 @@ public class TeamController
 	 */
 	public boolean deduct(int deductedPoints)
 	{
-		System.out.println("dduct reach");
 		if (deductedPoints > playingTeam.getActionPointsLeft())
 			return false;
 		
