@@ -37,35 +37,49 @@ public class Attack extends Spell
 			case HOLY:
 				for (CellPosition cellPos : posList)
 				{
-					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).heal(1);
-					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.NORMAL);
+					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
+					{
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).heal(1);
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.NORMAL);
+					}
 				}
 				break;
 				
 			case FIRE:
 				for (CellPosition cellPos : posList)
 				{
-					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
-					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.BURNING);
+					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
+					{
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.BURNING);
+					}
 				}
 				break;
 				
 			case ICE:
 				for (CellPosition cellPos : posList)
 				{
-					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
-					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.FREEZING);
+					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
+					{
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.FREEZING);
+					}
+
 				}
 				break;
 				
 			case AIR:
 				for (CellPosition cellPos : posList)
 				{
-					Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
-					pers.inflict(1);
-					
-					if (pers.getBuff() == Buff.BURNING)
-						pers.setBuff(Buff.NORMAL);
+					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
+					{
+						Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
+						pers.inflict(1);
+						
+						if (pers.getBuff() == Buff.BURNING)
+							pers.setBuff(Buff.NORMAL);
+					}
+
 						
 				}
 				break;
