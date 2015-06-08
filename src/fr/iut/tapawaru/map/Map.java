@@ -22,10 +22,10 @@ public class Map
 	/////// Attributes ////////////////////////////////////////
 
 	/** Map's default xSize. */
-	public static final int  DEFAULT_X_SIZE = 30;
+	public static final int  DEFAULT_X_SIZE = 15;
 	
 	/** Map's default ySize. */
-	public static final int DEFAULT_Y_SIZE = 15;
+	public static final int DEFAULT_Y_SIZE = 10;
 	
 	/** Map's xSize. */
 	private final int xSize;

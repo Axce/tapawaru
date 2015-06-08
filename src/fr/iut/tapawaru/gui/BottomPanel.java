@@ -171,7 +171,7 @@ public class BottomPanel extends JPanel implements KeyListener
 	{
 		this.paintTerraStateUnselected(g);
 		
-		g.drawImage(right,750, 0, this);
+		g.drawImage(right,375, 0, this);
 
 		paintPA(g, right);
 
