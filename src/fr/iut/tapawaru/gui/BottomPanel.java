@@ -17,11 +17,14 @@ import fr.iut.tapawaru.team.Character;
 
 
 
+
+
 import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import fr.iut.tapawaru.action.Move;
 import fr.iut.tapawaru.action.Terra;
 import fr.iut.tapawaru.map.Map;
 
@@ -378,6 +381,42 @@ public class BottomPanel extends JPanel implements KeyListener
 			break;
 		default:
 		}	
+		if(!(this.characterSelected == null))
+		{
+			
+			switch (e.getKeyChar())
+			{
+			case 'q':
+				Terra.glyphCWspin(this.map, map.getSelectedCell().getPosition());
+				this.mapGui.printGlyph(this.mapGui.getGraphics());
+				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
+						.getPositionY());
+				this.paint(this.getGraphics());
+
+				break;
+			case 's':
+				Terra.glyphCCWspin(this.map, map.getSelectedCell().getPosition());
+				this.mapGui.printGlyph(this.mapGui.getGraphics());
+				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
+						.getPositionY());
+				this.paint(this.getGraphics());
+				break;
+			case 'd':
+				Terra.glyphRandom(this.map, map.getSelectedCell().getPosition());
+				this.mapGui.printGlyph(this.mapGui.getGraphics());
+				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
+						.getPositionY());
+				this.paint(this.getGraphics());
+				break;
+			case ' ':
+				System.out.println("space");
+				Move.simpleMove(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
+				this.repaint();
+				this.mapGui.printCell(this.mapGui.getGraphics());
+				break;
+			default:
+			}	
+		}
 		
 	}
 	@Override

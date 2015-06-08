@@ -121,7 +121,7 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 
-	private void printCharacter(Graphics g, int xSize, int ySize,String picture)
+	public void printCharacter(Graphics g, int xSize, int ySize,String picture)
 	{
 		if (!(this.map.getCharacter(xSize, ySize) == null))
 		{
