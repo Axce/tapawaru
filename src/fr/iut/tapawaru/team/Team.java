@@ -18,6 +18,7 @@ public class Team
 	// TODO check enum
 	
 	public final static int	DEFAULT_NB_CHARACTER	= 3;
+	public final static int	DEFAULT_ACTION_POINT= 5;
 	
 	/** Team's number of characters   (set to static if same in every Team). */
 	private final int nbCharacter;
@@ -28,7 +29,7 @@ public class Team
 	/** Team's color. */
 	private TeamColor colorTeam;
 	
-	
+	private int actionPointLeft; 
 	/////// Constructor ////////////////////////////////////////
 
 	// TODO check colorTeam in constructor
@@ -51,6 +52,7 @@ public class Team
 		{
 			this.listCharacter[nbCharacterCreated] = new Character(this, 100);
 		}
+		this.actionPointLeft = DEFAULT_ACTION_POINT;
 	}
 	
 	/**
@@ -66,6 +68,7 @@ public class Team
 		{
 			this.listCharacter[nbCharacterCreated] = new Character(this, 100);
 		}
+		this.actionPointLeft = DEFAULT_ACTION_POINT;
 	}
 
 	public int getNbCharacter()
@@ -78,5 +81,15 @@ public class Team
 	{
 		// TODO Auto-generated method stub
 		return this.listCharacter;
+	}
+	
+	public int getActionPoinLeft()
+	{
+		return this.actionPointLeft;
+	}
+	
+	public void setActionPoinLeft(int newActionPointLeft)
+	{
+		this.actionPointLeft=newActionPointLeft;
 	}
 }

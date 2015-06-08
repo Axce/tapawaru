@@ -1,11 +1,16 @@
 package fr.iut.tapawaru.gui;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -15,6 +20,13 @@ public class BottomPanel extends JPanel
 	private JButton glyphCWspin;
 	private JButton glyphCCWspin;
 	private JButton glyphRandom;
+	
+	private Image apLeft5;
+	private Image apLeft4;
+	private Image apLeft3;
+	private Image apLeft2;
+	private Image apLeft0;
+	private Image apLeft1;
 
 	public BottomPanel(MyButtonListener listener)
 	{
@@ -61,6 +73,21 @@ public class BottomPanel extends JPanel
 		listener.setGlyphRandomButton(glyphRandom);
 		this.add(glyphRandom,c);
 
+		
+		try
+		{
+			this.apLeft4 = ImageIO.read(new File("img/players/apLeft4.png"));
+			this.apLeft3 = ImageIO.read(new File("img/players/apLeft3.png"));
+			this.apLeft2 = ImageIO.read(new File("img/players/apLeft2.png"));
+			this.apLeft1 = ImageIO.read(new File("img/players/apLeft1.png"));
+			this.apLeft0 = ImageIO.read(new File("img/players/apLeft0.png"));
+			this.apLeft5 = ImageIO.read(new File("img/players/apLeft5.png"));
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public JButton getGlyphCWspin()
@@ -76,5 +103,12 @@ public class BottomPanel extends JPanel
 	public JButton getGlyphRandom()
 	{
 		return this.glyphRandom;
+	}
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		this.printCell(g);
+		this.printGlyph(g);
+
 	}
 }
