@@ -101,7 +101,11 @@ public class Map
 	{
 		return ySize;
 	}
-
+	
+	public TeamController getTeamController()
+	{
+		return this.teamController;
+	}
 
 
 	/**

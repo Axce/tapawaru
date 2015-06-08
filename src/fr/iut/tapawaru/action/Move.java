@@ -23,6 +23,7 @@ public class Move extends Action
 		if (deltaX + deltaY == 1)
 		{
 			map.moveCharacter(pers, target);
+			map.getTeamController().deduct(1);
 		}
 		else
 		{

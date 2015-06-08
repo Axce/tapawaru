@@ -83,12 +83,12 @@ public class Team
 		return this.listCharacter;
 	}
 	
-	public int getActionPoinLeft()
+	public int getActionPointsLeft()
 	{
 		return this.actionPointLeft;
 	}
 	
-	public void setActionPoinLeft(int newActionPointLeft)
+	public void setActionPointsLeft(int newActionPointLeft)
 	{
 		this.actionPointLeft=newActionPointLeft;
 	}
