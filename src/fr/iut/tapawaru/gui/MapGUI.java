@@ -33,6 +33,7 @@ public class MapGUI extends JPanel implements MouseListener
 	private Image glyphIce;
 	private Image glyphThunder;
 	private Image glyphWater;
+	private Image glyphPattern;
 
 	private Map map;
 
@@ -55,6 +56,7 @@ public class MapGUI extends JPanel implements MouseListener
 			this.glyphIce = ImageIO.read(new File("img/glyphIce.png"));
 			this.glyphThunder = ImageIO.read(new File("img/glyphThunder.png"));
 			this.glyphWater = ImageIO.read(new File("img/glyphWater.png"));
+			this.glyphPattern = ImageIO.read(new File("img/glyphPattern.png"));
 
 			this.addMouseListener(this);
 
@@ -165,6 +167,9 @@ public class MapGUI extends JPanel implements MouseListener
 				{
 					g.drawImage(glyphWater, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
+				
+				g.drawImage(glyphPattern, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+
 
 			}
 
