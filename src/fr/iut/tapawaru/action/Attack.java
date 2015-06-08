@@ -71,7 +71,26 @@ public class Attack extends Spell
 			}
 		}
 		
+		return cellList;
+	}
+	
+	public static ArrayList<CellPosition> aroundCaster(Map map, Character caster)
+	{
+		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 		
+		int xCaster = caster.getCellTraveled().getPosition().getPositionX();
+		int yCaster = caster.getCellTraveled().getPosition().getPositionY();
+		
+		for (int y = yCaster - 1 ; y <= yCaster + 1 ; y++)
+		{
+			for (int x = xCaster - 1 ; x <= xCaster + 1 ; x++)
+			{
+				if ((x != xCaster || y != yCaster) &&
+					x >= 0 && y >= 0 &&
+					x < map.getXSize() && y < map.getYSize())
+					cellList.add(new CellPosition(x, y));
+			}
+		}
 		
 		return cellList;
 	}

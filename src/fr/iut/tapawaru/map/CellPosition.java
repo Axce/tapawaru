@@ -64,4 +64,9 @@ public class CellPosition
 		return glyphPosition;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "x" + getPositionX() + " y" + getPositionY();
+	}
 }
