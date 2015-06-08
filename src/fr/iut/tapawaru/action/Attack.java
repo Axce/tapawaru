@@ -87,18 +87,26 @@ public class Attack extends Spell
 			case WATER:
 				for (CellPosition cellPos : posList)
 				{
-					Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
-					pers.inflict(1);
-					
-					if (pers.getBuff() == Buff.BURNING)
-						pers.setBuff(Buff.NORMAL);
+					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
+					{
+						Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
+						pers.inflict(1);
+						
+						if (pers.getBuff() == Buff.BURNING)
+							pers.setBuff(Buff.NORMAL);
+					}
+
 				}
 				break;
 				
 			default:
 				for (CellPosition cellPos : posList)
 				{
-					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(1);
+					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
+					{
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(1);
+					}
+
 				}
 
 		}
