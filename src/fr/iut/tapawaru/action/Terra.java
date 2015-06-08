@@ -22,7 +22,7 @@ public class Terra extends Spell
 	 * 32       21
 	 */
 	public static void GlyphCWspin(Map map, CellPosition cellPosition)
-	{
+	{		
 		GlyphPosition[] glyphPosList= cellPosition.generateAdjacentGlyphPosition();
 		
 		Glyph glyphBuffer = map.getGlyph(glyphPosList[3]);
@@ -35,6 +35,7 @@ public class Terra extends Spell
 		map.setGlyph(glyphPosList[1], map.getGlyph(glyphPosList[0]));
 		glyphBuffer.setGlyphPosition(glyphPosList[0]);
 		map.setGlyph(glyphPosList[0], glyphBuffer);
+		
 	}
 	
 	/**

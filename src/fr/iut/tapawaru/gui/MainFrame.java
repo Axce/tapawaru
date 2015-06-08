@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import fr.iut.tapawaru.map.Map;
 
@@ -41,5 +42,6 @@ public class MainFrame extends JFrame
 
 		this.pack();
 		this.setVisible(true);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 }
