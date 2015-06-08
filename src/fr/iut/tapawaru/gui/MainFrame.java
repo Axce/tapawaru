@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -15,7 +16,7 @@ public class MainFrame extends JFrame
 	public MainFrame(Map map){
 		this.setTitle("Tapawaru");
 		
-
+		MyButtonListener listener =new MyButtonListener(map);
 		GridBagLayout myGrid = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		this.setLayout(myGrid);
@@ -30,8 +31,9 @@ public class MainFrame extends JFrame
 		c.gridy = 0;
 		this.add(mapGui,c);
 		
-		BottomPanel botPanel = new BottomPanel();
-		botPanel.setPreferredSize(new Dimension(400, 250));
+		
+		BottomPanel botPanel = new BottomPanel(listener);
+		botPanel.setPreferredSize(new Dimension(1280,250));
 		c.fill = GridBagConstraints.BOTH;
 		c.ipady = 0;
 		c.weightx = 0;
@@ -39,6 +41,10 @@ public class MainFrame extends JFrame
 		c.gridx = 0;
 		c.gridy = 1;
 		this.add(botPanel,c);
+
+		mapGui.addBotPanel(botPanel);
+		listener.addBotPanel(botPanel);
+		listener.addMapGui(mapGui);
 
 		this.pack();
 		this.setVisible(true);

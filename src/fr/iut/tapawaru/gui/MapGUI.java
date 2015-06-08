@@ -38,6 +38,8 @@ public class MapGUI extends JPanel implements MouseListener
 
 	private Cell selectedCell;
 
+	private BottomPanel botPanel;
+
 	public MapGUI(Map map)
 	{
 		try
@@ -55,6 +57,8 @@ public class MapGUI extends JPanel implements MouseListener
 			this.addMouseListener(this);
 
 			this.map = map;
+			this.botPanel = null;
+			this.selectedCell = this.map.getSelectedCell();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -139,7 +143,7 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 
-	private void changeCellState(int xSize, int ySize)
+	public void changeCellState(int xSize, int ySize)
 	{
 		boolean goSelected = true;
 		
@@ -155,6 +159,8 @@ public class MapGUI extends JPanel implements MouseListener
 				goSelected = false;
 			}
 			this.selectedCell = null;
+			this.map.setSelectedCell(null);
+			this.botPanel.getTerraButton().setEnabled(false);
 			
 
 		}
@@ -164,6 +170,8 @@ public class MapGUI extends JPanel implements MouseListener
 			this.getGraphics().drawImage(this.octoSelected, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(true);
 			this.selectedCell = this.map.getCell(new CellPosition(xSize, ySize));
+			this.map.setSelectedCell(this.map.getCell(new CellPosition(xSize, ySize)));
+			this.botPanel.getTerraButton().setEnabled(true);
 		}
 			
 		
@@ -197,6 +205,12 @@ public class MapGUI extends JPanel implements MouseListener
 
 	}
 
+	public void paintComponent()
+	{
+		this.printCell(this.getGraphics());
+		this.printGlyph(this.getGraphics());
+
+	}
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
@@ -230,6 +244,12 @@ public class MapGUI extends JPanel implements MouseListener
 	{
 //		Terra.GlyphCWspin(this.map, new CellPosition((int) e.getX() / 50,  (int) e.getY() / 50));
 //		this.paint(this.getGraphics());
+	}
+
+	public void addBotPanel(BottomPanel botPanel)
+	{
+		this.botPanel = botPanel;
+		
 	}
 
 }

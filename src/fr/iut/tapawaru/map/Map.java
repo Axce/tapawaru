@@ -37,6 +37,8 @@ public class Map
 	private final Cell[][] map;
 	
 	private TeamController teamController;
+
+	private Cell selectedCell;
 	
 	
 	/////// Constructor ////////////////////////////////////////
@@ -46,6 +48,7 @@ public class Map
 	 */
 	public Map()
 	{ 
+		this.selectedCell=null;
 		this.xSize=DEFAULT_X_SIZE;
 		this.ySize=DEFAULT_Y_SIZE;
 		this.map = new Cell[this.xSize][this.ySize];
@@ -66,6 +69,8 @@ public class Map
 			}
 		}
 		this.teamController = new TeamController(this);
+		
+		this.selectedCell=null;
 		
 	}
 
@@ -152,6 +157,19 @@ public class Map
 	{
 		this.glyph[pos.getPositionX()][pos.getPositionY()] = glyph;		
 	}
+
+
+	public Cell getSelectedCell()
+	{
+		// TODO Auto-generated method stub
+		return this.selectedCell;
+	}
+	
+	public void setSelectedCell(Cell cell)
+	{
+		this.selectedCell = cell;
+	}
+	
 	
 }
 
