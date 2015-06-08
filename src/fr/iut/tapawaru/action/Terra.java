@@ -15,6 +15,12 @@ import fr.iut.tapawaru.map.Map;
  */
 public class Terra extends Spell
 {
+	
+	/**
+	 * Clockwise glyph spin
+	 * 01	->	30
+	 * 32       21
+	 */
 	public static void GlyphCWspin(Map map, CellPosition cellPosition)
 	{
 		GlyphPosition[] glyphPosList= cellPosition.generateAdjacentGlyphPosition();
@@ -31,6 +37,11 @@ public class Terra extends Spell
 		map.setGlyph(glyphPosList[0], glyphBuffer);
 	}
 	
+	/**
+	 * Counter-clockwise glyph spin
+	 * 01	->	12
+	 * 32       03
+	 */
 	public static void GlyphCCWspin(Map map, CellPosition cellPosition)
 	{
 		GlyphPosition[] glyphPosList= cellPosition.generateAdjacentGlyphPosition();
