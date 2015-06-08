@@ -3,6 +3,6 @@ package fr.iut.tapawaru.team;
 public enum Buff
 {
 	NORMAL,
-	BURNING,
-	FREEZING;
+	BURNING,	// -1 hp per turn
+	FREEZING;	// can't move
 }

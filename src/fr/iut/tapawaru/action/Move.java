@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.team.Buff;
 import fr.iut.tapawaru.team.Character;
 
 /**
@@ -38,6 +39,10 @@ public class Move extends Action
 	{
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 
+		if (pers.getBuff() == Buff.FREEZING)	//can't move
+			return cellList;
+		
+		
 		for (int y = pers.getCellTraveled().getPosition().getPositionY() - map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
 			 y < pers.getCellTraveled().getPosition().getPositionY() + map.getTeamController().getPlayingTeam().getActionPointsLeft() + 1 ;
 			 y++)

@@ -104,7 +104,7 @@ public class Attack extends Spell
 	{
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 
-		if (map.getTeamController().deduct(1))
+		if (caster.getBuff() != Buff.FREEZING && map.getTeamController().deduct(1))
 		{
 		
 			int deltaX = target.getPositionX() - caster.getCellTraveled().getPosition().getPositionX();
@@ -177,7 +177,7 @@ public class Attack extends Spell
 
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 		
-		if (map.getTeamController().deduct(1))
+		if (caster.getBuff() != Buff.FREEZING && map.getTeamController().deduct(1))
 		{
 			int xCaster = caster.getCellTraveled().getPosition().getPositionX();
 			int yCaster = caster.getCellTraveled().getPosition().getPositionY();
@@ -215,7 +215,7 @@ public class Attack extends Spell
 		
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 		
-		if (map.getTeamController().deduct(1))
+		if (caster.getBuff() != Buff.FREEZING && map.getTeamController().deduct(1))
 		{
 			int x, y,
 				xTarget = target.getPositionX(),
