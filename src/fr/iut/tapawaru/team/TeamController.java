@@ -21,7 +21,6 @@ public class TeamController
 		this.team1 = new Team(TeamColor.GREEN,map);
 		this.team2 = new Team(TeamColor.RED,map);
 		this.playingTeam = team1;
-		this.map.setPlayingTeam(team1);
 		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
 		{
 			this.map.moveCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
@@ -60,14 +59,12 @@ public class TeamController
 		if (playingTeam == team1)
 		{
 			playingTeam = team2;
-			this.map.setPlayingTeam(team2);
 			this.map.getBottomPanel().chooseDisplayTeam();
 
 		}
 		else
 		{
 			playingTeam = team1;
-			this.map.setPlayingTeam(team1);
 			this.map.getBottomPanel().chooseDisplayTeam();
 		}
 		

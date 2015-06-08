@@ -20,14 +20,7 @@ public class Move extends Action
 		int deltaX = Math.abs(pers.getCellTraveled().getPosition().getPositionX() - target.getPositionX());
 		int deltaY = Math.abs(pers.getCellTraveled().getPosition().getPositionY() - target.getPositionY());
 		
-		if (deltaX + deltaY == 1)
-		{
-			map.moveCharacter(pers, target);
-			map.getTeamController().deduct(1);
-		}
-		else
-		{
-			//TODO bouger le perso de plusieurs cases puis soustraire les PA
-		}
+		if (map.getTeamController().deduct(deltaX + deltaY))
+				map.moveCharacter(pers, target);
 	}
 }

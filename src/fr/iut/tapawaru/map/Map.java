@@ -43,7 +43,6 @@ public class Map
 
 	private Cell selectedCell;
 
-	private Team playingTeam;
 
 	private MapGUI mapGui;
 
@@ -79,7 +78,6 @@ public class Map
 		this.teamController = new TeamController(this);
 		
 		this.selectedCell=null;
-		this.playingTeam = null;
 		
 	}
 
@@ -188,16 +186,6 @@ public class Map
 	public void setSelectedCell(Cell cell)
 	{
 		this.selectedCell = cell;
-	}
-	
-	public void setPlayingTeam(Team team)
-	{
-		this.playingTeam = team;
-	}
-	
-	public Team getPlayingTeam()
-	{
-		return this.playingTeam ;
 	}
 	
 	public void setMapGui(MapGUI mapGui)
