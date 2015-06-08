@@ -76,10 +76,10 @@ public class Cell extends MapElement
 	}
 
 
-	public void addCharacter(fr.iut.tapawaru.team.Character character2)
+	public void setCharacter(fr.iut.tapawaru.team.Character character)
 	{
 		// TODO EXCEPTION IF ONE CHAR ALREADY ON CELL? Or return old char?
-		this.character = character2;
+		this.character = character;
 		
 	}
 

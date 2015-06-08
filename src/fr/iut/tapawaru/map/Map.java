@@ -79,7 +79,9 @@ public class Map
 	{
 		// TODO EXCEPTIONS
 
-		this.map[position.getPositionX()][position.getPositionY()].addCharacter(character);
+		this.map[position.getPositionX()][position.getPositionY()].setCharacter(character);
+		character.setCell(this.getCell(position));
+		
 		
 	}
 	

@@ -6,8 +6,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.TeamColor;
+
 
 
 
@@ -30,6 +32,8 @@ public class Character
 	
 	/** Character's life points. */
 	private int healthPoint;
+	
+	private Cell cellTraveled;
 
 
 	private String picture;
@@ -46,6 +50,7 @@ public class Character
 	  {
 		  this.team = team;
 		  this.healthPoint = healthpoint;
+		  this.cellTraveled = null;
 		  
 		  this.picture = "img/perso/"+ this.team.getColorTeam().toString()+".png";
 		
@@ -90,6 +95,12 @@ public class Character
 		}
 			 
 	  }
+
+
+	public void setCell(Cell cell)
+	{
+		this.cellTraveled = cell;
+	}
 
 
 }
