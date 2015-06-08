@@ -81,6 +81,7 @@ public class Terra extends Spell
 	 * Interchange 2 cell's surrounding glyphs
 	 * 01  45	->	45  01
 	 * 32  76      	76  32
+	 * @deprecated
 	 */
 	public static void glyphShift(Map map, CellPosition cellPos1, CellPosition cellPos2) throws AdjacentCellsException
 	{
