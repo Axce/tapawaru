@@ -15,7 +15,7 @@ import fr.iut.tapawaru.team.Character;
  */
 public class Move extends Action
 {
-	public void simpleMove(Map map, Character pers, CellPosition target)
+	public static void simpleMove(Map map, Character pers, CellPosition target)
 	{
 		int deltaX = Math.abs(pers.getCellTraveled().getPosition().getPositionX() - target.getPositionX());
 		int deltaY = Math.abs(pers.getCellTraveled().getPosition().getPositionY() - target.getPositionY());
