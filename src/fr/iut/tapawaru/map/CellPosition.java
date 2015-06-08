@@ -69,4 +69,18 @@ public class CellPosition
 	{
 		return "x" + getPositionX() + " y" + getPositionY();
 	}
+	
+	public boolean equals(CellPosition cellPos)
+	{
+		return ((this.positionX == cellPos.positionX) &&
+				(this.positionY == cellPos.positionY));
+	}
+	
+	@Override
+	public boolean equals(Object cellPos)
+	{
+		CellPosition pos = (CellPosition)cellPos;
+		return ((this.positionX == pos.positionX) &&
+				(this.positionY == pos.positionY));
+	}
 }

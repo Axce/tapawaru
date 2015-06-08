@@ -1,5 +1,7 @@
 package fr.iut.tapawaru.action;
 
+import java.util.ArrayList;
+
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Map;
 import fr.iut.tapawaru.team.Character;
@@ -20,7 +22,51 @@ public class Move extends Action
 		int deltaX = Math.abs(pers.getCellTraveled().getPosition().getPositionX() - target.getPositionX());
 		int deltaY = Math.abs(pers.getCellTraveled().getPosition().getPositionY() - target.getPositionY());
 		
-		if (map.getTeamController().deduct(deltaX + deltaY))
+		if (getAccessiblePos(map, pers).contains(target))
+		{
+			System.out.println("ok");
+			if (map.getTeamController().deduct(deltaX + deltaY))
+			{
 				map.moveCharacter(pers, target);
+			}
+		}
+		else
+			System.out.println("nul");
+	}
+	
+	public static ArrayList<CellPosition> getAccessiblePos(Map map, Character pers)
+	{
+		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
+
+		for (int y = pers.getCellTraveled().getPosition().getPositionY() - map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
+			 y < pers.getCellTraveled().getPosition().getPositionY() + map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
+			 y++)
+		 {
+				for (int x = pers.getCellTraveled().getPosition().getPositionX() - map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
+					 x < pers.getCellTraveled().getPosition().getPositionX() + map.getTeamController().getPlayingTeam().getActionPointsLeft() ;
+					 x++)
+				 {
+					 
+					 if (x >= 0 && y >= 0 &&
+						 x < map.getXSize() && y < map.getYSize())
+					 {
+						 if (map.getCell(new CellPosition(x, y)).getCharacter() == null)
+						 {
+							int deltaX = Math.abs(pers.getCellTraveled().getPosition().getPositionX() - x);
+							int deltaY = Math.abs(pers.getCellTraveled().getPosition().getPositionY() - y);
+							if (deltaX + deltaY <= map.getTeamController().getPlayingTeam().getActionPointsLeft())
+							{
+								cellList.add(new CellPosition(x, y));
+							}
+							 
+						 }
+						 
+					 }
+					 
+				 }
+				
+			 }
+		
+		return cellList;
 	}
 }

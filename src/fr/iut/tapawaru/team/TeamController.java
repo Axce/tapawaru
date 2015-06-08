@@ -23,11 +23,11 @@ public class TeamController
 		this.playingTeam = team1;
 		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
 		{
-			this.map.moveCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
+			this.map.putCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
 		}
 		for(int indiceCharacter =0;indiceCharacter<this.team2.getNbCharacter();indiceCharacter++)
 		{
-			this.map.moveCharacter(this.team2.getCharacter()[indiceCharacter],new CellPosition(10, indiceCharacter+1));
+			this.map.putCharacter(this.team2.getCharacter()[indiceCharacter],new CellPosition(10, indiceCharacter+1));
 		}
 
 	}
