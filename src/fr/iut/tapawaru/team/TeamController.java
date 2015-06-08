@@ -18,7 +18,7 @@ public class TeamController
 	public TeamController(Map map)
 	{
 		this.map = map;
-		this.team1 = new Team(TeamColor.GREEN,map);
+		this.team1 = new Team(TeamColor.BLUE,map);
 		this.team2 = new Team(TeamColor.RED,map);
 		this.playingTeam = team1;
 		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
@@ -59,13 +59,13 @@ public class TeamController
 		if (playingTeam == team1)
 		{
 			playingTeam = team2;
-			this.map.getBottomPanel().chooseDisplayTeam();
+			//this.map.getBottomPanel().chooseDisplayTeam();
 
 		}
 		else
 		{
 			playingTeam = team1;
-			this.map.getBottomPanel().chooseDisplayTeam();
+			//this.map.getBottomPanel().chooseDisplayTeam();
 		}
 		
 		playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);

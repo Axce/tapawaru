@@ -19,7 +19,7 @@ import fr.iut.tapawaru.map.Map;
 import fr.iut.tapawaru.team.Character;
 import fr.iut.tapawaru.map.TypeGlyph;
 
-public class MapGUI extends JPanel implements MouseListener
+public class MapGUI extends JPanel implements MouseListener 
 {
 
 	private static final int DEFAULT_OCTO_SIZE = 50;
@@ -68,12 +68,13 @@ public class MapGUI extends JPanel implements MouseListener
 			this.botPanel = null;
 			this.selectedCell = this.map.getSelectedCell();
 			this.selectedCharacterPosition = null;
+			this.map.setMapGui(this);
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 
 		}
-
+		
 	}
 
 	public int[] guiMapSize()
@@ -194,10 +195,12 @@ public class MapGUI extends JPanel implements MouseListener
 
 		if (!(this.selectedCell == null))
 		{
+			
 			this.getGraphics().drawImage(this.octo, this.selectedCell.getPosition().getPositionX() * DEFAULT_OCTO_SIZE,
 					this.selectedCell.getPosition().getPositionY() * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(false);
 
+			this.printCharacter(this.getGraphics(), selectedCell.getPosition().getPositionX(), selectedCell.getPosition().getPositionY());
 			if ((this.selectedCell.getPosition().getPositionX() == xSize) && (this.selectedCell.getPosition().getPositionY() == ySize))
 			{
 				goSelected = false;
@@ -205,9 +208,10 @@ public class MapGUI extends JPanel implements MouseListener
 			this.selectedCell = null;
 			this.map.setSelectedCell(null);
 
-			this.botPanel.getGlyphCWspin().setEnabled(false);
-			this.botPanel.getGlyphCCWspin().setEnabled(false);
-			this.botPanel.getGlyphRandom().setEnabled(false);
+			this.botPanel.paintTerraStateUnselected(botPanel.getGraphics());
+//			this.botPanel.getGlyphCWspin().setEnabled(false);
+//			this.botPanel.getGlyphCCWspin().setEnabled(false);
+//			this.botPanel.getGlyphRandom().setEnabled(false);
 		}
 
 		if (goSelected)
@@ -217,9 +221,10 @@ public class MapGUI extends JPanel implements MouseListener
 			this.selectedCell = this.map.getCell(new CellPosition(xSize, ySize));
 			this.map.setSelectedCell(this.map.getCell(new CellPosition(xSize, ySize)));
 
-			this.botPanel.getGlyphCWspin().setEnabled(true);
-			this.botPanel.getGlyphCCWspin().setEnabled(true);
-			this.botPanel.getGlyphRandom().setEnabled(true);
+			this.botPanel.paintTerraStateSelected(botPanel.getGraphics());
+//			this.botPanel.getGlyphCWspin().setEnabled(true);
+//			this.botPanel.getGlyphCCWspin().setEnabled(true);
+//			this.botPanel.getGlyphRandom().setEnabled(true);
 		}
 
 		if (!(this.map.getCharacter(xSize, ySize) == null))
@@ -238,6 +243,8 @@ public class MapGUI extends JPanel implements MouseListener
 			this.getGraphics().drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 
 		}
+		
+		
 
 	}
 
@@ -295,6 +302,7 @@ public class MapGUI extends JPanel implements MouseListener
 	public void addBotPanel(BottomPanel botPanel)
 	{
 		this.botPanel = botPanel;
+		this.addKeyListener(this.botPanel);
 
 	}
 
