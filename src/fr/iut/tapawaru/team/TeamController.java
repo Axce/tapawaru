@@ -38,13 +38,21 @@ public class TeamController
 	 * If a team is at 0, the playingTeam changes. 
 	 * @param deductedPoints
 	 */
-	public void deduct(int deductedPoints)
+	public boolean deduct(int deductedPoints)
 	{
-		//TODO exceptions & all
+		if (deductedPoints > playingTeam.getActionPointsLeft())
+			return false;
+		
 		this.playingTeam.setActionPointsLeft(this.playingTeam.getActionPointsLeft() - deductedPoints);
 		
 		if (this.playingTeam.getActionPointsLeft() == 0)
 			changePlayingTeam();
+		return true;
+	}
+	
+	public void skipTurn()
+	{
+		deduct(playingTeam.getActionPointsLeft());
 	}
 
 	private void changePlayingTeam()
@@ -61,7 +69,7 @@ public class TeamController
 			playingTeam = team1;
 			this.map.setPlayingTeam(team1);
 			this.map.getBottomPanel().chooseDisplayTeam();
-			}
+		}
 		
 		playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);
 	}
