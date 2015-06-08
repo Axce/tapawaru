@@ -58,11 +58,11 @@ public class Character
 	 * @param healthpoint
 	 *            : Character's life points.
 	 */
-	public Character(Team team, int healthpoint,Map map)
+	public Character(Team team,Map map)
 	{
 		this.team = team;
-		this.maxHealthPoint = healthpoint;
-		this.healthPoint = healthpoint;
+		this.maxHealthPoint = DEFAULT_MAX_HP;
+		this.healthPoint = this.maxHealthPoint;
 
 		this.cellTraveled = null;
 		

@@ -19,13 +19,17 @@ import fr.iut.tapawaru.team.Character;
 
 
 
+
+
 import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import fr.iut.tapawaru.action.Attack;
 import fr.iut.tapawaru.action.Move;
 import fr.iut.tapawaru.action.Terra;
+import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Map;
 
 public class BottomPanel extends JPanel implements KeyListener
@@ -46,6 +50,7 @@ public class BottomPanel extends JPanel implements KeyListener
 	private MapGUI mapGui;
 	private Character characterSelected;
 	private Image right;
+	private Image hpBar;
 	
 	public BottomPanel(Map map)
 	{
@@ -59,6 +64,9 @@ public class BottomPanel extends JPanel implements KeyListener
 			this.apLeft5 = ImageIO.read(new File("img/players/apLeft5.png"));
 			
 			this.right = ImageIO.read(new File("img/botScreen/right.png"));
+			
+			this.hpBar = ImageIO.read(new File("img/botScreen/hpBar.png"));
+
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -177,6 +185,8 @@ public class BottomPanel extends JPanel implements KeyListener
 		g.drawImage(right,375, 0, this);
 
 		paintPA(g, right);
+		
+		this.printHp(g);
 
 	}
 	
@@ -387,33 +397,112 @@ public class BottomPanel extends JPanel implements KeyListener
 			switch (e.getKeyChar())
 			{
 			case 'q':
-				Terra.glyphCWspin(this.map, map.getSelectedCell().getPosition());
-				this.mapGui.printGlyph(this.mapGui.getGraphics());
-				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
-						.getPositionY());
-				this.paint(this.getGraphics());
-
+				if(this.map.getSelectedCell()==null)
+				{
+//					Image tmp = null;
+//					try
+//					{
+//						tmp = ImageIO.read(new File("img/octoSelectable.png"));
+//					} catch (IOException k)
+//					{
+//						// TODO Auto-generated catch block
+//						k.printStackTrace();
+//					}
+//					for(CellPosition cellpos: Move.getAccessiblePos(this.map, this.characterSelected))
+//					{
+//						
+//						this.mapGui.paintGivenCell(cellpos, tmp);
+//					}
+							
+				}else{
+				Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
+				this.repaint();
+				this.mapGui.printCell(this.mapGui.getGraphics());
+				this.characterSelected=null;
+				this.map.setSelectedCell(null);
+				this.caseSelected = false;
+				}
 				break;
 			case 's':
-				Terra.glyphCCWspin(this.map, map.getSelectedCell().getPosition());
-				this.mapGui.printGlyph(this.mapGui.getGraphics());
-				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
-						.getPositionY());
-				this.paint(this.getGraphics());
+				if(this.map.getSelectedCell()==null)
+				{
+//					Image tmp = null;
+//					try
+//					{
+//						tmp = ImageIO.read(new File("img/octoSelectable.png"));
+//					} catch (IOException k)
+//					{
+//						// TODO Auto-generated catch block
+//						k.printStackTrace();
+//					}
+//					for(CellPosition cellpos: Move.getAccessiblePos(this.map, this.characterSelected))
+//					{
+//						
+//						this.mapGui.paintGivenCell(cellpos, tmp);
+//					}
+							
+				}else{
+				Attack.aroundCaster(this.map, this.characterSelected);
+				this.repaint();
+				this.mapGui.printCell(this.mapGui.getGraphics());
+				this.characterSelected=null;
+				this.map.setSelectedCell(null);
+				this.caseSelected = false;
+				}
 				break;
 			case 'd':
-				Terra.glyphRandom(this.map, map.getSelectedCell().getPosition());
-				this.mapGui.printGlyph(this.mapGui.getGraphics());
-				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
-						.getPositionY());
-				this.paint(this.getGraphics());
+				if(this.map.getSelectedCell()==null)
+				{
+//					Image tmp = null;
+//					try
+//					{
+//						tmp = ImageIO.read(new File("img/octoSelectable.png"));
+//					} catch (IOException k)
+//					{
+//						// TODO Auto-generated catch block
+//						k.printStackTrace();
+//					}
+//					for(CellPosition cellpos: Move.getAccessiblePos(this.map, this.characterSelected))
+//					{
+//						
+//						this.mapGui.paintGivenCell(cellpos, tmp);
+//					}
+//							
+				}else{
+				Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
+				this.repaint();
+				this.mapGui.printCell(this.mapGui.getGraphics());
+				this.characterSelected=null;
+				this.map.setSelectedCell(null);
+				this.caseSelected = false;
+				}
 				break;
 			case ' ':
-				System.out.println("space");
+				if(this.map.getSelectedCell()==null)
+				{
+					Image tmp = null;
+					try
+					{
+						tmp = ImageIO.read(new File("img/octoSelectable.png"));
+					} catch (IOException k)
+					{
+						// TODO Auto-generated catch block
+						k.printStackTrace();
+					}
+					for(CellPosition cellpos: Move.getAccessiblePos(this.map, this.characterSelected))
+					{
+						
+						this.mapGui.paintGivenCell(cellpos, tmp);
+					}
+							
+				}else{
 				Move.simpleMove(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
 				this.repaint();
 				this.mapGui.printCell(this.mapGui.getGraphics());
 				this.characterSelected=null;
+				this.map.setSelectedCell(null);
+				this.caseSelected = false;
+				}
 				break;
 			default:
 			}	
@@ -431,5 +520,22 @@ public class BottomPanel extends JPanel implements KeyListener
 	{
 		
 		
+	}
+	
+	public void printHp(Graphics g)
+	{
+		for(int index = 0; index <this.map.getTeamController().getPlayingTeam().getCharacter()[0].getHealthPoint();index++)
+		{
+			System.out.println(index);
+			g.drawImage(hpBar, 400, 15 + 10*index, this);
+		}
+		for(int index = 0; index <this.map.getTeamController().getPlayingTeam().getCharacter()[1].getHealthPoint();index++)
+		{
+			g.drawImage(hpBar, 512, 15 + 10*index, this);
+		}
+		for(int index = 0; index <this.map.getTeamController().getPlayingTeam().getCharacter()[2].getHealthPoint();index++)
+		{
+			g.drawImage(hpBar, 640, 15 + 10*index, this);
+		}
 	}
 }
