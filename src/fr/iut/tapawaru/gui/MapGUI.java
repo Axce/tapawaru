@@ -160,9 +160,10 @@ public class MapGUI extends JPanel implements MouseListener
 			}
 			this.selectedCell = null;
 			this.map.setSelectedCell(null);
-			this.botPanel.getTerraButton().setEnabled(false);
 			
-
+			this.botPanel.getGlyphCWspin().setEnabled(false);
+			this.botPanel.getGlyphCCWspin().setEnabled(false);
+			this.botPanel.getGlyphRandom().setEnabled(false);
 		}
 		
 		if(goSelected)
@@ -171,7 +172,10 @@ public class MapGUI extends JPanel implements MouseListener
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(true);
 			this.selectedCell = this.map.getCell(new CellPosition(xSize, ySize));
 			this.map.setSelectedCell(this.map.getCell(new CellPosition(xSize, ySize)));
-			this.botPanel.getTerraButton().setEnabled(true);
+			
+			this.botPanel.getGlyphCWspin().setEnabled(true);
+			this.botPanel.getGlyphCCWspin().setEnabled(true);
+			this.botPanel.getGlyphRandom().setEnabled(true);
 		}
 			
 		
