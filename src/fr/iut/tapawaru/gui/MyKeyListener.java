@@ -1,14 +1,18 @@
 package fr.iut.tapawaru.gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 
 import fr.iut.tapawaru.action.Terra;
 import fr.iut.tapawaru.map.Map;
-
-public class MyButtonListener implements ActionListener
+/**
+ * 
+ * @author Akroz
+ * @deprecated 
+ */
+public class MyKeyListener implements KeyListener
 {
 	private Map map;
 	private BottomPanel botPanel;
@@ -19,7 +23,7 @@ public class MyButtonListener implements ActionListener
 	private JButton glyphRandom;
 	private JButton glyphShift;
 
-	public MyButtonListener(Map map)
+	public MyKeyListener(Map map)
 	{
 		this.map = map;
 		this.mapGui = null;
@@ -37,7 +41,6 @@ public class MyButtonListener implements ActionListener
 		if (source == this.glyphCWspin)
 		{
 			Terra.glyphCWspin(this.map, map.getSelectedCell().getPosition());
-			this.map.getTeamController().deduct(1);
 			this.mapGui.printGlyph(this.mapGui.getGraphics());
 			this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 					.getPositionY());
@@ -47,7 +50,6 @@ public class MyButtonListener implements ActionListener
 		if (source == this.glyphCCWspin)
 		{
 			Terra.glyphCCWspin(this.map, map.getSelectedCell().getPosition());
-			this.map.getTeamController().deduct(1);
 			this.mapGui.printGlyph(this.mapGui.getGraphics());
 			this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 					.getPositionY());
@@ -57,7 +59,6 @@ public class MyButtonListener implements ActionListener
 		if (source == this.glyphRandom)
 		{
 			Terra.glyphRandom(this.map, map.getSelectedCell().getPosition());
-			this.map.getTeamController().deduct(1);
 			this.mapGui.printGlyph(this.mapGui.getGraphics());
 			this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
 					.getPositionY());
@@ -91,6 +92,27 @@ public class MyButtonListener implements ActionListener
 	public void setGlyphRandomButton(JButton terraButton)
 	{
 		this.glyphRandom = terraButton;
+	}
+
+	
+	@Override
+	public void keyPressed(KeyEvent arg0)
+	{
+		if		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 	
 

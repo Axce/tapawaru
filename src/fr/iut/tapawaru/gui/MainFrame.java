@@ -16,7 +16,6 @@ public class MainFrame extends JFrame
 	public MainFrame(Map map){
 		this.setTitle("Tapawaru");
 		
-		MyButtonListener listener =new MyButtonListener(map);
 		GridBagLayout myGrid = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		this.setLayout(myGrid);
@@ -32,7 +31,7 @@ public class MainFrame extends JFrame
 		this.add(mapGui,c);
 		
 		
-		BottomPanel botPanel = new BottomPanel(listener,map);
+		BottomPanel botPanel = new BottomPanel(map);
 		botPanel.setPreferredSize(new Dimension(1280,250));
 		c.fill = GridBagConstraints.BOTH;
 		c.ipady = 0;
@@ -43,9 +42,8 @@ public class MainFrame extends JFrame
 		this.add(botPanel,c);
 
 		mapGui.addBotPanel(botPanel);
-		listener.addBotPanel(botPanel);
-		listener.addMapGui(mapGui);
 
+		this.addKeyListener(botPanel);
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

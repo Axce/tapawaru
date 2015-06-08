@@ -39,6 +39,7 @@ public class TeamController
 	 */
 	public boolean deduct(int deductedPoints)
 	{
+		System.out.println("dduct reach");
 		if (deductedPoints > playingTeam.getActionPointsLeft())
 			return false;
 		
@@ -59,13 +60,13 @@ public class TeamController
 		if (playingTeam == team1)
 		{
 			playingTeam = team2;
-			this.map.getBottomPanel().chooseDisplayTeam();
+			//this.map.getBottomPanel().chooseDisplayTeam();
 
 		}
 		else
 		{
 			playingTeam = team1;
-			this.map.getBottomPanel().chooseDisplayTeam();
+			//this.map.getBottomPanel().chooseDisplayTeam();
 		}
 		
 		playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);
