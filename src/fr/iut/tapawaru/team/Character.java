@@ -28,7 +28,8 @@ public class Character
 {
 	// ///// Attributes ////////////////////////////////////////
 	
-	
+	public final static int DEFAULT_MAX_HP = 5;
+
 	/** Character's team of appurtenance. */
 	private Team	team;
 	
@@ -41,9 +42,11 @@ public class Character
 
 	private BottomPlayer bottomPlayer;
 
-	private int defaultHealthPoint;
+	private int maxHealthPoint;
 	
 	private Map map;
+	
+	private Buff buff;
 	
 	// ///// Constructor ////////////////////////////////////////
 	
@@ -58,7 +61,7 @@ public class Character
 	public Character(Team team, int healthpoint,Map map)
 	{
 		this.team = team;
-		this.defaultHealthPoint = healthpoint;
+		this.maxHealthPoint = healthpoint;
 		this.healthPoint = healthpoint;
 
 		this.cellTraveled = null;
@@ -68,6 +71,7 @@ public class Character
 		
 		this.bottomPlayer = new BottomPlayer(team.getColorTeam(),this);
 		this.map = map;
+		this.buff = Buff.NORMAL;
 	}
 	
 	// ///// Methods ////////////////////////////////////////
@@ -114,7 +118,7 @@ public class Character
 	
 	public int getDefaultHealthPoint()
 	{
-		return this.defaultHealthPoint;
+		return this.maxHealthPoint;
 	}
 	
 	public int getHealthPoint()
@@ -141,4 +145,22 @@ public class Character
 			this.kill();
 		}
 	}
+	
+	public void heal(int hp)
+	{
+		this.healthPoint += hp;
+		if (this.healthPoint > this.maxHealthPoint)
+			this.healthPoint = this.maxHealthPoint;
+	}
+	
+	public void setBuff(Buff buff)
+	{
+		this.buff = buff;
+	}
+	
+	public Buff getBuff()
+	{
+		return this.buff;
+	}
+
 }

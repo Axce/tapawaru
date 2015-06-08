@@ -1,9 +1,14 @@
 package fr.iut.tapawaru.action;
 
 import java.util.ArrayList;
+import java.util.Random;
 
+import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
+import fr.iut.tapawaru.map.GlyphPosition;
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.map.TypeGlyph;
+import fr.iut.tapawaru.team.Buff;
 import fr.iut.tapawaru.team.Character;
 
 /**
@@ -16,13 +21,74 @@ import fr.iut.tapawaru.team.Character;
  */
 public class Attack extends Spell
 {
-	
-	private static void inflictDamages(Map map, ArrayList<CellPosition> posList, int damages)
+	/**
+	 * chooses a rendom type among the 4 adjacent glyphs
+	 */
+	private static TypeGlyph getAttackType(Map map, Cell cellCastingFrom)
 	{
-		for (CellPosition cellPos : posList)
+		return map.getGlyph(cellCastingFrom.getPosition().generateAdjacentGlyphPosition()[(int)(Math.random() * 4)]).getTypeGlyph();
+	}
+
+	
+	private static void executeAttack(Map map, ArrayList<CellPosition> posList, TypeGlyph type)
+	{
+		switch (type)
 		{
-			map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(damages);
+			case HOLY:
+				for (CellPosition cellPos : posList)
+				{
+					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).heal(1);
+					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.NORMAL);
+				}
+				break;
+				
+			case FIRE:
+				for (CellPosition cellPos : posList)
+				{
+					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
+					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.BURNING);
+				}
+				break;
+				
+			case ICE:
+				for (CellPosition cellPos : posList)
+				{
+					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
+					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.FREEZING);
+				}
+				break;
+				
+			case AIR:
+				for (CellPosition cellPos : posList)
+				{
+					Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
+					pers.inflict(1);
+					
+					if (pers.getBuff() == Buff.BURNING)
+						pers.setBuff(Buff.NORMAL);
+						
+				}
+				break;
+				
+			case WATER:
+				for (CellPosition cellPos : posList)
+				{
+					Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
+					pers.inflict(1);
+					
+					if (pers.getBuff() == Buff.BURNING)
+						pers.setBuff(Buff.NORMAL);
+				}
+				break;
+				
+			default:
+				for (CellPosition cellPos : posList)
+				{
+					map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(1);
+				}
+
 		}
+		
 	}
 	
 	/**
@@ -92,7 +158,7 @@ public class Attack extends Spell
 				}
 			}
 			
-			inflictDamages(map, cellList, 1);
+			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
 		}
 		
 		return cellList;
@@ -127,7 +193,7 @@ public class Attack extends Spell
 				}
 			}
 			
-			inflictDamages(map, cellList, 2);
+			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
 
 		}
 
@@ -180,7 +246,7 @@ public class Attack extends Spell
 				x < map.getXSize() && y < map.getYSize())
 				cellList.add(new CellPosition(x, y));
 			
-			inflictDamages(map, cellList, 1);
+			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
 
 		}
 
