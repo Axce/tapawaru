@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import fr.iut.tapawaru.action.Terra;
 import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.GlyphPosition;
@@ -200,7 +201,7 @@ public class MapGUI extends JPanel implements MouseListener
 	public void mouseClicked(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -221,13 +222,14 @@ public class MapGUI extends JPanel implements MouseListener
 	public void mousePressed(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-
+		this.changeCellState((int) e.getX() / 50, (int) e.getY() / 50);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		this.changeCellState((int) e.getX() / 50, (int) e.getY() / 50);
+//		Terra.GlyphCWspin(this.map, new CellPosition((int) e.getX() / 50,  (int) e.getY() / 50));
+//		this.paint(this.getGraphics());
 	}
 
 }
