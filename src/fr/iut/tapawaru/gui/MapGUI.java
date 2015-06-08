@@ -177,10 +177,12 @@ public class MapGUI extends JPanel implements MouseListener
 
 		if (!(this.selectedCell == null))
 		{
+			
 			this.getGraphics().drawImage(this.octo, this.selectedCell.getPosition().getPositionX() * DEFAULT_OCTO_SIZE,
 					this.selectedCell.getPosition().getPositionY() * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(false);
 
+			this.printCharacter(this.getGraphics(), selectedCell.getPosition().getPositionX(), selectedCell.getPosition().getPositionY());
 			if ((this.selectedCell.getPosition().getPositionX() == xSize) && (this.selectedCell.getPosition().getPositionY() == ySize))
 			{
 				goSelected = false;
@@ -221,6 +223,8 @@ public class MapGUI extends JPanel implements MouseListener
 			this.getGraphics().drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 
 		}
+		
+		
 
 	}
 
