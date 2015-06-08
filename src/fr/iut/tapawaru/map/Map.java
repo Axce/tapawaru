@@ -153,6 +153,11 @@ public class Map
 	}
 
 
+	public void setCell(CellPosition pos, Cell cell)
+	{
+		this.map[pos.getPositionX()][pos.getPositionY()] = cell;		
+	}
+
 	public void setGlyph(GlyphPosition pos, Glyph glyph)
 	{
 		this.glyph[pos.getPositionX()][pos.getPositionY()] = glyph;		

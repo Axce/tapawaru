@@ -43,6 +43,15 @@ public class Cell extends MapElement
 	}
 	
 	/**
+	 * Sets Cell's position.
+	 * @param int position: future Cell's position.
+	 */
+	public void setPosition(CellPosition position) 
+	{
+		this.position = position;
+	}
+	
+	/**
 	 * Sets Cell's X position.
 	 * @param int positionX: future Cell's X position.
 	 */
