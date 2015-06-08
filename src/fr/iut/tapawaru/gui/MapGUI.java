@@ -40,6 +40,8 @@ public class MapGUI extends JPanel implements MouseListener
 
 	private BottomPanel botPanel;
 
+	private CellPosition selectedCharacterPosition;
+
 	public MapGUI(Map map)
 	{
 		try
@@ -59,6 +61,7 @@ public class MapGUI extends JPanel implements MouseListener
 			this.map = map;
 			this.botPanel = null;
 			this.selectedCell = this.map.getSelectedCell();
+			this.selectedCharacterPosition = null;
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -84,24 +87,49 @@ public class MapGUI extends JPanel implements MouseListener
 
 				g.drawImage(this.octo, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 
-				if (!(this.map.getCharacter(xSize, ySize) == null))
-				{
-					Image imageBuffer = null;
-
-					try
-					{
-						imageBuffer = ImageIO.read(new File(this.map.getCharacter(xSize, ySize).toString()));
-					} catch (IOException e)
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-					g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
-
-				}
+				printCharacter(g, xSize, ySize);
 
 			}
+
+		}
+	}
+
+	private void printCharacter(Graphics g, int xSize, int ySize)
+	{
+		if (!(this.map.getCharacter(xSize, ySize) == null))
+		{
+			Image imageBuffer = null;
+
+			try
+			{
+				imageBuffer = ImageIO.read(new File(this.map.getCharacter(xSize, ySize).toString()));
+			} catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
+
+		}
+	}
+
+	private void printCharacter(Graphics g, int xSize, int ySize,String picture)
+	{
+		if (!(this.map.getCharacter(xSize, ySize) == null))
+		{
+			Image imageBuffer = null;
+
+			try
+			{
+				imageBuffer = ImageIO.read(new File("img/perso/" + picture+ ".png"));
+			} catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 
 		}
 	}
@@ -146,42 +174,37 @@ public class MapGUI extends JPanel implements MouseListener
 	public void changeCellState(int xSize, int ySize)
 	{
 		boolean goSelected = true;
-		
+
 		if (!(this.selectedCell == null))
 		{
 			this.getGraphics().drawImage(this.octo, this.selectedCell.getPosition().getPositionX() * DEFAULT_OCTO_SIZE,
 					this.selectedCell.getPosition().getPositionY() * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(false);
-			
 
-			if((this.selectedCell.getPosition().getPositionX() == xSize)&&(this.selectedCell.getPosition().getPositionY() == ySize))
+			if ((this.selectedCell.getPosition().getPositionX() == xSize) && (this.selectedCell.getPosition().getPositionY() == ySize))
 			{
 				goSelected = false;
 			}
 			this.selectedCell = null;
 			this.map.setSelectedCell(null);
-			
+
 			this.botPanel.getGlyphCWspin().setEnabled(false);
 			this.botPanel.getGlyphCCWspin().setEnabled(false);
 			this.botPanel.getGlyphRandom().setEnabled(false);
 		}
-		
-		if(goSelected)
+
+		if (goSelected)
 		{
 			this.getGraphics().drawImage(this.octoSelected, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(true);
 			this.selectedCell = this.map.getCell(new CellPosition(xSize, ySize));
 			this.map.setSelectedCell(this.map.getCell(new CellPosition(xSize, ySize)));
-			
+
 			this.botPanel.getGlyphCWspin().setEnabled(true);
 			this.botPanel.getGlyphCCWspin().setEnabled(true);
 			this.botPanel.getGlyphRandom().setEnabled(true);
 		}
-			
-		
-		
-		
-		
+
 		if (!(this.map.getCharacter(xSize, ySize) == null))
 		{
 			Image imageBuffer = null;
@@ -215,11 +238,12 @@ public class MapGUI extends JPanel implements MouseListener
 		this.printGlyph(this.getGraphics());
 
 	}
+
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -246,14 +270,35 @@ public class MapGUI extends JPanel implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-//		Terra.GlyphCWspin(this.map, new CellPosition((int) e.getX() / 50,  (int) e.getY() / 50));
-//		this.paint(this.getGraphics());
+		// Terra.GlyphCWspin(this.map, new CellPosition((int) e.getX() / 50,
+		// (int) e.getY() / 50));
+		// this.paint(this.getGraphics());
 	}
 
 	public void addBotPanel(BottomPanel botPanel)
 	{
 		this.botPanel = botPanel;
-		
+
 	}
 
+	public void paintGivenCell(CellPosition position,String picture)
+	{
+		this.getGraphics().drawImage(this.octo, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE, this);
+
+		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY(),picture);
+		
+	}
+	
+	public void setSelectedCharacterPosition(CellPosition position)
+	{
+		if(!(this.selectedCharacterPosition==null))
+			printCharacter(this.getGraphics(), this.selectedCharacterPosition.getPositionX(), this.selectedCharacterPosition.getPositionY());
+		this.selectedCharacterPosition= position;
+		
+	}
+	
+	public BottomPanel getBottomPanel()
+	{
+		return this.botPanel;
+	}
 }

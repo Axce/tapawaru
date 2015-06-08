@@ -31,6 +31,8 @@ public class BottomPanel extends JPanel
 	private Image apLeft1;
 
 	private Map map;
+	private BottomPlayer[] team1Bottom;
+	private BottomPlayer[] team2Bottom;
 
 	public BottomPanel(MyButtonListener listener, Map map)
 	{
@@ -77,6 +79,8 @@ public class BottomPanel extends JPanel
 		listener.setGlyphRandomButton(glyphRandom);
 		this.add(glyphRandom, c);
 
+
+		
 		try
 		{
 			this.apLeft4 = ImageIO.read(new File("img/players/apLeft4.png"));
@@ -92,6 +96,29 @@ public class BottomPanel extends JPanel
 		}
 
 		this.map = map;
+		
+		this.team1Bottom = new BottomPlayer[this.map.getTeamController().getTeam1().getNbCharacter()];
+		for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam1().getNbCharacter(); indexPlayer++)
+		{
+			this.team1Bottom[indexPlayer] =this.map.getTeamController().getTeam1().getCharacter()[indexPlayer].getBottomPlayer();
+		}
+		
+		this.team2Bottom = new BottomPlayer[this.map.getTeamController().getTeam2().getNbCharacter()];
+		for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam2().getNbCharacter(); indexPlayer++)
+		{
+			this.team2Bottom[indexPlayer] =this.map.getTeamController().getTeam2().getCharacter()[indexPlayer].getBottomPlayer();	
+		}
+		
+		for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam1().getNbCharacter(); indexPlayer++)
+		{
+			this.add(this.team1Bottom[indexPlayer]);
+		}
+		for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam2().getNbCharacter(); indexPlayer++)
+		{
+			this.add(this.team2Bottom[indexPlayer]);
+		}
+		
+		this.chooseDisplayTeam();
 	}
 
 	public JButton getGlyphCWspin()
@@ -109,6 +136,32 @@ public class BottomPanel extends JPanel
 		return this.glyphRandom;
 	}
 
+	public void chooseDisplayTeam()
+	{
+		if(this.map.getTeamController().getPlayingTeam() == this.map.getTeamController().getTeam1())
+		{
+			for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam1().getNbCharacter(); indexPlayer++)
+			{
+				this.team1Bottom[indexPlayer].setVisible(true);
+			}
+			for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam2().getNbCharacter(); indexPlayer++)
+			{
+				this.team2Bottom[indexPlayer].setVisible(false);
+			}
+			System.out.println("team1");
+		}else{
+			for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam1().getNbCharacter(); indexPlayer++)
+			{
+				this.team1Bottom[indexPlayer].setVisible(false);
+			}
+			for(int indexPlayer=0;indexPlayer < this.map.getTeamController().getTeam2().getNbCharacter(); indexPlayer++)
+			{
+				this.team2Bottom[indexPlayer].setVisible(true);
+			}
+			System.out.println("team2");
+		}
+		System.out.println("yolo");
+	}
 	@Override
 	public void paintComponent(Graphics g)
 	{
@@ -145,5 +198,8 @@ public class BottomPanel extends JPanel
 			e.printStackTrace();
 		}
 		g.drawImage(tmp, 0, 100, this);
+		
+
+
 	}
 }

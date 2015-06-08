@@ -1,5 +1,7 @@
 package fr.iut.tapawaru.team;
 
+import fr.iut.tapawaru.map.Map;
+
 
 /**
  * Team of Characters. 
@@ -30,6 +32,7 @@ public class Team
 	
 	private int actionPointLeft; 
 	/////// Constructor ////////////////////////////////////////
+	private Map map;
 
 	// TODO check colorTeam in constructor
 
@@ -42,32 +45,34 @@ public class Team
 	 * Constructor for the Team.
 	 * @param nb : number of characters.
 	 */
-	public Team(int nb, TeamColor color)
+	public Team(int nb, TeamColor color,Map map)
 	{
 		this.nbCharacter = nb;
 		this.listCharacter = new Character[nbCharacter];
 		this.colorTeam = color;
 		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
 		{
-			this.listCharacter[nbCharacterCreated] = new Character(this, 100);
+			this.listCharacter[nbCharacterCreated] = new Character(this, 100,map);
 		}
 		this.actionPointLeft = DEFAULT_ACTION_POINT;
+		this.map = map;
 	}
 	
 	/**
 	 * Constructor for a default Team.
 	 * @param nb : number of characters.
 	 */
-	public Team( TeamColor color)
+	public Team( TeamColor color,Map map)
 	{
 		this.nbCharacter = DEFAULT_NB_CHARACTER;
 		this.listCharacter = new Character[nbCharacter];
 		this.colorTeam = color;	
 		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
 		{
-			this.listCharacter[nbCharacterCreated] = new Character(this, 100);
+			this.listCharacter[nbCharacterCreated] = new Character(this, 100,map);
 		}
 		this.actionPointLeft = DEFAULT_ACTION_POINT;
+		this.map = map;
 	}
 
 	public int getNbCharacter()

@@ -49,6 +49,9 @@ public class MainFrame extends JFrame
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
+		map.setMapGui(mapGui);
+
 	}
 	
 	

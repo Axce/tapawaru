@@ -18,8 +18,8 @@ public class TeamController
 	public TeamController(Map map)
 	{
 		this.map = map;
-		this.team1 = new Team(TeamColor.GREEN);
-		this.team2 = new Team(TeamColor.RED);
+		this.team1 = new Team(TeamColor.GREEN,map);
+		this.team2 = new Team(TeamColor.RED,map);
 		this.playingTeam = team1;
 		this.map.setPlayingTeam(team1);
 		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
@@ -53,11 +53,14 @@ public class TeamController
 		{
 			playingTeam = team2;
 			this.map.setPlayingTeam(team2);
+			this.map.getBottomPanel().chooseDisplayTeam();
+
 		}
 		else
 		{
 			playingTeam = team1;
 			this.map.setPlayingTeam(team1);
+			this.map.getBottomPanel().chooseDisplayTeam();
 			}
 		
 		playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);
@@ -68,5 +71,14 @@ public class TeamController
 		return this.playingTeam;
 	}
 	
+	public Team getTeam1()
+	{
+		return this.team1;
+	}
+	
+	public Team getTeam2()
+	{
+		return this.team2;
+	}
 	
 }

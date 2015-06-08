@@ -6,10 +6,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import fr.iut.tapawaru.gui.BottomPlayer;
 import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
 
 
+
+
+import fr.iut.tapawaru.map.Map;
+
+import java.awt.Component;
 /**
  * Character of a team. Contained in the listCharacter attribute.
  * 
@@ -22,6 +28,7 @@ public class Character
 {
 	// ///// Attributes ////////////////////////////////////////
 	
+	
 	/** Character's team of appurtenance. */
 	private Team	team;
 	
@@ -31,6 +38,12 @@ public class Character
 	private Cell	cellTraveled;
 	
 	private String	picture;
+
+	private BottomPlayer bottomPlayer;
+
+	private int defaultHealthPoint;
+	
+	private Map map;
 	
 	// ///// Constructor ////////////////////////////////////////
 	
@@ -42,15 +55,19 @@ public class Character
 	 * @param healthpoint
 	 *            : Character's life points.
 	 */
-	public Character(Team team, int healthpoint)
+	public Character(Team team, int healthpoint,Map map)
 	{
 		this.team = team;
+		this.defaultHealthPoint = healthpoint;
 		this.healthPoint = healthpoint;
+
 		this.cellTraveled = null;
 		
 		this.picture = "img/perso/" + this.team.getColorTeam().toString()
 				+ ".png";
 		
+		this.bottomPlayer = new BottomPlayer(team.getColorTeam(),this);
+		this.map = map;
 	}
 	
 	// ///// Methods ////////////////////////////////////////
@@ -99,5 +116,31 @@ public class Character
 	{
 		this.cellTraveled = cell;
 	}
+
+	public BottomPlayer getBottomPlayer()
+	{
+		// TODO Auto-generated method stub
+		return this.bottomPlayer;
+	}
 	
+	public int getDefaultHealthPoint()
+	{
+		return this.defaultHealthPoint;
+	}
+	
+	public int getHealthPoint()
+	{
+		return this.healthPoint;
+	}
+	
+	public void setPicture(String s)
+	{
+
+		this.picture = "img/perso/" + s+ ".png";
+	}
+	
+	public Map getMap()
+	{
+		return this.map;
+	}
 }

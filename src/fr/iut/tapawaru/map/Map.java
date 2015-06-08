@@ -2,6 +2,9 @@ package fr.iut.tapawaru.map;
 
 import java.util.Arrays;
 
+import fr.iut.tapawaru.gui.BottomPanel;
+import fr.iut.tapawaru.gui.MainFrame;
+import fr.iut.tapawaru.gui.MapGUI;
 import fr.iut.tapawaru.team.Team;
 import fr.iut.tapawaru.team.TeamController;
 
@@ -41,6 +44,9 @@ public class Map
 	private Cell selectedCell;
 
 	private Team playingTeam;
+
+	private MapGUI mapGui;
+
 	
 	
 	/////// Constructor ////////////////////////////////////////
@@ -194,6 +200,20 @@ public class Map
 		return this.playingTeam ;
 	}
 	
+	public void setMapGui(MapGUI mapGui)
+	{
+		this.mapGui = mapGui;
+	}
+	
+	public MapGUI getMapGui( )
+	{
+		return this.mapGui ;
+	}
+
+	public BottomPanel getBottomPanel()
+	{
+		return this.mapGui.getBottomPanel();
+	}
 }
 
 
