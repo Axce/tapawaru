@@ -33,6 +33,8 @@ public class MapGUI extends JPanel implements MouseListener
 	private Image glyphIce;
 	private Image glyphThunder;
 	private Image glyphWater;
+	private Image glyphHoly;
+	private Image glyphDark;
 	private Image glyphPattern;
 
 	private Map map;
@@ -56,6 +58,8 @@ public class MapGUI extends JPanel implements MouseListener
 			this.glyphIce = ImageIO.read(new File("img/glyphIce.png"));
 			this.glyphThunder = ImageIO.read(new File("img/glyphThunder.png"));
 			this.glyphWater = ImageIO.read(new File("img/glyphWater.png"));
+			this.glyphHoly = ImageIO.read(new File("img/glyphHoly.png"));
+			this.glyphDark = ImageIO.read(new File("img/glyphDark.png"));
 			this.glyphPattern = ImageIO.read(new File("img/glyphPattern.png"));
 
 			this.addMouseListener(this);
@@ -166,6 +170,14 @@ public class MapGUI extends JPanel implements MouseListener
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.WATER)
 				{
 					g.drawImage(glyphWater, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+				}
+				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.HOLY)
+				{
+					g.drawImage(glyphHoly, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+				}
+				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.DARK)
+				{
+					g.drawImage(glyphDark, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				
 				g.drawImage(glyphPattern, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
