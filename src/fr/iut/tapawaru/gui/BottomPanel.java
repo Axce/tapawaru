@@ -419,8 +419,18 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.repaint();
 				this.mapGui.printCell(this.mapGui.getGraphics());
 				this.characterSelected=null;
+				this.mapGui.setSelectedCharacterPosition(null);
 				this.map.setSelectedCell(null);
 				this.caseSelected = false;
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 				}
 				break;
 			case 's':
@@ -446,8 +456,18 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.repaint();
 				this.mapGui.printCell(this.mapGui.getGraphics());
 				this.characterSelected=null;
+				this.mapGui.setSelectedCharacterPosition(null);
 				this.map.setSelectedCell(null);
 				this.caseSelected = false;
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 				}
 				break;
 			case 'd':
@@ -473,8 +493,18 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.repaint();
 				this.mapGui.printCell(this.mapGui.getGraphics());
 				this.characterSelected=null;
+				this.mapGui.setSelectedCharacterPosition(null);
 				this.map.setSelectedCell(null);
 				this.caseSelected = false;
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 				}
 				break;
 			case ' ':
@@ -500,6 +530,16 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.repaint();
 				this.mapGui.printCell(this.mapGui.getGraphics());
 				this.characterSelected=null;
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				this.mapGui.setSelectedCharacterPosition(null);
 				this.map.setSelectedCell(null);
 				this.caseSelected = false;
 				}
@@ -526,7 +566,6 @@ public class BottomPanel extends JPanel implements KeyListener
 	{
 		for(int index = 0; index <this.map.getTeamController().getPlayingTeam().getCharacter()[0].getHealthPoint();index++)
 		{
-			System.out.println(index);
 			g.drawImage(hpBar, 400, 15 + 10*index, this);
 		}
 		for(int index = 0; index <this.map.getTeamController().getPlayingTeam().getCharacter()[1].getHealthPoint();index++)
