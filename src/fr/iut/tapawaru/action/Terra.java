@@ -1,6 +1,5 @@
 package fr.iut.tapawaru.action;
 
-import fr.iut.tapawaru.exception.AdjacentCellsException;
 import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Glyph;
@@ -100,75 +99,6 @@ public class Terra extends Spell
 					TypeGlyph.getRandomType());
 			
 			map.getTeamController().deduct(1);
-		}
-		
-	}
-	
-	/**
-	 * Interchange 2 cell's surrounding glyphs 01 45 -> 45 01 32 76 76 32
-	 * 
-	 * @deprecated
-	 */
-	public static void glyphShift(Map map, CellPosition cellPos1,
-			CellPosition cellPos2) throws AdjacentCellsException
-	{
-		if (map.getTeamController().isDeductable(1))
-		{
-			int deltaX = Math.abs(cellPos1.getPositionX()
-					- cellPos2.getPositionX());
-			int deltaY = Math.abs(cellPos1.getPositionY()
-					- cellPos2.getPositionY());
-			if (deltaX == 1 && deltaY == 0 || deltaX == 0 && deltaY == 1
-					|| deltaX == 0 && deltaY == 0 || deltaX == 1 && deltaY == 1)
-				throw new AdjacentCellsException();
-			
-			GlyphPosition[] glyphPosList1 = cellPos1
-					.generateAdjacentGlyphPosition();
-			GlyphPosition[] glyphPosList2 = cellPos2
-					.generateAdjacentGlyphPosition();
-			TypeGlyph[] glyphTypebuffer = new TypeGlyph[glyphPosList1.length];
-			
-			for (int glyphIndex = 0; glyphIndex < glyphPosList1.length; glyphIndex++)
-			{
-				glyphTypebuffer[glyphIndex] = map.getGlyph(
-						glyphPosList1[glyphIndex]).getTypeGlyph();
-			}
-			
-			map.getGlyph(glyphPosList1[0]).setTypeGlyph(
-					map.getGlyph(glyphPosList2[0]).getTypeGlyph());
-			map.getGlyph(glyphPosList1[1]).setTypeGlyph(
-					map.getGlyph(glyphPosList2[1]).getTypeGlyph());
-			map.getGlyph(glyphPosList1[2]).setTypeGlyph(
-					map.getGlyph(glyphPosList2[2]).getTypeGlyph());
-			map.getGlyph(glyphPosList1[3]).setTypeGlyph(
-					map.getGlyph(glyphPosList2[3]).getTypeGlyph());
-			map.getGlyph(glyphPosList2[0]).setTypeGlyph(glyphTypebuffer[0]);
-			map.getGlyph(glyphPosList2[1]).setTypeGlyph(glyphTypebuffer[1]);
-			map.getGlyph(glyphPosList2[2]).setTypeGlyph(glyphTypebuffer[2]);
-			map.getGlyph(glyphPosList2[3]).setTypeGlyph(glyphTypebuffer[3]);
-			
-			map.getTeamController().deduct(1);
-		}
-		
-	}
-	
-	/**
-	 * Interchange 2 cells
-	 * 
-	 * @deprecated
-	 */
-	public static void cellShift(Map map, CellPosition cellPos1,
-			CellPosition cellPos2)
-	{
-		if (map.getTeamController().isDeductable(Team.DEFAULT_ACTION_POINT))
-		{
-			Cell cellBuffer = map.getCell(cellPos1);
-			map.getCell(cellPos2).setPosition(cellPos1);
-			map.setCell(cellPos1, map.getCell(cellPos2));
-			cellBuffer.setPosition(cellPos2);
-			map.setCell(cellPos2, cellBuffer);
-			
-			map.getTeamController().deduct(Team.DEFAULT_ACTION_POINT);
 		}
 		
 	}

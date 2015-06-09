@@ -1,11 +1,8 @@
 package fr.iut.tapawaru.action;
 
 import java.util.ArrayList;
-import java.util.Random;
-
 import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
-import fr.iut.tapawaru.map.GlyphPosition;
 import fr.iut.tapawaru.map.Map;
 import fr.iut.tapawaru.map.TypeGlyph;
 import fr.iut.tapawaru.team.Buff;

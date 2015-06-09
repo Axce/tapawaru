@@ -18,6 +18,13 @@ import fr.iut.tapawaru.team.Character;
  */
 public class Move extends Action
 {
+	/**
+	 * Move the given Character to the targeted Place.
+	 * This deduct Action Point!
+	 * @param map Concerned Map.
+	 * @param pers Character we want to move.
+	 * @param target Destination of the Character.
+	 */
 	public static void simpleMove(Map map, Character pers, CellPosition target)
 	{
 		int deltaX = Math.abs(pers.getCellTraveled().getPosition().getPositionX() - target.getPositionX());
@@ -34,6 +41,11 @@ public class Move extends Action
 		}
 	}
 	
+	/**
+	 * @param map Concerned Map.
+	 * @param pers Character concerned.
+	 * @return Accessible cell depending of action point.
+	 */
 	public static ArrayList<CellPosition> getAccessiblePos(Map map, Character pers)
 	{
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
