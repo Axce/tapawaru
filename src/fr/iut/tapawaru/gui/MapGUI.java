@@ -99,15 +99,15 @@ public class MapGUI extends JPanel implements MouseListener
 			this.octo = ImageIO.read(new File("img/octo.png"));
 			this.octoSelected = ImageIO.read(new File("img/octoSelected.png"));
 
-			this.glyphFire = ImageIO.read(new File("img/glyphFire.png"));
-			this.glyphAir = ImageIO.read(new File("img/glyphAir.png"));
-			this.glyphEarth = ImageIO.read(new File("img/glyphEarth.png"));
-			this.glyphIce = ImageIO.read(new File("img/glyphIce.png"));
-			this.glyphThunder = ImageIO.read(new File("img/glyphThunder.png"));
-			this.glyphWater = ImageIO.read(new File("img/glyphWater.png"));
-			this.glyphHoly = ImageIO.read(new File("img/glyphHoly.png"));
-			this.glyphDark = ImageIO.read(new File("img/glyphDark.png"));
-			this.glyphPattern = ImageIO.read(new File("img/glyphPattern.png"));
+			this.glyphFire = ImageIO.read(new File("img/glyph/glyphFire.png"));
+			this.glyphAir = ImageIO.read(new File("img/glyph/glyphAir.png"));
+			this.glyphEarth = ImageIO.read(new File("img/glyph/glyphEarth.png"));
+			this.glyphIce = ImageIO.read(new File("img/glyph/glyphIce.png"));
+			this.glyphThunder = ImageIO.read(new File("img/glyph/glyphThunder.png"));
+			this.glyphWater = ImageIO.read(new File("img/glyph/glyphWater.png"));
+			this.glyphHoly = ImageIO.read(new File("img/glyph/glyphHoly.png"));
+			this.glyphDark = ImageIO.read(new File("img/glyph/glyphDark.png"));
+			this.glyphPattern = ImageIO.read(new File("img/glyph/glyphPattern.png"));
 
 			this.buffBurning = ImageIO.read(new File("img/perso/buffBurning.png"));
 			this.buffFreezing = ImageIO.read(new File("img/perso/buffFreezing.png"));

@@ -65,25 +65,25 @@ public class BottomPanel extends JPanel implements KeyListener
 	 */
 	public BottomPanel(Map map)
 	{
+
+		this.map = map;
+		this.caseSelected = false;
+		this.mapGui = this.map.getMapGui();
+
 		try
 		{
-			this.apLeft3 = ImageIO.read(new File("img/players/apLeft3.png"));
-			this.apLeft2 = ImageIO.read(new File("img/players/apLeft2.png"));
-			this.apLeft1 = ImageIO.read(new File("img/players/apLeft1.png"));
+			this.apLeft3 = ImageIO.read(new File("img/players/pa3.png"));
+			this.apLeft2 = ImageIO.read(new File("img/players/pa2.png"));
+			this.apLeft1 = ImageIO.read(new File("img/players/pa1.png"));
 			
-			this.right = ImageIO.read(new File("img/botScreen/right.png"));
-
-			this.hpBar = ImageIO.read(new File("img/botScreen/hpBar.png"));
+			this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
+			this.hpBar = ImageIO.read(new File("img/botScreen/hp.png"));
 
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		this.map = map;
-		this.caseSelected = false;
-		this.mapGui = this.map.getMapGui();
 
 	}
 
@@ -97,8 +97,8 @@ public class BottomPanel extends JPanel implements KeyListener
 		Image tmp = null;
 		try
 		{
-			tmp = ImageIO.read(new File("img/botScreen/left2" + this.map.getTeamController().getPlayingTeam().getColorTeam()
-					+ "Selected.png"));
+			tmp = ImageIO.read(new File("img/botScreen/"+ this.map.getTeamController().getPlayingTeam().getColorTeam()
+					+ "/leftSel.png"));
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -119,7 +119,7 @@ public class BottomPanel extends JPanel implements KeyListener
 		Image tmp = null;
 		try
 		{
-			tmp = ImageIO.read(new File("img/botScreen/left2" + this.map.getTeamController().getPlayingTeam().getColorTeam() + ".png"));
+			tmp = ImageIO.read(new File("img/botScreen/" + this.map.getTeamController().getPlayingTeam().getColorTeam() + "/left.png"));
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
@@ -150,7 +150,7 @@ public class BottomPanel extends JPanel implements KeyListener
 			break;
 		}
 
-		g.drawImage(tmp, 9, 130, this);
+		g.drawImage(tmp, 311,15 , this);
 	}
 	
 	/**
@@ -161,15 +161,15 @@ public class BottomPanel extends JPanel implements KeyListener
 	{
 		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[0].getHealthPoint(); index++)
 		{
-			g.drawImage(this.hpBar, 400, 15 + 10 * index, this);
+			g.drawImage(this.hpBar, 485 + 12*index, 77, this);
 		}
 		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[1].getHealthPoint(); index++)
 		{
-			g.drawImage(this.hpBar, 512, 15 + 10 * index, this);
+			g.drawImage(this.hpBar, 585+12*index, 77, this);
 		}
 		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[2].getHealthPoint(); index++)
 		{
-			g.drawImage(this.hpBar, 640, 15 + 10 * index, this);
+			g.drawImage(this.hpBar, 685+ 12*index ,77, this);
 		}
 	}
 	
@@ -179,7 +179,7 @@ public class BottomPanel extends JPanel implements KeyListener
 	 */
 	@Override
 	public void paintComponent(Graphics g)
-	{
+	{	
 		this.paintTerraStateUnselected(g);
 
 		g.drawImage(this.right, 375, 0, this);
@@ -205,6 +205,14 @@ public class BottomPanel extends JPanel implements KeyListener
 		if (e.getKeyChar() == 'u')
 		{
 			this.map.getTeamController().skipTurn();
+			try
+			{
+				this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
+			} catch (IOException k)
+			{
+				// TODO Auto-generated catch block
+				k.printStackTrace();
+			}
 			this.repaint();
 		}
 		
@@ -215,28 +223,57 @@ public class BottomPanel extends JPanel implements KeyListener
 			{
 						/* *****************************Counter Clock Spin******************* */
 			case 'w':
+				this.characterSelected = null;
+				this.mapGui.setSelectedCharacterPosition(null);
 				Terra.glyphCCWspin(this.map, this.map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
 				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(), this.map.getSelectedCell().getPosition()
 						.getPositionY());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
+				} catch (IOException k)
+				{
+					// TODO Auto-generated catch block
+					k.printStackTrace();
+				}
 				this.paint(this.getGraphics());
 				break;
 						/* *****************************Clock Spin******************* */
 			case 'x':
+				this.characterSelected = null;
+				this.mapGui.setSelectedCharacterPosition(null);
 				Terra.glyphCWspin(this.map, this.map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
 				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(), this.map.getSelectedCell().getPosition()
 						.getPositionY());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
+				} catch (IOException k)
+				{
+					// TODO Auto-generated catch block
+					k.printStackTrace();
+				}
 				this.paint(this.getGraphics());
-
 				break;
 						/* *****************************Random******************* */
 			case 'c':
+				this.characterSelected = null;
+				this.mapGui.setSelectedCharacterPosition(null);
 				Terra.glyphRandom(this.map, this.map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
 				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(), this.map.getSelectedCell().getPosition()
 						.getPositionY());
 				this.paint(this.getGraphics());
+				try
+				{
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
+				} catch (IOException k)
+				{
+					// TODO Auto-generated catch block
+					k.printStackTrace();
+				}
 				break;
 						/* *****************************Invalid Input******************* */
 			default:
@@ -261,7 +298,7 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPosition());
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right0selected.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/rightA.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -275,7 +312,7 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.mapGui.setSelectedCharacterPosition(null);
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -292,7 +329,7 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPosition());
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right0selected.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/rightA.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -316,7 +353,7 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPosition());
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right1selected.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/rightZ.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -330,7 +367,7 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.mapGui.setSelectedCharacterPosition(null);
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -348,7 +385,7 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPosition());
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right1selected.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/rightZ.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -372,7 +409,7 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPosition());
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right2selected.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/rightE.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -386,7 +423,7 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.mapGui.setSelectedCharacterPosition(null);
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -404,7 +441,7 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPosition());
 				try
 				{
-					this.right = ImageIO.read(new File("img/botScreen/right2selected.png"));
+					this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/rightE.png"));
 				} catch (IOException e1)
 				{
 					// TODO Auto-generated catch block
@@ -437,7 +474,7 @@ public class BottomPanel extends JPanel implements KeyListener
 					this.caseSelected = false;
 					try
 					{
-						this.right = ImageIO.read(new File("img/botScreen/right.png"));
+						this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
 					} catch (IOException e1)
 					{
 						// TODO Auto-generated catch block
@@ -445,8 +482,8 @@ public class BottomPanel extends JPanel implements KeyListener
 					}
 				}
 				break;
-						/* *****************************Around Caster******************* */
-			case 's':
+						/* *****************************Flower Bomb******************* */
+			case 'd':
 					Attack.aroundCaster(this.map, this.characterSelected, true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
@@ -456,15 +493,15 @@ public class BottomPanel extends JPanel implements KeyListener
 					this.caseSelected = false;
 					try
 					{
-						this.right = ImageIO.read(new File("img/botScreen/right.png"));
+						this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
 					} catch (IOException e1)
 					{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();		
 				}
 				break;
-						/* *****************************Flower Bomb******************* */
-			case 'd':
+						/* *****************************Around Caster******************* */
+			case 's':
 				if (this.map.getSelectedCell() == null)
 				{
 					// TODO You must select before cast a spell
@@ -479,13 +516,12 @@ public class BottomPanel extends JPanel implements KeyListener
 					this.caseSelected = false;
 					try
 					{
-						this.right = ImageIO.read(new File("img/botScreen/right.png"));
+						this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
 					} catch (IOException e1)
 					{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-
 				}
 				break;
 					/* *****************************Move******************* */
@@ -515,7 +551,7 @@ public class BottomPanel extends JPanel implements KeyListener
 					this.characterSelected = null;
 					try
 					{
-						this.right = ImageIO.read(new File("img/botScreen/right.png"));
+						this.right = ImageIO.read(new File("img/botScreen/"+this.map.getTeamController().getPlayingTeam().getColorTeam()+"/right.png"));
 					} catch (IOException e1)
 					{
 						// TODO Auto-generated catch block

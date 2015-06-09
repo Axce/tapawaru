@@ -38,7 +38,7 @@ public class MainFrame extends JFrame
 		this.add(mapGui,c);
 		
 		BottomPanel botPanel = new BottomPanel(map);
-		botPanel.setPreferredSize(new Dimension(mapGui.guiMapSize()[0],250));
+		botPanel.setPreferredSize(new Dimension(mapGui.guiMapSize()[0],200));
 		c.fill = GridBagConstraints.BOTH;
 		c.ipady = 0;
 		c.weightx = 0;
