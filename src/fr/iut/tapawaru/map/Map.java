@@ -1,11 +1,7 @@
 package fr.iut.tapawaru.map;
 
-import java.util.Arrays;
-
 import fr.iut.tapawaru.gui.BottomPanel;
-import fr.iut.tapawaru.gui.MainFrame;
 import fr.iut.tapawaru.gui.MapGUI;
-import fr.iut.tapawaru.team.Team;
 import fr.iut.tapawaru.team.TeamController;
 
 /**
@@ -19,37 +15,41 @@ import fr.iut.tapawaru.team.TeamController;
  */
 public class Map
 {
-	/////// Attributes ////////////////////////////////////////
-
+	/* ****************************************ATTRIBUTS******************************************** */
+				/* *****************************Default Map size******************* */	
 	/** Map's default xSize. */
 	public static final int  DEFAULT_X_SIZE = 15;
 	
 	/** Map's default ySize. */
 	public static final int DEFAULT_Y_SIZE = 10;
 	
+				/* *****************************Map size******************* */
 	/** Map's xSize. */
 	private final int xSize;
 	
 	/** Map's ySize. */
 	private final int ySize;
 	
+				/* *****************************Maps******************* */
 	/** Glyphs'grid. */
 	private final Glyph[][] glyph;
 	
 	/** Cells'grid. */
 	private final Cell[][] map;
-	
-	private TeamController teamController;
 
+				/* *****************************Utility******************* */
+	/** Map's TeamController. */
+	private TeamController teamController;
+	
+	/** Map's selectedCell. */
 	private Cell selectedCell;
 
-
+	/** Map's MapGUI. */
 	private MapGUI mapGui;
 
 	
 	
-	/////// Constructor ////////////////////////////////////////
-
+	/* ****************************************CONSTRUCTORS******************************************** */
 	/**
 	 * Constructor for the Map.
 	 */
@@ -81,51 +81,163 @@ public class Map
 		
 	}
 
-	
-	public void putCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
+	/* ****************************************GETTERS / SETTERS *************************************** */
+				/* *****************************Sizes******************* */
+	/**
+	 * @return this.xSize
+	 */
+	public int getXSize()
 	{
-		// TODO EXCEPTIONS
-
-		this.map[position.getPositionX()][position.getPositionY()].setCharacter(character);
-		if(!(character ==null))
-			character.setCell(this.getCell(position));
-		
-		
+		return this.xSize;
 	}
 	
-	public void moveCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
+	/**
+	 * @return this.ySize
+	 */
+	public int getYSize()
 	{
-
-		this.map[character.getCellTraveled().getPosition().getPositionX()][character.getCellTraveled().getPosition().getPositionY()].setCharacter(null);
-		this.map[position.getPositionX()][position.getPositionY()].setCharacter(character);
-		character.setCell(this.getCell(position));
-		
-		
+		return this.ySize;
 	}
 	
+				/* *****************************Cells******************* */
+		/**
+	 * @param pos Requested cell's position.
+	 * @return Cell at given position.
+	 */
+	public Cell getCell(CellPosition pos)
+	{
+		return this.map[pos.getPositionX()][pos.getPositionY()];
+	}
+	
+	/**
+	 * Set the given Cell at the given CellPosition.
+	 * @param pos Destination glyph's position.
+	 * @param cell Cell to set at the position.
+	 */
+	public void setCell(CellPosition pos, Cell cell)
+	{
+		this.map[pos.getPositionX()][pos.getPositionY()] = cell;		
+	}
+				
+				/* *****************************Glyphs******************* */
+	/**
+	 * @param pos Requested glyph's position.
+	 * @return Glyph at given position.
+	 */
+	public Glyph getGlyph(GlyphPosition pos)
+	{
+		return this.glyph[pos.getPositionX()][pos.getPositionY()];
+	}
+
+	/**
+	 * Set the given Glyph at the given GlyphPosition.
+	 * @param pos Destination glyph's position.
+	 * @param glyph Glyph to set at the position.
+	 */
+	public void setGlyph(GlyphPosition pos, Glyph glyph)
+	{
+		this.glyph[pos.getPositionX()][pos.getPositionY()] = glyph;		
+	}
+				
+	/**
+	 * @param pos Glyph's position.
+	 * @return type of the glyph at the given GlyphPosition.
+	 */
+	public TypeGlyph getTypeOfGlyph(GlyphPosition pos)
+	{
+		return this.glyph[pos.getPositionX()][pos.getPositionY()].getTypeGlyph();
+	}
+	
+				/* *****************************Selected Cell******************* */
+	/**
+	 * @return this.selectedCell
+	 */
+	public Cell getSelectedCell()
+	{
+		return this.selectedCell;
+	}
+	
+	/**
+	 * Set the Cell which is currently selected.
+	 * @param cell Cell which is selected.
+	 */
+	public void setSelectedCell(Cell cell)
+	{
+		this.selectedCell = cell;
+	}
+				
+				/* *****************************Map GUI******************* */
+	/**
+	 * Set the current MapGUI.
+	 * @param mapGui mapGUI to use.
+	 */
+	public void setMapGui(MapGUI mapGui)
+	{
+		this.mapGui = mapGui;
+	}
+	
+	/**
+	 * @return this.mapGui
+	 */
+	public MapGUI getMapGui( )
+	{
+		return this.mapGui ;
+	}
+				
+				/* *****************************Character******************* */
+	/**
+	 * @param posX X position of the character
+	 * @param posY Y position of the character
+	 * @return this.this.map[posX][posY].getCharacter();
+	 */
 	public fr.iut.tapawaru.team.Character getCharacter(int posX, int posY)
 	{
 		return this.map[posX][posY].getCharacter();
 	}
 	
-	public int getXSize()
+	/**
+	 * Set the give Character at the given CellPosition
+	 * @param character Character we want to put.
+	 * @param position Position where we want it to be.
+	 */
+	public void putCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
 	{
-		return xSize;
-	}
-
-
-
-	public int getYSize()
-	{
-		return ySize;
+		// TODO EXCEPTIONS
+		this.map[position.getPositionX()][position.getPositionY()].setCharacter(character);
+		if(!(character ==null))
+			character.setCell(this.getCell(position));
 	}
 	
+				/* *****************************Utility******************* */
+	/**
+	 * @return this.mapGui.getBottomPanel()
+	 */
+	public BottomPanel getBottomPanel()
+	{
+		return this.mapGui.getBottomPanel();
+	}
+
+	/**
+	 * @return this.teamController
+	 */
 	public TeamController getTeamController()
 	{
 		return this.teamController;
 	}
-
-
+	
+	/* ****************************************UTILITY *************************************** */
+	/**
+	 * Move the give Character to the given CellPosition.
+	 * @param character Character we want to move.
+	 * @param position Destination of the character.
+	 */
+	public void moveCharacter(fr.iut.tapawaru.team.Character character,CellPosition position)
+	{
+		this.map[character.getCellTraveled().getPosition().getPositionX()][character.getCellTraveled().getPosition().getPositionY()].setCharacter(null);
+		this.map[position.getPositionX()][position.getPositionY()].setCharacter(character);
+		character.setCell(this.getCell(position));		
+	}
+	
 	/**
 	 * ToString override
 	 * Print the map with cells and glyphs
@@ -156,64 +268,7 @@ public class Map
 		}
 		return strMap.toString();
 	}
-	
-	public TypeGlyph getTypeOfGlyph(GlyphPosition pos)
-	{
-		return this.glyph[pos.getPositionX()][pos.getPositionY()].getTypeGlyph();
-		
-	}
 
-
-	public Cell getCell(CellPosition pos)
-	{
-		// TODO Auto-generated method stub
-		return this.map[pos.getPositionX()][pos.getPositionY()];
-	}
-
-
-	public Glyph getGlyph(GlyphPosition pos)
-	{
-		return this.glyph[pos.getPositionX()][pos.getPositionY()];
-	}
-
-
-	public void setCell(CellPosition pos, Cell cell)
-	{
-		this.map[pos.getPositionX()][pos.getPositionY()] = cell;		
-	}
-
-	public void setGlyph(GlyphPosition pos, Glyph glyph)
-	{
-		this.glyph[pos.getPositionX()][pos.getPositionY()] = glyph;		
-	}
-
-
-	public Cell getSelectedCell()
-	{
-		// TODO Auto-generated method stub
-		return this.selectedCell;
-	}
-	
-	public void setSelectedCell(Cell cell)
-	{
-		this.selectedCell = cell;
-	}
-	
-	public void setMapGui(MapGUI mapGui)
-	{
-		this.mapGui = mapGui;
-	}
-	
-	public MapGUI getMapGui( )
-	{
-		return this.mapGui ;
-	}
-
-	public BottomPanel getBottomPanel()
-	{
-		return this.mapGui.getBottomPanel();
-	}
 }
 
 
-//TODO v�rifier le code et voir les dimensions de la map (modifiables ou non ?)
