@@ -121,7 +121,40 @@ public class MapGUI extends JPanel implements MouseListener
 
 			g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 
+			paintBuff(g, xSize, ySize);
 		}
+	}
+
+	private void paintBuff(Graphics g, int xSize, int ySize)
+	{
+		Image imageBuffer = null;
+		if(!(this.map.getCharacter(xSize, ySize).getBuff() == null))
+		{
+			switch(this.map.getCharacter(xSize, ySize).getBuff())
+			{
+			case BURNING: try
+			{
+				imageBuffer = ImageIO.read(new File("img/perso/buffBurning.png"));
+			} catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+			case FREEZING : try
+			{
+				imageBuffer = ImageIO.read(new File("img/perso/buffFreezing.png"));
+			} catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			break;
+			default:
+		}
+			g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
+}
 	}
 
 	public void printCharacter(Graphics g, int xSize, int ySize,String picture)
@@ -140,7 +173,7 @@ public class MapGUI extends JPanel implements MouseListener
 			}
 
 			g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
-
+			paintBuff(g, xSize, ySize);
 		}
 	}
 
@@ -383,7 +416,6 @@ public class MapGUI extends JPanel implements MouseListener
 
 			this.paintGivenCell(cellTraveled.getPosition(), tmp);
 	
-		
 		try
 		{
 			Thread.sleep(500);
