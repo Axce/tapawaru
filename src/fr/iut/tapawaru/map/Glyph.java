@@ -13,16 +13,14 @@ package fr.iut.tapawaru.map;
  */
 public class Glyph extends MapElement
 {
-	/////// Attributes ////////////////////////////////////////
-
+	/* ****************************************ATTRIBUTS******************************************** */
 	/** Glyph's position on Map. */
 	private GlyphPosition glyphPosition;
 	
 	/** Glyph's type. */
 	private TypeGlyph typeGlyph;
 
-	
-	/////// Constructor ////////////////////////////////////////
+	/* ****************************************CONSTRUCTORS******************************************** */
 	/**
 	 * Constructor for the Glyph.
 	 * The type of the glyph is random.
@@ -35,9 +33,8 @@ public class Glyph extends MapElement
 		this.typeGlyph= TypeGlyph.getRandomType();
 	}
 	
-	
-	/////// Methods //////////////////////////////////////// 
-
+	/* ****************************************GETTERS / SETTERS *************************************** */
+				/* *****************************Position******************* */
 	/**
 	 * Gets X position from current Glyph.
 	 * @return position x : current X position.
@@ -45,12 +42,15 @@ public class Glyph extends MapElement
 	public GlyphPosition getPositionGlyph() {
 		return this.glyphPosition;
 	}
-
+	
+	/**
+	 * Set the glyph Position
+	 * @param glyphPosition new glyph position.
+	 */
 	public void setGlyphPosition(GlyphPosition glyphPosition)
 	{
 		this.glyphPosition = glyphPosition;
 	}
-
 
 	/**
 	 * Sets Glyph's X position.
@@ -67,8 +67,8 @@ public class Glyph extends MapElement
 	public void setPositionGlyphY(int positionGlyphY) {
 		this.glyphPosition.setPositionX(positionGlyphY);
 	}
-
-	
+			
+				/* *****************************Glyph******************* */
 	/**
 	 * Gets type from current Glyph.
 	 * @return typeGlyph : current type.
@@ -85,12 +85,14 @@ public class Glyph extends MapElement
 		this.typeGlyph = typeGlyph;
 	}
 
-
+	/* ****************************************UTILITY*************************************** */
+	/**
+	 * Used in consol display.
+	 * @return The string type of the glyph.
+	 */
 	@Override
 	public String toString()
 	{
 		return typeGlyph.toString();
-	}
-	
-	
+	}	
 }

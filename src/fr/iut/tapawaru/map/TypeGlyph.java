@@ -10,9 +10,7 @@ package fr.iut.tapawaru.map;
  * @authors PELLOUX-PRAYER, PRADELLE
  */
 public enum TypeGlyph {
-	
-	//TODO Est ce que cela vous convient? deux autres en bas au cas ou il en faut plus.
-	
+		
 	FIRE ("F"),
 	EARTH ("E"),
 	WATER ("W"),
@@ -22,14 +20,17 @@ public enum TypeGlyph {
 	HOLY ("H"),
 	DARK ("D"); 
 	
+	/* ****************************************ATTRIBUTS******************************************** */
+				/* *****************************Number of type used in the map******************* */
+	/** The number of type available. */
+    public final static int NUMBER_OF_TYPE = 4; 
+	
+				/* *****************************Utility******************* */
 	/** Displays Glyph's type. */
     private final String display;
     
-    /** The number of type available. */
-    public final static int NUMBER_OF_TYPE = 4; 
     
-	/////// Constructor ////////////////////////////////////////
-
+	/* ****************************************CONSTRUCTORS******************************************** */	
     /** 
      * Constructor of the Glyph's type. 
      * @param disp: display of the Glyph's type.
@@ -39,15 +40,7 @@ public enum TypeGlyph {
         display = disp;
     }
 
-    
-    
-    
-    @Override
-    public String toString() 
-    {
-    	return display;
-    }
-    
+	/* ****************************************UTILITY******************************************** */	
     /**
      * Return one TypeGlyph at random.
      * @return TypeGlyph
@@ -77,4 +70,14 @@ public enum TypeGlyph {
 		}
 		return null;
     }
+
+    /**
+     * @return Text version type of glyph.
+     */
+    @Override
+    public String toString() 
+    {
+    	return display;
+    }
+   
 }

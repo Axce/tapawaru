@@ -10,15 +10,18 @@ package fr.iut.tapawaru.map;
  */
 public class Cell extends MapElement
 {
-	/////// Attributes ////////////////////////////////////////
-	
+	/* ****************************************ATTRIBUTS******************************************** */
+				/* *****************************Utility******************* */
 	/** Cell's position on Map. */
 	private CellPosition position;
 	
+	/** Cell's Character. */
 	private fr.iut.tapawaru.team.Character character;
 	
+	/** Is the cell Selected. */
 	private boolean isSelected;
-	/////// Constructor ////////////////////////////////////////
+	
+	/* ****************************************CONSTRUCTORS******************************************** */
 	/**
 	 * Constructor for the Cell.
 	 * @param positionX: Cell's X position.
@@ -32,7 +35,8 @@ public class Cell extends MapElement
 	}
 
 	
-	/////// Methods //////////////////////////////////////// 
+	/* ****************************************GETTERS / SETTERS *************************************** */
+				/* *****************************Positions******************* */
 	/**
 	 * Get position from current Cell.
 	 * @return position  : current position.
@@ -69,36 +73,50 @@ public class Cell extends MapElement
 		this.position.setPositionY(positionY);
 	}
 
-	@Override
-	public String toString()
+				/* *****************************Character******************* */
+	/**
+	 * @return this.character
+	 */
+	public fr.iut.tapawaru.team.Character getCharacter()
 	{
-		return " C ";
+		return this.character;
 	}
 
-
+	/**
+	 * Set the cell's Character.
+	 * @param character new cell's Character.
+	 */
 	public void setCharacter(fr.iut.tapawaru.team.Character character)
 	{
-		// TODO EXCEPTION IF ONE CHAR ALREADY ON CELL? Or return old char?
-		this.character = character;
-		
+		this.character = character;	
 	}
-
+				/* *****************************Selected******************* */
+	/**
+	 * @return this.isSelected
+	 */
 	public boolean isSelected()
 	{
 		return this.isSelected;
 	}
 	
+	/**
+	 * Set if this cell is Selected.
+	 * @param state new state of the cell.
+	 */
 	public void setIsSelected(boolean state)
 	{
 		this.isSelected = state;
 	}
 
-	public fr.iut.tapawaru.team.Character getCharacter()
+	/* ****************************************UTILITY******************************************** */
+	/**
+	 * Return "C".
+	 * Used in the consol display.
+	 */
+	@Override
+	public String toString()
 	{
-		return this.character;
+		return " C ";
 	}
-	
-	
-	//TODO vérifier le code
-	
+		
 }
