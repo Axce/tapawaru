@@ -1,14 +1,8 @@
 package fr.iut.tapawaru.gui;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +10,6 @@ import java.io.IOException;
 import fr.iut.tapawaru.team.Character;
 
 import javax.imageio.ImageIO;
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import fr.iut.tapawaru.action.Attack;
@@ -67,95 +59,10 @@ public class BottomPanel extends JPanel implements KeyListener
 			e.printStackTrace();
 		}
 
-		// this.addKeyListener(this);
 		this.map = map;
 		this.caseSelected = false;
 		this.mapGui = this.map.getMapGui();
-		// this.team1Bottom = new
-		// BottomPlayer[this.map.getTeamController().getTeam1().getNbCharacter()];
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam1().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.team1Bottom[indexPlayer]
-		// =this.map.getTeamController().getTeam1().getCharacter()[indexPlayer].getBottomPlayer();
-		// }
-		//
-		// this.team2Bottom = new
-		// BottomPlayer[this.map.getTeamController().getTeam2().getNbCharacter()];
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam2().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.team2Bottom[indexPlayer]
-		// =this.map.getTeamController().getTeam2().getCharacter()[indexPlayer].getBottomPlayer();
-		// }
-		//
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam1().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.add(this.team1Bottom[indexPlayer]);
-		// }
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam2().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.add(this.team2Bottom[indexPlayer]);
-		// }
-		//
-		// this.chooseDisplayTeam();
-		// }
-		//
-		// public JButton getGlyphCWspin()
-		// {
-		// return this.glyphCWspin;
-		// }
-		//
-		// public JButton getGlyphCCWspin()
-		// {
-		// return this.glyphCCWspin;
-		// }
-		//
-		// public JButton getGlyphRandom()
-		// {
-		// return this.glyphRandom;
-		// }
-		//
-		// public void chooseDisplayTeam()
-		// {
-		// if(this.map.getTeamController().getPlayingTeam() ==
-		// this.map.getTeamController().getTeam1())
-		// {
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam1().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.team1Bottom[indexPlayer].setVisible(true);
-		// }
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam2().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.team2Bottom[indexPlayer].setVisible(false);
-		// }
-		// System.out.println("team1");
-		// }else{
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam1().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.team1Bottom[indexPlayer].setVisible(false);
-		// }
-		// for(int indexPlayer=0;indexPlayer <
-		// this.map.getTeamController().getTeam2().getNbCharacter();
-		// indexPlayer++)
-		// {
-		// this.team2Bottom[indexPlayer].setVisible(true);
-		// }
-		// System.out.println("team2");
-		// }
-		// System.out.println("yolo");
+
 	}
 
 	public void paintTerraStateSelected(Graphics g)
@@ -236,7 +143,7 @@ public class BottomPanel extends JPanel implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		if(e.getKeyChar() =='u')
+		if (e.getKeyChar() == 'u')
 		{
 			this.map.getTeamController().skipTurn();
 			this.repaint();
@@ -445,25 +352,27 @@ public class BottomPanel extends JPanel implements KeyListener
 			case 'q':
 				if (this.map.getSelectedCell() == null)
 				{
-//					 Image tmp = null;
-//					 try
-//					 {
-//					 tmp = ImageIO.read(new File("img/octoSelectable.png"));
-//					 } catch (IOException k)
-//					 {
-//					 // TODO Auto-generated catch block
-//					 k.printStackTrace();
-//					 }
-//					 for(CellPosition cellpos: Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),false))
-//					 {
-//					
-//					 this.mapGui.paintGivenCell(cellpos, tmp);
-//					 }
+					// Image tmp = null;
+					// try
+					// {
+					// tmp = ImageIO.read(new File("img/octoSelectable.png"));
+					// } catch (IOException k)
+					// {
+					// // TODO Auto-generated catch block
+					// k.printStackTrace();
+					// }
+					// for(CellPosition cellpos: Attack.laserBeam(this.map,
+					// this.characterSelected,
+					// this.map.getSelectedCell().getPosition(),false))
+					// {
+					//
+					// this.mapGui.paintGivenCell(cellpos, tmp);
+					// }
 
 				} else
 				{
-					
-					Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),true);
+
+					Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(), true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
 					this.characterSelected = null;
@@ -484,24 +393,25 @@ public class BottomPanel extends JPanel implements KeyListener
 			case 's':
 				if (this.map.getSelectedCell() == null)
 				{
-//					 Image tmp = null;
-//					 try
-//					 {
-//					 tmp = ImageIO.read(new File("img/octoAffect.png"));
-//					 } catch (IOException k)
-//					 {
-//					 // TODO Auto-generated catch block
-//					 k.printStackTrace();
-//					 }
-//					 for(CellPosition cellpos: Attack.aroundCaster(this.map, this.characterSelected,false))
-//					 {
-//					
-//					 this.mapGui.paintGivenCell(cellpos, tmp);
-//					 }
+					// Image tmp = null;
+					// try
+					// {
+					// tmp = ImageIO.read(new File("img/octoAffect.png"));
+					// } catch (IOException k)
+					// {
+					// // TODO Auto-generated catch block
+					// k.printStackTrace();
+					// }
+					// for(CellPosition cellpos: Attack.aroundCaster(this.map,
+					// this.characterSelected,false))
+					// {
+					//
+					// this.mapGui.paintGivenCell(cellpos, tmp);
+					// }
 
 				} else
 				{
-					Attack.aroundCaster(this.map, this.characterSelected,true);
+					Attack.aroundCaster(this.map, this.characterSelected, true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
 					this.characterSelected = null;
@@ -522,24 +432,26 @@ public class BottomPanel extends JPanel implements KeyListener
 			case 'd':
 				if (this.map.getSelectedCell() == null)
 				{
-//					 Image tmp = null;
-//					 try
-//					 {
-//					 tmp = ImageIO.read(new File("img/octoAffect.png"));
-//					 } catch (IOException k)
-//					 {
-//					 // TODO Auto-generated catch block
-//					 k.printStackTrace();
-//					 }
-//					 for(CellPosition cellpos: Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),false))
-//					 {
-//					
-//					 this.mapGui.paintGivenCell(cellpos, tmp);
-//					 }
-					
+					// Image tmp = null;
+					// try
+					// {
+					// tmp = ImageIO.read(new File("img/octoAffect.png"));
+					// } catch (IOException k)
+					// {
+					// // TODO Auto-generated catch block
+					// k.printStackTrace();
+					// }
+					// for(CellPosition cellpos: Attack.flowerBomb(this.map,
+					// this.characterSelected,
+					// this.map.getSelectedCell().getPosition(),false))
+					// {
+					//
+					// this.mapGui.paintGivenCell(cellpos, tmp);
+					// }
+
 				} else
 				{
-					Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),true);
+					Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(), true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
 					this.characterSelected = null;
