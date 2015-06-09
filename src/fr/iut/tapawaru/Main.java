@@ -15,12 +15,13 @@ import fr.iut.tapawaru.team.Character;
  */
 public class Main
 {
-	
+	public static MainFrame mainFrame;
 	public static void main(String[] args)
 	{
 		Map map = new Map();
-		MainFrame mainFrame = new MainFrame(map);
+		mainFrame = new MainFrame(map);
 		System.out.println(map);
 	}
+	
 	
 }
