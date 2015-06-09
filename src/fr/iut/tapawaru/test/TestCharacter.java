@@ -37,4 +37,31 @@ public class TestCharacter extends TestCase
 		}
 		catch (Exception exception){};
 	}
+	
+	/**
+	 * test on the method deduct()
+	 */
+	public void deduct()
+	{
+		Map mapTest = new Map();
+		try
+		{
+			TeamController teamControllerTest = new TeamController(mapTest);
+			assertEquals(teamControllerTest.isDeductable(0), true);
+			assertEquals(teamControllerTest.isDeductable(5), false);
+			assertEquals(teamControllerTest.isDeductable(7), false);
+		}
+		catch (Exception exception){};
+	}
+	
+	public static Test suite()
+	{
+		TestSuite suite = new TestSuite();
+		suite.addTest(new TestCharacter("isAlive"));
+		suite.addTest(new TestCharacter("deduct"));
+		
+		return (Test) suite;
+	}
+
+
 }
