@@ -20,24 +20,26 @@ import fr.iut.tapawaru.map.Map;
 
 public class BottomPanel extends JPanel implements KeyListener
 {
-
+/* ****************************************ATTRIBUTS******************************************** */
+			/* *****************************Images******************* */
 	private Image apLeft5;
 	private Image apLeft4;
 	private Image apLeft3;
 	private Image apLeft2;
 	private Image apLeft0;
 	private Image apLeft1;
-
+	
+			/* *****************************Utility******************* */
 	private Map map;
 	private BottomPlayer[] team1Bottom;
 	private BottomPlayer[] team2Bottom;
-
 	private boolean caseSelected;
 	private MapGUI mapGui;
 	private Character characterSelected;
 	private Image right;
 	private Image hpBar;
 
+	/* ****************************************CONSTRUCTORS******************************************** */
 	public BottomPanel(Map map)
 	{
 		try
@@ -65,6 +67,7 @@ public class BottomPanel extends JPanel implements KeyListener
 
 	}
 
+	/* **********************************PANNEL DISPLAY TOOLS************************* */
 	public void paintTerraStateSelected(Graphics g)
 	{
 		Image tmp = null;
@@ -97,20 +100,6 @@ public class BottomPanel extends JPanel implements KeyListener
 		g.drawImage(tmp, 0, 0, this);
 		paintPA(g, tmp);
 		this.caseSelected = false;
-
-	}
-
-	@Override
-	public void paintComponent(Graphics g)
-	{
-		this.paintTerraStateUnselected(g);
-
-		g.drawImage(right, 375, 0, this);
-
-		paintPA(g, right);
-
-		this.printHp(g);
-
 	}
 
 	private void paintPA(Graphics g, Image tmp)
@@ -139,7 +128,37 @@ public class BottomPanel extends JPanel implements KeyListener
 
 		g.drawImage(tmp, 9, 130, this);
 	}
+	
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		this.paintTerraStateUnselected(g);
 
+		g.drawImage(right, 375, 0, this);
+
+		paintPA(g, right);
+
+		this.printHp(g);
+
+	}
+
+	public void printHp(Graphics g)
+	{
+		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[0].getHealthPoint(); index++)
+		{
+			g.drawImage(hpBar, 400, 15 + 10 * index, this);
+		}
+		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[1].getHealthPoint(); index++)
+		{
+			g.drawImage(hpBar, 512, 15 + 10 * index, this);
+		}
+		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[2].getHealthPoint(); index++)
+		{
+			g.drawImage(hpBar, 640, 15 + 10 * index, this);
+		}
+	}
+	
+	/* ****************************************KEY LISTENER******************************************** */
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
@@ -150,7 +169,6 @@ public class BottomPanel extends JPanel implements KeyListener
 		}
 		if (this.caseSelected)
 		{
-
 			switch (e.getKeyChar())
 			{
 			case 'w':
@@ -517,28 +535,11 @@ public class BottomPanel extends JPanel implements KeyListener
 	public void keyReleased(KeyEvent e)
 	{
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
-
 	}
-
-	public void printHp(Graphics g)
-	{
-		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[0].getHealthPoint(); index++)
-		{
-			g.drawImage(hpBar, 400, 15 + 10 * index, this);
-		}
-		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[1].getHealthPoint(); index++)
-		{
-			g.drawImage(hpBar, 512, 15 + 10 * index, this);
-		}
-		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[2].getHealthPoint(); index++)
-		{
-			g.drawImage(hpBar, 640, 15 + 10 * index, this);
-		}
-	}
+	
 }
