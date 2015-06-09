@@ -19,47 +19,51 @@ import fr.iut.tapawaru.team.Buff;
 import fr.iut.tapawaru.map.TypeGlyph;
 
 /**
- * Gui manager of the top part of the mainFrame.
- * Here we can see the map with glyph and cell , players , spell's animation...
+ * Gui manager of the top part of the mainFrame. Here we can see the map with
+ * glyph and cell , players , spell's animation...
+ * 
  * @author jpelloux
  *
  */
 public class MapGUI extends JPanel implements MouseListener
 {
-	/* ****************************************ATTRIBUTS******************************************** */
-			/* *****************************Images size******************* */
-	/** Default size of a cell picture.*/
+	/*
+	 *  ****************************************ATTRIBUTS*************************
+	 * *******************
+	 */
+	/* *****************************Images size******************* */
+	/** Default size of a cell picture. */
 	private static final int DEFAULT_OCTO_SIZE = 50;
 
-				/* ***************************** Cell Images******************* */
+	/* ***************************** Cell Images******************* */
 	/** The default cell image */
 	private Image octo;
-	
-	/** The cell image for when the cell is Selected*/
+
+	/** The cell image for when the cell is Selected */
 	private Image octoSelected;
 
-				/* ***************************** Glyph Images******************* */
+	/* ***************************** Glyph Images******************* */
 	/** Fire Glyph image. */
 	private Image glyphFire;
-	
+
 	/** Air Glyph image. */
 	private Image glyphAir;
-	
+
 	/** Earth Glyph image. */
 	private Image glyphEarth;
-	
+
 	/** Ice Glyph image. */
 	private Image glyphIce;
-	
+
 	/** Thunder Glyph image. */
 	private Image glyphThunder;
-	
+
 	/** Water Glyph image. */
 	private Image glyphWater;
-	
+
 	/** Holy Glyph image. */
 	private Image glyphHoly;
-	
+
 	/** Dark Glyph image. */
 	private Image glyphDark;
 
@@ -68,29 +72,34 @@ public class MapGUI extends JPanel implements MouseListener
 
 	/* ***************************** Buff Images******************* */
 	/** Fire buff Image. */
-	private Image buffBurning ;
+	private Image buffBurning;
 
 	/** Ice buff Image. */
 	private Image buffFreezing;
 
-			/* *****************************Utility******************* */
+	/* *****************************Utility******************* */
 	/** The map we are displaying. */
 	private Map map;
-	
+
 	/** The cell which is actually selected. */
 	private Cell selectedCell;
-	
+
 	/** The BottomPanel of the MainFrame. */
 	private BottomPanel botPanel;
-	
+
 	/** Selected Charater's position. */
 	private CellPosition selectedCharacterPosition;
 
-	/* ****************************************CONSTRUCTORS******************************************** */
+	/*
+	 *  ****************************************CONSTRUCTORS**********************
+	 * **********************
+	 */
 	/**
-	 * Constructor of MapGui.
-	 * Mainly init the glyph's ,buff's pictures and cell's pictures.
-	 * @param map the Map we want to display.
+	 * Constructor of MapGui. Mainly init the glyph's ,buff's pictures and
+	 * cell's pictures.
+	 * 
+	 * @param map
+	 *            the Map we want to display.
 	 */
 	public MapGUI(Map map)
 	{
@@ -111,7 +120,7 @@ public class MapGUI extends JPanel implements MouseListener
 
 			this.buffBurning = ImageIO.read(new File("img/perso/buffBurning.png"));
 			this.buffFreezing = ImageIO.read(new File("img/perso/buffFreezing.png"));
-			
+
 			this.addMouseListener(this);
 
 			this.map = map;
@@ -127,8 +136,11 @@ public class MapGUI extends JPanel implements MouseListener
 
 	}
 
-	/* ****************************************GETTERS / SETTERS *************************************** */
-				/* *****************************BottomPanel******************* */
+	/*
+	 *  ****************************************GETTERS / SETTERS
+	 * ***************************************
+	 */
+	/* *****************************BottomPanel******************* */
 	/**
 	 * @return this.botPanel
 	 */
@@ -136,10 +148,12 @@ public class MapGUI extends JPanel implements MouseListener
 	{
 		return this.botPanel;
 	}
-	
+
 	/**
 	 * Set the BotttomPanel linked with this MapGUI.
-	 *  @param botPanel the MainFrame BottomPanel.
+	 * 
+	 * @param botPanel
+	 *            the MainFrame BottomPanel.
 	 */
 	public void addBotPanel(BottomPanel botPanel)
 	{
@@ -147,10 +161,12 @@ public class MapGUI extends JPanel implements MouseListener
 		this.addKeyListener(this.botPanel);
 	}
 
-				/* *****************************Utility******************* */
+	/* *****************************Utility******************* */
 	/**
 	 * Set the selected character position.
-	 * @param position new selected character position.
+	 * 
+	 * @param position
+	 *            new selected character position.
 	 */
 	public void setSelectedCharacterPosition(CellPosition position)
 	{
@@ -169,13 +185,20 @@ public class MapGUI extends JPanel implements MouseListener
 		mapSize[1] = this.map.getYSize() * DEFAULT_OCTO_SIZE;
 		return mapSize;
 	}
-	
-	/* ****************************************MAP DISPLAY TOOLS******************************************** */
-				/* *****************************Cells******************* */
+
+	/*
+	 *  ****************************************MAP DISPLAY
+	 * TOOLS********************************************
+	 */
+	/* *****************************Cells******************* */
 	/**
-	 * Paint given position with a default cell but a "string" path character picture.
-	 * @param position Position's of the cell to paint.
-	 * @param picture Picture to pain at this position.
+	 * Paint given position with a default cell but a "string" path character
+	 * picture.
+	 * 
+	 * @param position
+	 *            Position's of the cell to paint.
+	 * @param picture
+	 *            Picture to pain at this position.
 	 */
 	public void paintGivenCell(CellPosition position, String picture)
 	{
@@ -183,22 +206,28 @@ public class MapGUI extends JPanel implements MouseListener
 				this);
 		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY(), picture);
 	}
-	
+
 	/**
 	 * Paint the given picture at the given position.
-	 * @param position Position's of the cell to paint.
-	 * @param picture Picture to pain at this position.
+	 * 
+	 * @param position
+	 *            Position's of the cell to paint.
+	 * @param picture
+	 *            Picture to pain at this position.
 	 */
 	public void paintGivenCell(CellPosition position, Image img)
 	{
 		this.getGraphics().drawImage(img, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE, this);
 		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY());
 	}
-	
+
 	/**
 	 * Change the state of the cell at the given position.
-	 * @param xSize xPosition of the cell.
-	 * @param ySize yPosition of the cell.
+	 * 
+	 * @param xSize
+	 *            xPosition of the cell.
+	 * @param ySize
+	 *            yPosition of the cell.
 	 */
 	public void changeCellState(int xSize, int ySize)
 	{
@@ -210,7 +239,8 @@ public class MapGUI extends JPanel implements MouseListener
 					this.selectedCell.getPosition().getPositionY() * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(false);
 
-			this.printCharacter(this.getGraphics(), this.selectedCell.getPosition().getPositionX(), this.selectedCell.getPosition().getPositionY());
+			this.printCharacter(this.getGraphics(), this.selectedCell.getPosition().getPositionX(), this.selectedCell.getPosition()
+					.getPositionY());
 			if ((this.selectedCell.getPosition().getPositionX() == xSize) && (this.selectedCell.getPosition().getPositionY() == ySize))
 			{
 				goSelected = false;
@@ -234,24 +264,40 @@ public class MapGUI extends JPanel implements MouseListener
 		if (!(this.map.getCharacter(xSize, ySize) == null))
 		{
 			Image imageBuffer = null;
+			if (this.map.getCharacter(xSize, ySize) == this.botPanel.getSelectedCharacter())
+			{
+				try
+				{
+					imageBuffer = ImageIO.read(new File(this.map.getCharacter(xSize, ySize).toStringSelected()));
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
-			try
+			} else
 			{
-				imageBuffer = ImageIO.read(new File(this.map.getCharacter(xSize, ySize).toString()));
-			} catch (IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				try
+				{
+					imageBuffer = ImageIO.read(new File(this.map.getCharacter(xSize, ySize).toString()));
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 			this.getGraphics().drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
+			this.paintBuff(this.getGraphics(), xSize, ySize);
 		}
+
 	}
 
 	/**
-	 * Default cell printing.
-	 * Print cell and character.
-	 * @param g this.getGraphics()
+	 * Default cell printing. Print cell and character.
+	 * 
+	 * @param g
+	 *            this.getGraphics()
 	 */
 	public void printCell(Graphics g)
 	{
@@ -266,10 +312,12 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 
-				/* *****************************Glyphs******************* */
+	/* *****************************Glyphs******************* */
 	/**
 	 * Default glyph displaying.
-	 * @param g this.getGraphics()
+	 * 
+	 * @param g
+	 *            this.getGraphics()
 	 */
 	public void printGlyph(Graphics g)
 	{
@@ -318,14 +366,20 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 
-				/* *****************************Characters******************* */
+	/* *****************************Characters******************* */
 	/**
-	 * Method to print Character with a particular picture.
-	 * "img/perso/" + picture + this.map.getCharacter(xSize, ySize).getHealthPoint() + ".png".
-	 * @param g this.getGraphics()
-	 * @param xSize xPosition of the Character.
-	 * @param ySize yPosition of the Character.
-	 * @param picture "img/perso/" + picture + this.map.getCharacter(xSize, ySize).getHealthPoint() + ".png"
+	 * Method to print Character with a particular picture. "img/perso/" +
+	 * picture + this.map.getCharacter(xSize, ySize).getHealthPoint() + ".png".
+	 * 
+	 * @param g
+	 *            this.getGraphics()
+	 * @param xSize
+	 *            xPosition of the Character.
+	 * @param ySize
+	 *            yPosition of the Character.
+	 * @param picture
+	 *            "img/perso/" + picture + this.map.getCharacter(xSize,
+	 *            ySize).getHealthPoint() + ".png"
 	 */
 	public void printCharacter(Graphics g, int xSize, int ySize, String picture)
 	{
@@ -347,13 +401,17 @@ public class MapGUI extends JPanel implements MouseListener
 			paintBuff(g, xSize, ySize);
 		}
 	}
-	
+
 	/**
-	 * Default method to print Character.
-	 * Print the Character at the given position.
-	 * @param g this.getGraphics()
-	 * @param xSize xPosition of the Character.
-	 * @param ySize yPosition of the Character.
+	 * Default method to print Character. Print the Character at the given
+	 * position.
+	 * 
+	 * @param g
+	 *            this.getGraphics()
+	 * @param xSize
+	 *            xPosition of the Character.
+	 * @param ySize
+	 *            yPosition of the Character.
 	 */
 	private void printCharacter(Graphics g, int xSize, int ySize)
 	{
@@ -378,12 +436,17 @@ public class MapGUI extends JPanel implements MouseListener
 
 	/**
 	 * Print the buff affected to a Character at the given position.
-	 * @param g this.getGraphics()
-	 * @param xSize xPosition of the Character.
-	 * @param ySize yPosition of the Character.
+	 * 
+	 * @param g
+	 *            this.getGraphics()
+	 * @param xSize
+	 *            xPosition of the Character.
+	 * @param ySize
+	 *            yPosition of the Character.
 	 */
 	private void paintBuff(Graphics g, int xSize, int ySize)
 	{
+
 		Image imageBuffer = null;
 		if (!(this.map.getCharacter(xSize, ySize).getBuff() == null))
 		{
@@ -401,11 +464,12 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 
-				/* *****************************Components******************* */	
+	/* *****************************Components******************* */
 	/**
-	 * Default method to print map.
-	 * Call printCell and printGlyph.
-	 * @param g this.getGraphics()
+	 * Default method to print map. Call printCell and printGlyph.
+	 * 
+	 * @param g
+	 *            this.getGraphics()
 	 */
 	@Override
 	public void paintComponent(Graphics g)
@@ -415,27 +479,31 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/**
-	 * Default method to print map.
-	 * Call printCell and printGlyph.
+	 * Default method to print map. Call printCell and printGlyph.
 	 */
 	public void paintComponent()
 	{
 		this.printCell(this.getGraphics());
 		this.printGlyph(this.getGraphics());
 	}
-	
-	/* ****************************************ANIMATION DISPLAY******************************************** */
+
+	/*
+	 *  ****************************************ANIMATION
+	 * DISPLAY********************************************
+	 */
 	/**
 	 * Display the animation of a spell.
-	 * @param posList list of position affected by the spell.
-	 * @param typeGlyph type of the spell.
+	 * 
+	 * @param posList
+	 *            list of position affected by the spell.
+	 * @param typeGlyph
+	 *            type of the spell.
 	 */
 	public void spellAnimation(ArrayList<CellPosition> posList, TypeGlyph typeGlyph)
 	{
 		Image tmp = null;
 		for (int indexPict = 1; indexPict < 6; indexPict++)
 		{
-			System.out.println( typeGlyph.toString() + indexPict);
 			try
 			{
 				tmp = ImageIO.read(new File("img/spells/" + typeGlyph.toString() + indexPict + ".png"));
@@ -462,7 +530,7 @@ public class MapGUI extends JPanel implements MouseListener
 
 		try
 		{
-			Thread.sleep(500);
+			Thread.sleep(300);
 		} catch (InterruptedException e)
 		{
 			// TODO Auto-generated catch block
@@ -473,8 +541,11 @@ public class MapGUI extends JPanel implements MouseListener
 
 	/**
 	 * Display the animation of a buff.
-	 * @param cellTraveled Cell where the buff is applied.
-	 * @param buff The type of the buff.
+	 * 
+	 * @param cellTraveled
+	 *            Cell where the buff is applied.
+	 * @param buff
+	 *            The type of the buff.
 	 */
 	public void buffAnimation(Cell cellTraveled, Buff buff)
 	{
@@ -503,7 +574,7 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 		try
 		{
-			Thread.sleep(500);
+			Thread.sleep(300);
 		} catch (InterruptedException e)
 		{
 			// TODO Auto-generated catch block
@@ -512,10 +583,12 @@ public class MapGUI extends JPanel implements MouseListener
 		this.paintGivenCell(cellTraveled.getPosition(), this.octo);
 	}
 
-	/* ****************************************MOUSE LISTENER******************************************** */
+	/*
+	 *  ****************************************MOUSE
+	 * LISTENER********************************************
+	 */
 	/**
-	 * Empty.
-	 * Mouse Listener for when mouse button is pressed then released.
+	 * Empty. Mouse Listener for when mouse button is pressed then released.
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e)
@@ -524,8 +597,7 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/**
-	 * Empty.
-	 * Mouse Listener for when mouse is entered.
+	 * Empty. Mouse Listener for when mouse is entered.
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e)
@@ -534,8 +606,7 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/**
-	 * Empty.
-	 * Mouse Listener for when mouse is exited.
+	 * Empty. Mouse Listener for when mouse is exited.
 	 */
 	@Override
 	public void mouseExited(MouseEvent e)
@@ -544,8 +615,8 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/**
-	 * Change the state of the cell which is under the pointer when a button is pressed.
-	 * Mouse Listener for when mouse button is pressed.
+	 * Change the state of the cell which is under the pointer when a button is
+	 * pressed. Mouse Listener for when mouse button is pressed.
 	 */
 	@Override
 	public void mousePressed(MouseEvent e)
@@ -554,8 +625,7 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/**
-	 * Empty.
-	 * Mouse Listener for when mouse button is released.
+	 * Empty. Mouse Listener for when mouse button is released.
 	 */
 	@Override
 	public void mouseReleased(MouseEvent e)

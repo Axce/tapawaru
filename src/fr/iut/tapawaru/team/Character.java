@@ -176,6 +176,14 @@ public class Character
 	}
 	
 	/**
+	 * @return the path of the picture representing this Character when he is selected.
+	 */
+	public String toStringSelected()
+	{
+		return this.picture+"Selected"+this.healthPoint+ ".png";
+	}
+	
+	/**
 	 * @return the path of the picture representing this Character.
 	 */
 	@Override
@@ -183,5 +191,6 @@ public class Character
 	{
 		return this.picture+this.healthPoint+ ".png";
 	}
+	
 
 }

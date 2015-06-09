@@ -87,6 +87,15 @@ public class BottomPanel extends JPanel implements KeyListener
 
 	}
 
+	/* ****************************************GETTERS / SETTERS *************************************** */
+	/**
+	 * @return this.characterSelected
+	 */
+	public Character getSelectedCharacter()
+	{
+		return this.characterSelected;
+	}
+	
 	/* **********************************PANNEL DISPLAY TOOLS************************* */
 	/**
 	 * Display the left side when a Cell is selected.
