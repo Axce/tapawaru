@@ -12,7 +12,7 @@ Groupe n°4
 - [Jules PELLOUX-PRAYER](https://github.com/jpelloux)
 - [Olivier PRADELLE](https://github.com/pradello)
 
-Carnet de bord : https://docs.google.com/spreadsheets/d/1Oz2CknqqLAyacCYE2h1dauEoF-r6G6K9U-mdFNTQFWM/
+Carnet de bord : https://docs.google.com/spreadsheets/d/1bS0diRBamP0aTnPG1zivpjfkGPFaEj9VBbHqLz-E9YE/edit#gid=2113556686
 
 ## Principe
 
