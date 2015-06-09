@@ -22,7 +22,7 @@ import fr.iut.tapawaru.team.Buff;
 import fr.iut.tapawaru.team.Character;
 import fr.iut.tapawaru.map.TypeGlyph;
 
-public class MapGUI extends JPanel implements MouseListener 
+public class MapGUI extends JPanel implements MouseListener
 {
 
 	private static final int DEFAULT_OCTO_SIZE = 50;
@@ -77,7 +77,7 @@ public class MapGUI extends JPanel implements MouseListener
 			e.printStackTrace();
 
 		}
-		
+
 	}
 
 	public int[] guiMapSize()
@@ -128,36 +128,38 @@ public class MapGUI extends JPanel implements MouseListener
 	private void paintBuff(Graphics g, int xSize, int ySize)
 	{
 		Image imageBuffer = null;
-		if(!(this.map.getCharacter(xSize, ySize).getBuff() == null))
+		if (!(this.map.getCharacter(xSize, ySize).getBuff() == null))
 		{
-			switch(this.map.getCharacter(xSize, ySize).getBuff())
+			switch (this.map.getCharacter(xSize, ySize).getBuff())
 			{
-			case BURNING: try
-			{
-				imageBuffer = ImageIO.read(new File("img/perso/buffBurning.png"));
-			} catch (IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-			case FREEZING : try
-			{
-				imageBuffer = ImageIO.read(new File("img/perso/buffFreezing.png"));
-			} catch (IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				
-			}
-			break;
+			case BURNING:
+				try
+				{
+					imageBuffer = ImageIO.read(new File("img/perso/buffBurning.png"));
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case FREEZING:
+				try
+				{
+					imageBuffer = ImageIO.read(new File("img/perso/buffFreezing.png"));
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+
+				}
+				break;
 			default:
-		}
+			}
 			g.drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
-}
+		}
 	}
 
-	public void printCharacter(Graphics g, int xSize, int ySize,String picture)
+	public void printCharacter(Graphics g, int xSize, int ySize, String picture)
 	{
 		if (!(this.map.getCharacter(xSize, ySize) == null))
 		{
@@ -165,7 +167,7 @@ public class MapGUI extends JPanel implements MouseListener
 
 			try
 			{
-				imageBuffer = ImageIO.read(new File("img/perso/" + picture+ ".png"));
+				imageBuffer = ImageIO.read(new File("img/perso/" + picture + this.map.getCharacter(xSize, ySize).getHealthPoint()+".png"));
 			} catch (IOException e)
 			{
 				// TODO Auto-generated catch block
@@ -216,9 +218,8 @@ public class MapGUI extends JPanel implements MouseListener
 				{
 					g.drawImage(glyphDark, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
-				
-				g.drawImage(glyphPattern, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 
+				g.drawImage(glyphPattern, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 
 			}
 
@@ -231,7 +232,7 @@ public class MapGUI extends JPanel implements MouseListener
 
 		if (!(this.selectedCell == null))
 		{
-			
+
 			this.getGraphics().drawImage(this.octo, this.selectedCell.getPosition().getPositionX() * DEFAULT_OCTO_SIZE,
 					this.selectedCell.getPosition().getPositionY() * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(false);
@@ -245,9 +246,9 @@ public class MapGUI extends JPanel implements MouseListener
 			this.map.setSelectedCell(null);
 
 			this.botPanel.paintTerraStateUnselected(botPanel.getGraphics());
-//			this.botPanel.getGlyphCWspin().setEnabled(false);
-//			this.botPanel.getGlyphCCWspin().setEnabled(false);
-//			this.botPanel.getGlyphRandom().setEnabled(false);
+			// this.botPanel.getGlyphCWspin().setEnabled(false);
+			// this.botPanel.getGlyphCCWspin().setEnabled(false);
+			// this.botPanel.getGlyphRandom().setEnabled(false);
 		}
 
 		if (goSelected)
@@ -258,9 +259,9 @@ public class MapGUI extends JPanel implements MouseListener
 			this.map.setSelectedCell(this.map.getCell(new CellPosition(xSize, ySize)));
 
 			this.botPanel.paintTerraStateSelected(botPanel.getGraphics());
-//			this.botPanel.getGlyphCWspin().setEnabled(true);
-//			this.botPanel.getGlyphCCWspin().setEnabled(true);
-//			this.botPanel.getGlyphRandom().setEnabled(true);
+			// this.botPanel.getGlyphCWspin().setEnabled(true);
+			// this.botPanel.getGlyphCCWspin().setEnabled(true);
+			// this.botPanel.getGlyphRandom().setEnabled(true);
 		}
 
 		if (!(this.map.getCharacter(xSize, ySize) == null))
@@ -279,8 +280,6 @@ public class MapGUI extends JPanel implements MouseListener
 			this.getGraphics().drawImage(imageBuffer, xSize * DEFAULT_OCTO_SIZE, ySize * DEFAULT_OCTO_SIZE, this);
 
 		}
-		
-		
 
 	}
 
@@ -342,55 +341,65 @@ public class MapGUI extends JPanel implements MouseListener
 
 	}
 
-	public void paintGivenCell(CellPosition position,String picture)
+	public void paintGivenCell(CellPosition position, String picture)
 	{
-		this.getGraphics().drawImage(this.octo, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE, this);
+		this.getGraphics().drawImage(this.octo, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE,
+				this);
 
-		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY(),picture);
-		
+		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY(), picture);
+
 	}
-	
-	public void paintGivenCell(CellPosition position,Image img)
+
+	public void paintGivenCell(CellPosition position, Image img)
 	{
 		this.getGraphics().drawImage(img, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE, this);
 
 		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY());
-		
+
 	}
-	
-	
+
 	public void setSelectedCharacterPosition(CellPosition position)
 	{
-		if(!(this.selectedCharacterPosition==null))
+		if (!(this.selectedCharacterPosition == null))
 			printCharacter(this.getGraphics(), this.selectedCharacterPosition.getPositionX(), this.selectedCharacterPosition.getPositionY());
-		this.selectedCharacterPosition= position;
-		
+		this.selectedCharacterPosition = position;
+
 	}
-	
-	
+
 	public BottomPanel getBottomPanel()
 	{
 		return this.botPanel;
 	}
 
-	public void spellAnimation(ArrayList<CellPosition> posList,TypeGlyph typeGlyph)
+	public void spellAnimation(ArrayList<CellPosition> posList, TypeGlyph typeGlyph)
 	{
 		Image tmp = null;
-		System.out.println(typeGlyph.toString());
-		try
-		{	
-			tmp = ImageIO.read(new File("img/spells/"+typeGlyph.toString()+".png"));
-		} catch (IOException k)
+		for (int indexPict = 1; indexPict < 6; indexPict++)
 		{
-			// TODO Auto-generated catch block
-			k.printStackTrace();
-		}
-		for (CellPosition cellpos : posList)
-		{
+			try
+			{
+				tmp = ImageIO.read(new File("img/spells/" + typeGlyph.toString() + indexPict + ".png"));
+			} catch (IOException k)
+			{
+				// TODO Auto-generated catch block
+				k.printStackTrace();
+			}
+			for (CellPosition cellpos : posList)
+			{
 
-			this.paintGivenCell(cellpos, tmp);
+				this.paintGivenCell(cellpos, tmp);
+			}
+
+			try
+			{
+				Thread.sleep(100);
+			} catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
+
 		try
 		{
 			Thread.sleep(500);
@@ -399,23 +408,35 @@ public class MapGUI extends JPanel implements MouseListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 	public void buffAnimation(Cell cellTraveled, Buff buff)
 	{
 		Image tmp = null;
-		System.out.println(buff.toString());
-		try
-		{	
-			tmp = ImageIO.read(new File("img/spells/"+buff.toString()+".png"));
-		} catch (IOException k)
+		for (int indexPict = 1; indexPict < 6; indexPict++)
 		{
-			// TODO Auto-generated catch block
-			k.printStackTrace();
-		}
+			try
+			{
+				tmp = ImageIO.read(new File("img/spells/" + buff.toString()+indexPict + ".png"));
+			} catch (IOException k)
+			{
+				// TODO Auto-generated catch block
+				k.printStackTrace();
+			}
 
 			this.paintGivenCell(cellTraveled.getPosition(), tmp);
-	
+
+			try
+			{
+				Thread.sleep(100);
+			} catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 		try
 		{
 			Thread.sleep(500);
@@ -423,8 +444,8 @@ public class MapGUI extends JPanel implements MouseListener
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
-		this.paintGivenCell(cellTraveled.getPosition(),this.octo);
+		}
+		this.paintGivenCell(cellTraveled.getPosition(), this.octo);
 	}
 
 }

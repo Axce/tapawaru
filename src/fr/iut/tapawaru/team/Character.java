@@ -66,8 +66,7 @@ public class Character
 
 		this.cellTraveled = null;
 		
-		this.picture = "img/perso/" + this.team.getColorTeam().toString()
-				+ ".png";
+		this.picture = "img/perso/" + this.team.getColorTeam().toString();
 		
 		this.bottomPlayer = new BottomPlayer(team.getColorTeam(),this);
 		this.map = map;
@@ -89,7 +88,7 @@ public class Character
 	
 	public String toString()
 	{
-		return this.picture;
+		return this.picture+this.healthPoint+ ".png";
 	}
 	
 	/**
@@ -133,7 +132,7 @@ public class Character
 	public void setPicture(String s)
 	{
 
-		this.picture = "img/perso/" + s+ ".png";
+		this.picture = "img/perso/" + s;
 	}
 	
 	public Map getMap()

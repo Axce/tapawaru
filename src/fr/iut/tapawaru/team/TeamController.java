@@ -97,7 +97,6 @@ public class TeamController
 					perso.inflict(1);
 					break;
 				case FREEZING:
-					this.map.getMapGui().buffAnimation(perso.getCellTraveled(),perso.getBuff());
 					break;
 				case DEAD:
 					break;

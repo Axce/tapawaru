@@ -236,6 +236,11 @@ public class BottomPanel extends JPanel implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
+		if(e.getKeyChar() =='u')
+		{
+			this.map.getTeamController().skipTurn();
+			this.repaint();
+		}
 		if (this.caseSelected)
 		{
 
@@ -440,26 +445,25 @@ public class BottomPanel extends JPanel implements KeyListener
 			case 'q':
 				if (this.map.getSelectedCell() == null)
 				{
-					// Image tmp = null;
-					// try
-					// {
-					// tmp = ImageIO.read(new File("img/octoSelectable.png"));
-					// } catch (IOException k)
-					// {
-					// // TODO Auto-generated catch block
-					// k.printStackTrace();
-					// }
-					// for(CellPosition cellpos: Move.getAccessiblePos(this.map,
-					// this.characterSelected))
-					// {
-					//
-					// this.mapGui.paintGivenCell(cellpos, tmp);
-					// }
+//					 Image tmp = null;
+//					 try
+//					 {
+//					 tmp = ImageIO.read(new File("img/octoSelectable.png"));
+//					 } catch (IOException k)
+//					 {
+//					 // TODO Auto-generated catch block
+//					 k.printStackTrace();
+//					 }
+//					 for(CellPosition cellpos: Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),false))
+//					 {
+//					
+//					 this.mapGui.paintGivenCell(cellpos, tmp);
+//					 }
 
 				} else
 				{
 					
-					Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
+					Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
 					this.characterSelected = null;
@@ -480,25 +484,24 @@ public class BottomPanel extends JPanel implements KeyListener
 			case 's':
 				if (this.map.getSelectedCell() == null)
 				{
-					// Image tmp = null;
-					// try
-					// {
-					// tmp = ImageIO.read(new File("img/octoSelectable.png"));
-					// } catch (IOException k)
-					// {
-					// // TODO Auto-generated catch block
-					// k.printStackTrace();
-					// }
-					// for(CellPosition cellpos: Move.getAccessiblePos(this.map,
-					// this.characterSelected))
-					// {
-					//
-					// this.mapGui.paintGivenCell(cellpos, tmp);
-					// }
+//					 Image tmp = null;
+//					 try
+//					 {
+//					 tmp = ImageIO.read(new File("img/octoAffect.png"));
+//					 } catch (IOException k)
+//					 {
+//					 // TODO Auto-generated catch block
+//					 k.printStackTrace();
+//					 }
+//					 for(CellPosition cellpos: Attack.aroundCaster(this.map, this.characterSelected,false))
+//					 {
+//					
+//					 this.mapGui.paintGivenCell(cellpos, tmp);
+//					 }
 
 				} else
 				{
-					Attack.aroundCaster(this.map, this.characterSelected);
+					Attack.aroundCaster(this.map, this.characterSelected,true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
 					this.characterSelected = null;
@@ -519,25 +522,24 @@ public class BottomPanel extends JPanel implements KeyListener
 			case 'd':
 				if (this.map.getSelectedCell() == null)
 				{
-					// Image tmp = null;
-					// try
-					// {
-					// tmp = ImageIO.read(new File("img/octoSelectable.png"));
-					// } catch (IOException k)
-					// {
-					// // TODO Auto-generated catch block
-					// k.printStackTrace();
-					// }
-					// for(CellPosition cellpos: Move.getAccessiblePos(this.map,
-					// this.characterSelected))
-					// {
-					//
-					// this.mapGui.paintGivenCell(cellpos, tmp);
-					// }
-					//
+//					 Image tmp = null;
+//					 try
+//					 {
+//					 tmp = ImageIO.read(new File("img/octoAffect.png"));
+//					 } catch (IOException k)
+//					 {
+//					 // TODO Auto-generated catch block
+//					 k.printStackTrace();
+//					 }
+//					 for(CellPosition cellpos: Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),false))
+//					 {
+//					
+//					 this.mapGui.paintGivenCell(cellpos, tmp);
+//					 }
+					
 				} else
 				{
-					Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
+					Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(),true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
 					this.characterSelected = null;
