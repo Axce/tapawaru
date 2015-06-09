@@ -252,9 +252,11 @@ public class BottomPanel extends JPanel implements KeyListener
 		switch (e.getKeyChar())
 		{
 		case 'a':
-			
+			if(!this.map.getTeamController().getPlayingTeam().getCharacter()[0].isAlive())
+				break;
 			if(this.characterSelected==null)
 			{
+				
 				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
 				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[0];
 				this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition());
@@ -300,6 +302,8 @@ public class BottomPanel extends JPanel implements KeyListener
 			//this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition());
 			break;
 		case 'z':
+			if(!this.map.getTeamController().getPlayingTeam().getCharacter()[1].isAlive())
+				break;
 			if(this.characterSelected==null)
 			{
 				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[1].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
@@ -345,6 +349,8 @@ public class BottomPanel extends JPanel implements KeyListener
 			this.repaint();
 			break;
 		case 'e':
+			if(!this.map.getTeamController().getPlayingTeam().getCharacter()[2].isAlive())
+				break;
 			if(this.characterSelected==null)
 			{
 				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[2].getCellTraveled().getPosition(),this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
