@@ -209,11 +209,12 @@ public class BottomPanel extends JPanel implements KeyListener
 		{
 						/* *****************************Character 1******************* */
 		case 'a':
+			if(!(this.map.getSelectedCell()==null))
+				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(),this.map.getSelectedCell().getPosition().getPositionY());
 			if (!this.map.getTeamController().getPlayingTeam().getCharacter()[0].isAlive())
 				break;
 			if (this.characterSelected == null)
 			{
-
 				this.mapGui.paintGivenCell(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition(),
 						this.map.getTeamController().getPlayingTeam().getColorTeam() + "Selected");
 				this.characterSelected = this.map.getTeamController().getPlayingTeam().getCharacter()[0];
@@ -258,12 +259,13 @@ public class BottomPanel extends JPanel implements KeyListener
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
 			}
 			this.repaint();
 			break;
 							/* *****************************Character 2******************* */
 		case 'z':
+			if(!(this.map.getSelectedCell()==null))
+				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(),this.map.getSelectedCell().getPosition().getPositionY());
 			if (!this.map.getTeamController().getPlayingTeam().getCharacter()[1].isAlive())
 				break;
 			if (this.characterSelected == null)
@@ -318,6 +320,8 @@ public class BottomPanel extends JPanel implements KeyListener
 			break;
 						/* *****************************Character 3******************* */
 		case 'e':
+			if(!(this.map.getSelectedCell()==null))
+				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(),this.map.getSelectedCell().getPosition().getPositionY());
 			if (!this.map.getTeamController().getPlayingTeam().getCharacter()[2].isAlive())
 				break;
 			if (this.characterSelected == null)
