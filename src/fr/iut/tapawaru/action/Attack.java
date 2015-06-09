@@ -125,7 +125,7 @@ public class Attack extends Spell
 	 * o****x****
 	 * 
 	 */
-	public static ArrayList<CellPosition> laserBeam(Map map, Character caster, CellPosition target)
+	public static ArrayList<CellPosition> laserBeam(Map map, Character caster, CellPosition target, boolean execute)
 	{
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 
@@ -183,7 +183,7 @@ public class Attack extends Spell
 				}
 			}
 			
-			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			if (execute) executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
 		}
 		
 		return cellList;
@@ -197,7 +197,7 @@ public class Attack extends Spell
 	 *   *o*
 	 *   ***
 	 */
-	public static ArrayList<CellPosition> aroundCaster(Map map, Character caster)
+	public static ArrayList<CellPosition> aroundCaster(Map map, Character caster, boolean execute)
 	{
 
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
@@ -218,7 +218,7 @@ public class Attack extends Spell
 				}
 			}
 			
-			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			if (execute) executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
 
 		}
 
@@ -235,7 +235,7 @@ public class Attack extends Spell
 	 * o   *X*
 	 *      *
 	 */
-	public static ArrayList<CellPosition> flowerBomb(Map map, Character caster, CellPosition target)
+	public static ArrayList<CellPosition> flowerBomb(Map map, Character caster, CellPosition target, boolean execute)
 	{
 		
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
@@ -271,7 +271,7 @@ public class Attack extends Spell
 				x < map.getXSize() && y < map.getYSize())
 				cellList.add(new CellPosition(x, y));
 			
-			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			if (execute) executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
 
 		}
 
