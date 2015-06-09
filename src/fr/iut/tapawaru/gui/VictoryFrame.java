@@ -3,10 +3,8 @@ package fr.iut.tapawaru.gui;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import fr.iut.tapawaru.Main;
 import fr.iut.tapawaru.map.Map;
 import fr.iut.tapawaru.team.Team;
-import fr.iut.tapawaru.team.TeamColor;
 
 public class VictoryFrame extends JFrame
 {
