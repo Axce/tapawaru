@@ -50,8 +50,8 @@ public class Attack extends Spell
 				{
 					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
 					{
-						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
 						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.BURNING);
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
 					}
 				}
 				break;
@@ -61,8 +61,8 @@ public class Attack extends Spell
 				{
 					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
 					{
-						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
 						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).setBuff(Buff.FREEZING);
+						map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()).inflict(2);
 					}
 
 				}
@@ -74,10 +74,11 @@ public class Attack extends Spell
 					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
 					{
 						Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
-						pers.inflict(1);
 						
 						if (pers.getBuff() == Buff.BURNING)
 							pers.setBuff(Buff.NORMAL);
+						
+						pers.inflict(1);
 					}
 
 						
@@ -90,10 +91,11 @@ public class Attack extends Spell
 					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
 					{
 						Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
-						pers.inflict(1);
 						
 						if (pers.getBuff() == Buff.BURNING)
 							pers.setBuff(Buff.NORMAL);
+						
+						pers.inflict(1);
 					}
 
 				}
