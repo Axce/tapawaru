@@ -26,7 +26,7 @@ public enum TypeGlyph {
     private final String display;
     
     /** The number of type available. */
-    public final static int NUMBER_OF_TYPE = 8; 
+    public final static int NUMBER_OF_TYPE = 4; 
     
 	/////// Constructor ////////////////////////////////////////
 
@@ -61,17 +61,17 @@ public enum TypeGlyph {
 		case 0:
 			return TypeGlyph.FIRE;
 		case 1:
-			return TypeGlyph.EARTH;
-		case 2:
-			return TypeGlyph.WATER;
-		case 3:
 			return TypeGlyph.AIR;
+		case 2:
+			return TypeGlyph.ICE;
+		case 3:
+			return TypeGlyph.HOLY;
 		case 4:
 			return TypeGlyph.THUNDER;
 		case 5:
-			return TypeGlyph.ICE;
+			return TypeGlyph.WATER;
 		case 6:
-			return TypeGlyph.HOLY;
+			return TypeGlyph.EARTH;
 		case 7:
 			return TypeGlyph.DARK;
 		}
