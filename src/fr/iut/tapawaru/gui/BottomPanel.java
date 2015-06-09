@@ -162,15 +162,19 @@ public class BottomPanel extends JPanel implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
+		/* ****************************************END OF TURN******************************************** */		
 		if (e.getKeyChar() == 'u')
 		{
 			this.map.getTeamController().skipTurn();
 			this.repaint();
 		}
+		
+		/* ****************************************TERRA******************************************** */
 		if (this.caseSelected)
 		{
 			switch (e.getKeyChar())
 			{
+						/* *****************************Counter Clock Spin******************* */
 			case 'w':
 				Terra.glyphCCWspin(this.map, map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
@@ -178,6 +182,7 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPositionY());
 				this.paint(this.getGraphics());
 				break;
+						/* *****************************Clock Spin******************* */
 			case 'x':
 				Terra.glyphCWspin(this.map, map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
@@ -186,6 +191,7 @@ public class BottomPanel extends JPanel implements KeyListener
 				this.paint(this.getGraphics());
 
 				break;
+						/* *****************************Random******************* */
 			case 'c':
 				Terra.glyphRandom(this.map, map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
@@ -193,11 +199,15 @@ public class BottomPanel extends JPanel implements KeyListener
 						.getPositionY());
 				this.paint(this.getGraphics());
 				break;
+						/* *****************************Invalid Input******************* */
 			default:
 			}
 		}
+		
+		/* ****************************************Character Selection******************************************** */		
 		switch (e.getKeyChar())
 		{
+						/* *****************************Character 1******************* */
 		case 'a':
 			if (!this.map.getTeamController().getPlayingTeam().getCharacter()[0].isAlive())
 				break;
@@ -231,7 +241,6 @@ public class BottomPanel extends JPanel implements KeyListener
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
 			} else
 			{
 				this.mapGui.paintGivenCell(this.characterSelected.getCellTraveled().getPosition(), this.map.getTeamController()
@@ -252,8 +261,8 @@ public class BottomPanel extends JPanel implements KeyListener
 
 			}
 			this.repaint();
-			// this.mapGui.setSelectedCharacterPosition(this.map.getTeamController().getPlayingTeam().getCharacter()[0].getCellTraveled().getPosition());
 			break;
+							/* *****************************Character 2******************* */
 		case 'z':
 			if (!this.map.getTeamController().getPlayingTeam().getCharacter()[1].isAlive())
 				break;
@@ -307,6 +316,7 @@ public class BottomPanel extends JPanel implements KeyListener
 			}
 			this.repaint();
 			break;
+						/* *****************************Character 3******************* */
 		case 'e':
 			if (!this.map.getTeamController().getPlayingTeam().getCharacter()[2].isAlive())
 				break;
@@ -362,34 +372,19 @@ public class BottomPanel extends JPanel implements KeyListener
 			break;
 		default:
 		}
+		
+		/* ****************************************SPELLS******************************************** */
 		if (!(this.characterSelected == null))
 		{
-
+						/* *****************************Laser Beam******************* */
 			switch (e.getKeyChar())
 			{
 			case 'q':
 				if (this.map.getSelectedCell() == null)
 				{
-					// Image tmp = null;
-					// try
-					// {
-					// tmp = ImageIO.read(new File("img/octoSelectable.png"));
-					// } catch (IOException k)
-					// {
-					// // TODO Auto-generated catch block
-					// k.printStackTrace();
-					// }
-					// for(CellPosition cellpos: Attack.laserBeam(this.map,
-					// this.characterSelected,
-					// this.map.getSelectedCell().getPosition(),false))
-					// {
-					//
-					// this.mapGui.paintGivenCell(cellpos, tmp);
-					// }
-
+					// TODO You must select before cast a spell
 				} else
 				{
-
 					Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(), true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
@@ -405,30 +400,10 @@ public class BottomPanel extends JPanel implements KeyListener
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-
 				}
 				break;
+						/* *****************************Around Caster******************* */
 			case 's':
-				if (this.map.getSelectedCell() == null)
-				{
-					// Image tmp = null;
-					// try
-					// {
-					// tmp = ImageIO.read(new File("img/octoAffect.png"));
-					// } catch (IOException k)
-					// {
-					// // TODO Auto-generated catch block
-					// k.printStackTrace();
-					// }
-					// for(CellPosition cellpos: Attack.aroundCaster(this.map,
-					// this.characterSelected,false))
-					// {
-					//
-					// this.mapGui.paintGivenCell(cellpos, tmp);
-					// }
-
-				} else
-				{
 					Attack.aroundCaster(this.map, this.characterSelected, true);
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());
@@ -442,31 +417,14 @@ public class BottomPanel extends JPanel implements KeyListener
 					} catch (IOException e1)
 					{
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-
+						e1.printStackTrace();		
 				}
 				break;
+						/* *****************************Flower Bomb******************* */
 			case 'd':
 				if (this.map.getSelectedCell() == null)
 				{
-					// Image tmp = null;
-					// try
-					// {
-					// tmp = ImageIO.read(new File("img/octoAffect.png"));
-					// } catch (IOException k)
-					// {
-					// // TODO Auto-generated catch block
-					// k.printStackTrace();
-					// }
-					// for(CellPosition cellpos: Attack.flowerBomb(this.map,
-					// this.characterSelected,
-					// this.map.getSelectedCell().getPosition(),false))
-					// {
-					//
-					// this.mapGui.paintGivenCell(cellpos, tmp);
-					// }
-
+					// TODO You must select before cast a spell
 				} else
 				{
 					Attack.flowerBomb(this.map, this.characterSelected, this.map.getSelectedCell().getPosition(), true);
@@ -487,6 +445,7 @@ public class BottomPanel extends JPanel implements KeyListener
 
 				}
 				break;
+					/* *****************************Move******************* */
 			case ' ':
 				if (this.map.getSelectedCell() == null)
 				{
@@ -528,7 +487,6 @@ public class BottomPanel extends JPanel implements KeyListener
 			default:
 			}
 		}
-
 	}
 
 	@Override

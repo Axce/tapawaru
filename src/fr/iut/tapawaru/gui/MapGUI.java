@@ -333,6 +333,7 @@ public class MapGUI extends JPanel implements MouseListener
 		Image tmp = null;
 		for (int indexPict = 1; indexPict < 6; indexPict++)
 		{
+			System.out.println( typeGlyph.toString() + indexPict);
 			try
 			{
 				tmp = ImageIO.read(new File("img/spells/" + typeGlyph.toString() + indexPict + ".png"));
