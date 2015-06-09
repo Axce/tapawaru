@@ -5,12 +5,14 @@ import javax.swing.WindowConstants;
 
 import fr.iut.tapawaru.Main;
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.team.Team;
+import fr.iut.tapawaru.team.TeamColor;
 
 public class VictoryFrame extends JFrame
 {
-	public VictoryFrame(Map map)
+	public VictoryFrame(Map map, Team team)
 	{
-		Main.mainFrame.dispose();
+		//Main.mainFrame.dispose();
 		this.setTitle("Tapawaru");
 		this.pack();
 		this.setVisible(true);

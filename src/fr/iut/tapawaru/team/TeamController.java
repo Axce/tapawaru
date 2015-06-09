@@ -1,5 +1,6 @@
 package fr.iut.tapawaru.team;
 
+import fr.iut.tapawaru.gui.VictoryFrame;
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Map;
 
@@ -153,7 +154,7 @@ public class TeamController
 	 */
 	private void win(Team gloriousTeam)
 	{
-		
+		new VictoryFrame(map, gloriousTeam);
 	}
 	
 }
