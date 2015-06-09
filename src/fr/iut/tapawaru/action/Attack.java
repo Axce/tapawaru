@@ -22,7 +22,7 @@ import fr.iut.tapawaru.team.Character;
 public class Attack extends Spell
 {
 	/**
-	 * chooses a rendom type among the 4 adjacent glyphs
+	 * chooses a random type among the 4 adjacent glyphs
 	 */
 	private static TypeGlyph getAttackType(Map map, Cell cellCastingFrom)
 	{

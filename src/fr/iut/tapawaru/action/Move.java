@@ -25,14 +25,11 @@ public class Move extends Action
 		
 		if (getAccessiblePos(map, pers).contains(target))
 		{
-			System.out.println("ok");
 			if (map.getTeamController().deduct(deltaX + deltaY))
 			{
 				map.moveCharacter(pers, target);
 			}
 		}
-		else
-			System.out.println("nul");
 	}
 	
 	public static ArrayList<CellPosition> getAccessiblePos(Map map, Character pers)
