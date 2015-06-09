@@ -4,15 +4,22 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import fr.iut.tapawaru.map.Map;
 
+/**
+ * The Main container of the game's GUI.
+ * @author jpelloux
+ */
 public class MainFrame extends JFrame
 {
+	/**
+	 * Constructor of the map.
+	 * Create the MapGui and the BottomPannel.
+	 * @param map The Map used to create the MapGUI.
+	 */
 	public MainFrame(Map map){
 		this.setTitle("Tapawaru");
 		
@@ -30,7 +37,6 @@ public class MainFrame extends JFrame
 		c.gridy = 0;
 		this.add(mapGui,c);
 		
-		
 		BottomPanel botPanel = new BottomPanel(map);
 		botPanel.setPreferredSize(new Dimension(mapGui.guiMapSize()[0],250));
 		c.fill = GridBagConstraints.BOTH;
@@ -47,10 +53,7 @@ public class MainFrame extends JFrame
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		
+		this.setResizable(false);
 		map.setMapGui(mapGui);
-
-	}
-	
-	
+	}	
 }

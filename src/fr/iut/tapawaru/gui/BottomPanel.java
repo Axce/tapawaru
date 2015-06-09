@@ -31,8 +31,6 @@ public class BottomPanel extends JPanel implements KeyListener
 	
 			/* *****************************Utility******************* */
 	private Map map;
-	private BottomPlayer[] team1Bottom;
-	private BottomPlayer[] team2Bottom;
 	private boolean caseSelected;
 	private MapGUI mapGui;
 	private Character characterSelected;
@@ -81,7 +79,7 @@ public class BottomPanel extends JPanel implements KeyListener
 			e.printStackTrace();
 		}
 		g.drawImage(tmp, 0, 0, this);
-		paintPA(g, tmp);
+		paintPA(g);
 		this.caseSelected = true;
 
 	}
@@ -98,31 +96,32 @@ public class BottomPanel extends JPanel implements KeyListener
 			e.printStackTrace();
 		}
 		g.drawImage(tmp, 0, 0, this);
-		paintPA(g, tmp);
+		paintPA(g);
 		this.caseSelected = false;
 	}
 
-	private void paintPA(Graphics g, Image tmp)
+	private void paintPA(Graphics g)
 	{
+		Image tmp = null;
 		switch (this.map.getTeamController().getPlayingTeam().getActionPointsLeft())
 		{
 		case 0:
-			tmp = apLeft0;
+			tmp = this.apLeft0;
 			break;
 		case 1:
-			tmp = apLeft1;
+			tmp = this.apLeft1;
 			break;
 		case 2:
-			tmp = apLeft2;
+			tmp = this.apLeft2;
 			break;
 		case 3:
-			tmp = apLeft3;
+			tmp = this.apLeft3;
 			break;
 		case 4:
-			tmp = apLeft4;
+			tmp = this.apLeft4;
 			break;
 		case 5:
-			tmp = apLeft5;
+			tmp = this.apLeft5;
 			break;
 		}
 
@@ -134,9 +133,9 @@ public class BottomPanel extends JPanel implements KeyListener
 	{
 		this.paintTerraStateUnselected(g);
 
-		g.drawImage(right, 375, 0, this);
+		g.drawImage(this.right, 375, 0, this);
 
-		paintPA(g, right);
+		paintPA(g);
 
 		this.printHp(g);
 
@@ -146,15 +145,15 @@ public class BottomPanel extends JPanel implements KeyListener
 	{
 		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[0].getHealthPoint(); index++)
 		{
-			g.drawImage(hpBar, 400, 15 + 10 * index, this);
+			g.drawImage(this.hpBar, 400, 15 + 10 * index, this);
 		}
 		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[1].getHealthPoint(); index++)
 		{
-			g.drawImage(hpBar, 512, 15 + 10 * index, this);
+			g.drawImage(this.hpBar, 512, 15 + 10 * index, this);
 		}
 		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[2].getHealthPoint(); index++)
 		{
-			g.drawImage(hpBar, 640, 15 + 10 * index, this);
+			g.drawImage(this.hpBar, 640, 15 + 10 * index, this);
 		}
 	}
 	
@@ -176,26 +175,26 @@ public class BottomPanel extends JPanel implements KeyListener
 			{
 						/* *****************************Counter Clock Spin******************* */
 			case 'w':
-				Terra.glyphCCWspin(this.map, map.getSelectedCell().getPosition());
+				Terra.glyphCCWspin(this.map, this.map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
-				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
+				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(), this.map.getSelectedCell().getPosition()
 						.getPositionY());
 				this.paint(this.getGraphics());
 				break;
 						/* *****************************Clock Spin******************* */
 			case 'x':
-				Terra.glyphCWspin(this.map, map.getSelectedCell().getPosition());
+				Terra.glyphCWspin(this.map, this.map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
-				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
+				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(), this.map.getSelectedCell().getPosition()
 						.getPositionY());
 				this.paint(this.getGraphics());
 
 				break;
 						/* *****************************Random******************* */
 			case 'c':
-				Terra.glyphRandom(this.map, map.getSelectedCell().getPosition());
+				Terra.glyphRandom(this.map, this.map.getSelectedCell().getPosition());
 				this.mapGui.printGlyph(this.mapGui.getGraphics());
-				this.mapGui.changeCellState(map.getSelectedCell().getPosition().getPositionX(), map.getSelectedCell().getPosition()
+				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(), this.map.getSelectedCell().getPosition()
 						.getPositionY());
 				this.paint(this.getGraphics());
 				break;

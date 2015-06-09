@@ -1,28 +1,7 @@
 package fr.iut.tapawaru.team;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
-import fr.iut.tapawaru.gui.BottomPlayer;
 import fr.iut.tapawaru.map.Cell;
-import fr.iut.tapawaru.map.CellPosition;
-
-
-
-
 import fr.iut.tapawaru.map.Map;
-
-import java.awt.Component;
-/**
- * Character of a team. Contained in the listCharacter attribute.
- * 
- * @authors CEARD, MATHEY, MOUNIER,
- * @authors PELLOUX-PRAYER, PRADELLE
- */
-import java.awt.Image;
 
 public class Character
 {
@@ -39,8 +18,6 @@ public class Character
 	private Cell	cellTraveled;
 	
 	private String	picture;
-
-	private BottomPlayer bottomPlayer;
 
 	private int maxHealthPoint;
 	
@@ -68,7 +45,6 @@ public class Character
 		
 		this.picture = "img/perso/" + this.team.getColorTeam().toString();
 		
-		this.bottomPlayer = new BottomPlayer(team.getColorTeam(),this);
 		this.map = map;
 		this.buff = Buff.NORMAL;
 	}
@@ -96,7 +72,7 @@ public class Character
 	 */
 	public void kill()
 	{
-		map.putCharacter(null, this.cellTraveled.getPosition());
+		this.map.putCharacter(null, this.cellTraveled.getPosition());
 		this.cellTraveled = null;
 		this.setBuff(Buff.DEAD);
 		this.map.getMapGui().repaint();
@@ -105,18 +81,12 @@ public class Character
 	
 	public Cell getCellTraveled()
 	{
-		return cellTraveled;
+		return this.cellTraveled;
 	}
 	
 	public void setCell(Cell cell)
 	{
 		this.cellTraveled = cell;
-	}
-
-	public BottomPlayer getBottomPlayer()
-	{
-		// TODO Auto-generated method stub
-		return this.bottomPlayer;
 	}
 	
 	public int getDefaultHealthPoint()
