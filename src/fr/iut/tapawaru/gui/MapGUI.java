@@ -18,33 +18,80 @@ import fr.iut.tapawaru.map.Map;
 import fr.iut.tapawaru.team.Buff;
 import fr.iut.tapawaru.map.TypeGlyph;
 
+/**
+ * Gui manager of the top part of the mainFrame.
+ * Here we can see the map with glyph and cell , players , spell's animation...
+ * @author jpelloux
+ *
+ */
 public class MapGUI extends JPanel implements MouseListener
 {
 	/* ****************************************ATTRIBUTS******************************************** */
 			/* *****************************Images size******************* */
+	/** Default size of a cell picture.*/
 	private static final int DEFAULT_OCTO_SIZE = 50;
 
-			/* *****************************Images******************* */
+				/* ***************************** Cell Images******************* */
+	/** The default cell image */
 	private Image octo;
+	
+	/** The cell image for when the cell is Selected*/
 	private Image octoSelected;
 
+				/* ***************************** Glyph Images******************* */
+	/** Fire Glyph image. */
 	private Image glyphFire;
+	
+	/** Air Glyph image. */
 	private Image glyphAir;
+	
+	/** Earth Glyph image. */
 	private Image glyphEarth;
+	
+	/** Ice Glyph image. */
 	private Image glyphIce;
+	
+	/** Thunder Glyph image. */
 	private Image glyphThunder;
+	
+	/** Water Glyph image. */
 	private Image glyphWater;
+	
+	/** Holy Glyph image. */
 	private Image glyphHoly;
+	
+	/** Dark Glyph image. */
 	private Image glyphDark;
+
+	/** Border of each glyph */
 	private Image glyphPattern;
 
+	/* ***************************** Buff Images******************* */
+	/** Fire buff Image. */
+	private Image buffBurning ;
+
+	/** Ice buff Image. */
+	private Image buffFreezing;
+
 			/* *****************************Utility******************* */
+	/** The map we are displaying. */
 	private Map map;
+	
+	/** The cell which is actually selected. */
 	private Cell selectedCell;
+	
+	/** The BottomPanel of the MainFrame. */
 	private BottomPanel botPanel;
+	
+	/** Selected Charater's position. */
 	private CellPosition selectedCharacterPosition;
 
 	/* ****************************************CONSTRUCTORS******************************************** */
+	/**
+	 * Constructor of MapGui.
+	 * Mainly init the glyph's ,buff's pictures and cell's pictures.
+	 * @param map the Map we want to display.
+	 */
 	public MapGUI(Map map)
 	{
 		try
@@ -62,6 +109,9 @@ public class MapGUI extends JPanel implements MouseListener
 			this.glyphDark = ImageIO.read(new File("img/glyphDark.png"));
 			this.glyphPattern = ImageIO.read(new File("img/glyphPattern.png"));
 
+			this.buffBurning = ImageIO.read(new File("img/perso/buffBurning.png"));
+			this.buffFreezing = ImageIO.read(new File("img/perso/buffFreezing.png"));
+			
 			this.addMouseListener(this);
 
 			this.map = map;
@@ -78,6 +128,30 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/* ****************************************GETTERS / SETTERS *************************************** */
+				/* *****************************BottomPanel******************* */
+	/**
+	 * @return this.botPanel
+	 */
+	public BottomPanel getBottomPanel()
+	{
+		return this.botPanel;
+	}
+	
+	/**
+	 * Set the BotttomPanel linked with this MapGUI.
+	 *  @param botPanel the MainFrame BottomPanel.
+	 */
+	public void addBotPanel(BottomPanel botPanel)
+	{
+		this.botPanel = botPanel;
+		this.addKeyListener(this.botPanel);
+	}
+
+				/* *****************************Utility******************* */
+	/**
+	 * Set the selected character position.
+	 * @param position new selected character position.
+	 */
 	public void setSelectedCharacterPosition(CellPosition position)
 	{
 		if (!(this.selectedCharacterPosition == null))
@@ -85,11 +159,9 @@ public class MapGUI extends JPanel implements MouseListener
 		this.selectedCharacterPosition = position;
 	}
 
-	public BottomPanel getBottomPanel()
-	{
-		return this.botPanel;
-	}
-	
+	/**
+	 * @return The map size.
+	 */
 	public int[] guiMapSize()
 	{
 		int[] mapSize = new int[2];
@@ -98,43 +170,47 @@ public class MapGUI extends JPanel implements MouseListener
 		return mapSize;
 	}
 	
-	public void addBotPanel(BottomPanel botPanel)
-	{
-		this.botPanel = botPanel;
-		this.addKeyListener(this.botPanel);
-	}
-
 	/* ****************************************MAP DISPLAY TOOLS******************************************** */
 				/* *****************************Cells******************* */
+	/**
+	 * Paint given position with a default cell but a "string" path character picture.
+	 * @param position Position's of the cell to paint.
+	 * @param picture Picture to pain at this position.
+	 */
 	public void paintGivenCell(CellPosition position, String picture)
 	{
 		this.getGraphics().drawImage(this.octo, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE,
 				this);
-
 		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY(), picture);
-
 	}
 	
+	/**
+	 * Paint the given picture at the given position.
+	 * @param position Position's of the cell to paint.
+	 * @param picture Picture to pain at this position.
+	 */
 	public void paintGivenCell(CellPosition position, Image img)
 	{
 		this.getGraphics().drawImage(img, position.getPositionX() * DEFAULT_OCTO_SIZE, position.getPositionY() * DEFAULT_OCTO_SIZE, this);
-
 		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY());
-
 	}
 	
+	/**
+	 * Change the state of the cell at the given position.
+	 * @param xSize xPosition of the cell.
+	 * @param ySize yPosition of the cell.
+	 */
 	public void changeCellState(int xSize, int ySize)
 	{
 		boolean goSelected = true;
 
 		if (!(this.selectedCell == null))
 		{
-
 			this.getGraphics().drawImage(this.octo, this.selectedCell.getPosition().getPositionX() * DEFAULT_OCTO_SIZE,
 					this.selectedCell.getPosition().getPositionY() * DEFAULT_OCTO_SIZE, this);
 			this.map.getCell(new CellPosition(xSize, ySize)).setIsSelected(false);
 
-			this.printCharacter(this.getGraphics(), selectedCell.getPosition().getPositionX(), selectedCell.getPosition().getPositionY());
+			this.printCharacter(this.getGraphics(), this.selectedCell.getPosition().getPositionX(), this.selectedCell.getPosition().getPositionY());
 			if ((this.selectedCell.getPosition().getPositionX() == xSize) && (this.selectedCell.getPosition().getPositionY() == ySize))
 			{
 				goSelected = false;
@@ -142,7 +218,7 @@ public class MapGUI extends JPanel implements MouseListener
 			this.selectedCell = null;
 			this.map.setSelectedCell(null);
 
-			this.botPanel.paintTerraStateUnselected(botPanel.getGraphics());
+			this.botPanel.paintTerraStateUnselected(this.botPanel.getGraphics());
 		}
 
 		if (goSelected)
@@ -152,7 +228,7 @@ public class MapGUI extends JPanel implements MouseListener
 			this.selectedCell = this.map.getCell(new CellPosition(xSize, ySize));
 			this.map.setSelectedCell(this.map.getCell(new CellPosition(xSize, ySize)));
 
-			this.botPanel.paintTerraStateSelected(botPanel.getGraphics());
+			this.botPanel.paintTerraStateSelected(this.botPanel.getGraphics());
 		}
 
 		if (!(this.map.getCharacter(xSize, ySize) == null))
@@ -172,6 +248,11 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 
+	/**
+	 * Default cell printing.
+	 * Print cell and character.
+	 * @param g this.getGraphics()
+	 */
 	public void printCell(Graphics g)
 	{
 		for (int xSize = 0; xSize < this.map.getXSize(); xSize++)
@@ -182,11 +263,14 @@ public class MapGUI extends JPanel implements MouseListener
 
 				printCharacter(g, xSize, ySize);
 			}
-
 		}
 	}
 
 				/* *****************************Glyphs******************* */
+	/**
+	 * Default glyph displaying.
+	 * @param g this.getGraphics()
+	 */
 	public void printGlyph(Graphics g)
 	{
 		for (int xSize = 0; xSize < this.map.getXSize() + 1; xSize++)
@@ -196,38 +280,38 @@ public class MapGUI extends JPanel implements MouseListener
 
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.FIRE)
 				{
-					g.drawImage(glyphFire, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphFire, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.AIR)
 				{
-					g.drawImage(glyphAir, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphAir, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.EARTH)
 				{
-					g.drawImage(glyphEarth, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphEarth, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.ICE)
 				{
-					g.drawImage(glyphIce, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphIce, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.THUNDER)
 				{
-					g.drawImage(glyphThunder, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphThunder, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.WATER)
 				{
-					g.drawImage(glyphWater, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphWater, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.HOLY)
 				{
-					g.drawImage(glyphHoly, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphHoly, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 				if (this.map.getTypeOfGlyph(new GlyphPosition(xSize, ySize)) == TypeGlyph.DARK)
 				{
-					g.drawImage(glyphDark, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+					g.drawImage(this.glyphDark, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 				}
 
-				g.drawImage(glyphPattern, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
+				g.drawImage(this.glyphPattern, xSize * DEFAULT_OCTO_SIZE - 15, ySize * DEFAULT_OCTO_SIZE - 15, this);
 
 			}
 
@@ -235,6 +319,14 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 				/* *****************************Characters******************* */
+	/**
+	 * Method to print Character with a particular picture.
+	 * "img/perso/" + picture + this.map.getCharacter(xSize, ySize).getHealthPoint() + ".png".
+	 * @param g this.getGraphics()
+	 * @param xSize xPosition of the Character.
+	 * @param ySize yPosition of the Character.
+	 * @param picture "img/perso/" + picture + this.map.getCharacter(xSize, ySize).getHealthPoint() + ".png"
+	 */
 	public void printCharacter(Graphics g, int xSize, int ySize, String picture)
 	{
 		if (!(this.map.getCharacter(xSize, ySize) == null))
@@ -256,6 +348,13 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 	
+	/**
+	 * Default method to print Character.
+	 * Print the Character at the given position.
+	 * @param g this.getGraphics()
+	 * @param xSize xPosition of the Character.
+	 * @param ySize yPosition of the Character.
+	 */
 	private void printCharacter(Graphics g, int xSize, int ySize)
 	{
 		if (!(this.map.getCharacter(xSize, ySize) == null))
@@ -277,6 +376,12 @@ public class MapGUI extends JPanel implements MouseListener
 		}
 	}
 
+	/**
+	 * Print the buff affected to a Character at the given position.
+	 * @param g this.getGraphics()
+	 * @param xSize xPosition of the Character.
+	 * @param ySize yPosition of the Character.
+	 */
 	private void paintBuff(Graphics g, int xSize, int ySize)
 	{
 		Image imageBuffer = null;
@@ -285,25 +390,10 @@ public class MapGUI extends JPanel implements MouseListener
 			switch (this.map.getCharacter(xSize, ySize).getBuff())
 			{
 			case BURNING:
-				try
-				{
-					imageBuffer = ImageIO.read(new File("img/perso/buffBurning.png"));
-				} catch (IOException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				imageBuffer = this.buffBurning;
 				break;
 			case FREEZING:
-				try
-				{
-					imageBuffer = ImageIO.read(new File("img/perso/buffFreezing.png"));
-				} catch (IOException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-
-				}
+				imageBuffer = this.buffFreezing;
 				break;
 			default:
 			}
@@ -312,6 +402,11 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 				/* *****************************Components******************* */	
+	/**
+	 * Default method to print map.
+	 * Call printCell and printGlyph.
+	 * @param g this.getGraphics()
+	 */
 	@Override
 	public void paintComponent(Graphics g)
 	{
@@ -319,6 +414,10 @@ public class MapGUI extends JPanel implements MouseListener
 		this.printGlyph(g);
 	}
 
+	/**
+	 * Default method to print map.
+	 * Call printCell and printGlyph.
+	 */
 	public void paintComponent()
 	{
 		this.printCell(this.getGraphics());
@@ -326,7 +425,11 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 	
 	/* ****************************************ANIMATION DISPLAY******************************************** */
-	
+	/**
+	 * Display the animation of a spell.
+	 * @param posList list of position affected by the spell.
+	 * @param typeGlyph type of the spell.
+	 */
 	public void spellAnimation(ArrayList<CellPosition> posList, TypeGlyph typeGlyph)
 	{
 		Image tmp = null;
@@ -368,6 +471,11 @@ public class MapGUI extends JPanel implements MouseListener
 
 	}
 
+	/**
+	 * Display the animation of a buff.
+	 * @param cellTraveled Cell where the buff is applied.
+	 * @param buff The type of the buff.
+	 */
 	public void buffAnimation(Cell cellTraveled, Buff buff)
 	{
 		Image tmp = null;
@@ -392,7 +500,6 @@ public class MapGUI extends JPanel implements MouseListener
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 		try
 		{
@@ -406,31 +513,50 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/* ****************************************MOUSE LISTENER******************************************** */
-
+	/**
+	 * Empty.
+	 * Mouse Listener for when mouse button is pressed then released.
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Empty.
+	 * Mouse Listener for when mouse is entered.
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Empty.
+	 * Mouse Listener for when mouse is exited.
+	 */
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Change the state of the cell which is under the pointer when a button is pressed.
+	 * Mouse Listener for when mouse button is pressed.
+	 */
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
 		this.changeCellState((int) e.getX() / 50, (int) e.getY() / 50);
 	}
 
+	/**
+	 * Empty.
+	 * Mouse Listener for when mouse button is released.
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{

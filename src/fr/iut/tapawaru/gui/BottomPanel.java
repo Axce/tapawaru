@@ -18,37 +18,59 @@ import fr.iut.tapawaru.action.Terra;
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.Map;
 
+/**
+ * Gui manager of the bottom part of the mainFrame.
+ * Here we can see spells, action points, terra spells ...
+ * @author jpelloux
+ *
+ */
 public class BottomPanel extends JPanel implements KeyListener
 {
 /* ****************************************ATTRIBUTS******************************************** */
 			/* *****************************Images******************* */
-	private Image apLeft5;
-	private Image apLeft4;
+	/** Image of action point left = 3. */
 	private Image apLeft3;
+	
+	/** Image of action point left = 2. */
 	private Image apLeft2;
-	private Image apLeft0;
+	
+	/** Image of action point left = 1. */
 	private Image apLeft1;
+
+	/** the right side image */
+	private Image right;
+	
+	/** The life point bar image */
+	private Image hpBar;
+	
+			/* *****************************Map******************* */
+	/** the game's Map.  */
+	private Map map;
+	
+	/** the game's MapGUI.  */
+	private MapGUI mapGui;
 	
 			/* *****************************Utility******************* */
-	private Map map;
+	/** Say if any case is selected. */
 	private boolean caseSelected;
-	private MapGUI mapGui;
+	
+	/** The character which is actually selected. */
 	private Character characterSelected;
-	private Image right;
-	private Image hpBar;
+	
 
 	/* ****************************************CONSTRUCTORS******************************************** */
+	/**
+	 * Constructor of BottomPanel.
+	 * @param map Game's map.
+	 */
 	public BottomPanel(Map map)
 	{
 		try
 		{
-			this.apLeft4 = ImageIO.read(new File("img/players/apLeft4.png"));
 			this.apLeft3 = ImageIO.read(new File("img/players/apLeft3.png"));
 			this.apLeft2 = ImageIO.read(new File("img/players/apLeft2.png"));
 			this.apLeft1 = ImageIO.read(new File("img/players/apLeft1.png"));
-			this.apLeft0 = ImageIO.read(new File("img/players/apLeft0.png"));
-			this.apLeft5 = ImageIO.read(new File("img/players/apLeft5.png"));
-
+			
 			this.right = ImageIO.read(new File("img/botScreen/right.png"));
 
 			this.hpBar = ImageIO.read(new File("img/botScreen/hpBar.png"));
@@ -66,6 +88,10 @@ public class BottomPanel extends JPanel implements KeyListener
 	}
 
 	/* **********************************PANNEL DISPLAY TOOLS************************* */
+	/**
+	 * Display the left side when a Cell is selected.
+	 * @param g this.Graphics()
+	 */
 	public void paintTerraStateSelected(Graphics g)
 	{
 		Image tmp = null;
@@ -84,6 +110,10 @@ public class BottomPanel extends JPanel implements KeyListener
 
 	}
 
+	/**
+	 * Display the left side when a Cell is NOT selected.
+	 * @param g this.Graphics()
+	 */
 	public void paintTerraStateUnselected(Graphics g)
 	{
 		Image tmp = null;
@@ -100,14 +130,15 @@ public class BottomPanel extends JPanel implements KeyListener
 		this.caseSelected = false;
 	}
 
+	/**
+	 * Paint the number of action point left.
+	 * @param g this.Graphics()
+	 */
 	private void paintPA(Graphics g)
 	{
 		Image tmp = null;
 		switch (this.map.getTeamController().getPlayingTeam().getActionPointsLeft())
 		{
-		case 0:
-			tmp = this.apLeft0;
-			break;
 		case 1:
 			tmp = this.apLeft1;
 			break;
@@ -117,30 +148,15 @@ public class BottomPanel extends JPanel implements KeyListener
 		case 3:
 			tmp = this.apLeft3;
 			break;
-		case 4:
-			tmp = this.apLeft4;
-			break;
-		case 5:
-			tmp = this.apLeft5;
-			break;
 		}
 
 		g.drawImage(tmp, 9, 130, this);
 	}
 	
-	@Override
-	public void paintComponent(Graphics g)
-	{
-		this.paintTerraStateUnselected(g);
-
-		g.drawImage(this.right, 375, 0, this);
-
-		paintPA(g);
-
-		this.printHp(g);
-
-	}
-
+	/**
+	 * Print life point left for each Character in the right side.
+	 * @param g this.Graphics()
+	 */
 	public void printHp(Graphics g)
 	{
 		for (int index = 0; index < this.map.getTeamController().getPlayingTeam().getCharacter()[0].getHealthPoint(); index++)
@@ -157,7 +173,31 @@ public class BottomPanel extends JPanel implements KeyListener
 		}
 	}
 	
+	/**
+	 * Display method.
+	 * Paint the different component of the BottomPanel.
+	 */
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		this.paintTerraStateUnselected(g);
+
+		g.drawImage(this.right, 375, 0, this);
+
+		paintPA(g);
+
+		this.printHp(g);
+
+	}
+	
 	/* ****************************************KEY LISTENER******************************************** */
+	/**
+	 * Key Listener for when a key is pressed d.
+	 * Manage : 
+	 * 			-Terra spells
+	 * 			-Character's selection
+	 * 			-Character's cast.
+	 */
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
@@ -492,12 +532,20 @@ public class BottomPanel extends JPanel implements KeyListener
 		}
 	}
 
+	/**
+	 * Empty.
+	 * Key Listener for when a key is released.
+	 */
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Empty.
+	 * Key Listener for when a key is pressed then released.
+	 */
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
