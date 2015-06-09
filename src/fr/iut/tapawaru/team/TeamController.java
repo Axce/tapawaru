@@ -69,8 +69,30 @@ public class TeamController
 		}
 		
 		playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);
+		
+		this.applyBuff();
 	}
 	
+	private void applyBuff()
+	{
+		for (int i = 0 ; i < 3 ; i++)
+		{
+			Character perso = this.playingTeam.getCharacter()[i];
+			switch (perso.getBuff())
+			{
+				case NORMAL:
+					break;
+				case BURNING:
+					perso.inflict(1);
+					break;
+				case FREEZING:
+					break;
+				case DEAD:
+					break;
+			}
+		}
+	}
+
 	public Team getPlayingTeam()
 	{
 		return this.playingTeam;

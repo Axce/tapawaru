@@ -99,6 +99,7 @@ public class Character
 	{
 		map.putCharacter(null, this.cellTraveled.getPosition());
 		this.cellTraveled = null;
+		this.setBuff(Buff.DEAD);
 	}
 	
 	public Cell getCellTraveled()

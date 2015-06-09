@@ -4,5 +4,6 @@ public enum Buff
 {
 	NORMAL,
 	BURNING,	// -1 hp per turn
-	FREEZING;	// can't move
+	FREEZING,	// can't move
+	DEAD;
 }
