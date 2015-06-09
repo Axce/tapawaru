@@ -8,12 +8,15 @@ package fr.iut.tapawaru.map;
  */
 public class CellPosition
 {
+	/* ****************************************ATTRIBUTS******************************************** */
+				/* *****************************Position******************* */
 	/** Cell's X position on Map. */
 	private int positionX;
 	
 	/** Cell's Y position on Map. */
 	private int positionY;
 
+	/* ****************************************CONSTRUCTORS******************************************** */
 	/**
 	 * Constructor of the Cell position
 	 * @param positionX
@@ -25,26 +28,56 @@ public class CellPosition
 		this.positionY = positionY;
 	}
 
+	/* ****************************************GETTERS / SETTERS *************************************** */
+				/* *****************************Position******************* */
+	/**
+	 *  @return this.positionX
+	 */
 	public int getPositionX()
 	{
-		return positionX;
+		return this.positionX;
 	}
 
+	/**
+	 * Change the X position.
+	 * @param positionX new X position.
+	 */
 	public void setPositionX(int positionX)
 	{
 		this.positionX = positionX;
 	}
 
+	/**
+	 * @return this.positionY;
+	 */
 	public int getPositionY()
 	{
-		return positionY;
+		return this.positionY;
 	}
 
+	/**
+	 * Change the Y position.
+	 * @param positionY new Y position.
+	 */
 	public void setPositionY(int positionY)
 	{
 		this.positionY = positionY;
 	}
 	
+	/* ****************************************UTILITY*************************************** */
+	/* *****************************Equals******************* */
+	/**
+	 * Check if two CellPositions are the same.
+	 */
+	@Override
+	public boolean equals(Object cellPos)
+	{
+		CellPosition pos = (CellPosition)cellPos;
+		return ((this.positionX == pos.positionX) &&
+				(this.positionY == pos.positionY));
+	}
+
+	/* *****************************Utility******************* */
 	/**
 	 * Generate the 4 position of adjacent glyphs. .
 	 * GlyphePosition[] like [TopLeft,TopRight,BotRight,BotLeft].
@@ -64,23 +97,13 @@ public class CellPosition
 		return glyphPosition;
 	}
 	
+	/**
+	 * @return "x" + getPositionX() + " y" + getPositionY()
+	 */
 	@Override
 	public String toString()
 	{
 		return "x" + getPositionX() + " y" + getPositionY();
 	}
 	
-	public boolean equals(CellPosition cellPos)
-	{
-		return ((this.positionX == cellPos.positionX) &&
-				(this.positionY == cellPos.positionY));
-	}
-	
-	@Override
-	public boolean equals(Object cellPos)
-	{
-		CellPosition pos = (CellPosition)cellPos;
-		return ((this.positionX == pos.positionX) &&
-				(this.positionY == pos.positionY));
-	}
 }
