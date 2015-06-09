@@ -15,8 +15,9 @@ public class VictoryFrame extends JFrame
 {
 	/**
 	 * Constructor for victory of one team.
+	 * If winner team is null is an equality.
 	 * @param map Map of the game which is win.
-	 * @param team The winner team
+	 * @param team The winner team. 
 	 */
 	public VictoryFrame(Map map, Team team)
 	{
@@ -27,17 +28,4 @@ public class VictoryFrame extends JFrame
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 	
-	/**
-	 * Constructor for equality.
-	 * @param map Map of the game which is win.
-	 */
-	public VictoryFrame(Map map)
-	{
-		//Main.mainFrame.dispose();
-		this.setTitle("Tapawaru");
-		this.pack();
-		this.setVisible(true);
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	}
-
 }

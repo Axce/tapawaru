@@ -1,31 +1,22 @@
 package fr.iut.tapawaru.team;
 
-
 /**
  * All team's color.
  * Enumeration of all the different team's color.
- * TODO complete javadoc?
  * 
  * @authors CEARD, MATHEY, MOUNIER, 
  * @authors PELLOUX-PRAYER, PRADELLE
  */
 public enum TeamColor {
 	
-	//TODO Est ce que cela vous convient? deux autres en bas au cas ou il en faut plus.
-	
-	 
 	RED ("red"),
-	BLUE ("blue"),
-	GREEN ("green"),
-	YELLOW ("yellow"),
-	BLACK ("black");
+	BLUE ("blue");
 
-	
+	/* ****************************************ATTRIBUTS******************************************** */	
 	/** Displays Glyph's type. */
     private final String display;
     
-	/////// Constructor ////////////////////////////////////////
-
+	/* ****************************************CONSTRUCTORS******************************************** */
     /** 
      * Constructor of the Glyph's type. 
      * @param disp: display of the Glyph's type.
@@ -34,10 +25,11 @@ public enum TeamColor {
     {
         display = disp;
     }
-
-    
-    
-    
+  
+	/* ****************************************UTILITY******************************************** */	
+    /**
+     * @return this.display
+     */
     @Override
     public String toString() 
     {

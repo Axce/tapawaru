@@ -6,7 +6,7 @@ import fr.iut.tapawaru.map.Map;
 /**
  * Team of Characters. 
  * Two Teams compete in a game. 
- * A Team contains a default number of characters at the beginning of the game. (To confirm)
+ * A Team contains a default number of characters at the beginning of the game. (3)
  * Every Team has its representing color.
  * 
  * @authors CEARD, MATHEY, MOUNIER, 
@@ -14,33 +14,26 @@ import fr.iut.tapawaru.map.Map;
  */
 public class Team
 {
-	/////// Attributes ////////////////////////////////////////
-
-	// TODO check enum
-	
+	/* ****************************************ATTRIBUTS******************************************** */
+				/* *****************************Default Values******************* */
 	public final static int	DEFAULT_NB_CHARACTER = 3;
 	public final static int	DEFAULT_ACTION_POINT = 3;
 	
+				/* *****************************Characters******************* */
 	/** Team's number of characters   (set to static if same in every Team). */
 	private final int nbCharacter;
 	
 	/** Team's list of characters. */
 	private Character[]	listCharacter;
 	
+				/* *****************************Utility******************* */
 	/** Team's color. */
 	private TeamColor colorTeam;
 	
+	/** Team's Action Point left */
 	private int actionPointLeft; 
-	/////// Constructor ////////////////////////////////////////
-	private Map map;
-
-	// TODO check colorTeam in constructor
-
-	public TeamColor getColorTeam()
-	{
-		return colorTeam;
-	}
-
+	
+	/* ****************************************CONSTRUCTORS******************************************** */
 	/**
 	 * Constructor for the Team.
 	 * @param nb : number of characters.
@@ -48,14 +41,13 @@ public class Team
 	public Team(int nb, TeamColor color,Map map)
 	{
 		this.nbCharacter = nb;
-		this.listCharacter = new Character[nbCharacter];
+		this.listCharacter = new Character[this.nbCharacter];
 		this.colorTeam = color;
-		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
+		for(int nbCharacterCreated =0; nbCharacterCreated<this.nbCharacter;nbCharacterCreated++)
 		{
 			this.listCharacter[nbCharacterCreated] = new Character(this, map);
 		}
 		this.actionPointLeft = DEFAULT_ACTION_POINT;
-		this.map = map;
 	}
 	
 	/**
@@ -65,35 +57,61 @@ public class Team
 	public Team( TeamColor color,Map map)
 	{
 		this.nbCharacter = DEFAULT_NB_CHARACTER;
-		this.listCharacter = new Character[nbCharacter];
+		this.listCharacter = new Character[this.nbCharacter];
 		this.colorTeam = color;	
-		for(int nbCharacterCreated =0; nbCharacterCreated<nbCharacter;nbCharacterCreated++)
+		for(int nbCharacterCreated =0; nbCharacterCreated<this.nbCharacter;nbCharacterCreated++)
 		{
 			this.listCharacter[nbCharacterCreated] = new Character(this,map);
 		}
 		this.actionPointLeft = DEFAULT_ACTION_POINT;
-		this.map = map;
 	}
-
+	
+	
+	/* ****************************************GETTERS / SETTERS *************************************** */
+				/* *****************************Characters******************* */
+	/** 
+	 * @return this.nbCharacter
+	 */
 	public int getNbCharacter()
 	{
-		// TODO Auto-generated method stub
-		return nbCharacter;
+		return this.nbCharacter;
 	}
 
+	/**
+	 * @return this.listCharacter
+	 */
 	public Character[] getCharacter()
 	{
-		// TODO Auto-generated method stub
 		return this.listCharacter;
 	}
 	
+				/* *****************************Characters******************* */	
+	/**
+	 * @return this.actionPointLeft
+	 */
 	public int getActionPointsLeft()
 	{
 		return this.actionPointLeft;
 	}
 	
+	/**
+	 * Replace the actionPointLeft by a given integer.
+	 * @param newActionPointLeft new amount of action points left.
+	 */
 	public void setActionPointsLeft(int newActionPointLeft)
 	{
 		this.actionPointLeft=newActionPointLeft;
 	}
+	
+				/* *****************************Utility******************* */	
+	/**
+	 * @return this.colorTeam
+	 */
+	public TeamColor getColorTeam()
+	{
+		return this.colorTeam;
+	}
+
+
+
 }

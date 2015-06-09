@@ -5,28 +5,35 @@ import fr.iut.tapawaru.map.Map;
 
 public class Character
 {
-	// ///// Attributes ////////////////////////////////////////
-	
+	/* ****************************************ATTRIBUTS******************************************** */
+				/* *****************************Default HP******************* */
 	public final static int DEFAULT_MAX_HP = 5;
 
-	/** Character's team of appurtenance. */
-	private Team	team;
-	
+				/* *****************************HP******************* */
 	/** Character's life points. */
 	private int		healthPoint;
 	
-	private Cell	cellTraveled;
-	
-	private String	picture;
-
+	/** Character's maximum life points. */
 	private int maxHealthPoint;
 	
+				/* *****************************Map and Cell******************* */
+	/** Cell this Character is actually on.*/
+	private Cell	cellTraveled;
+	
+	/** Map on which the Character is*/
 	private Map map;
 	
+				/* *****************************Utility******************* */
+	/** Character's team of appurtenance. */
+	private Team	team;
+	
+	/** Character picture */
+	private String	picture;
+	
+	/** Buff the character have*/
 	private Buff buff;
 	
-	// ///// Constructor ////////////////////////////////////////
-	
+	/* ****************************************CONSTRUCTORS******************************************** */	
 	/**
 	 * Constructor of the Character.
 	 * 
@@ -49,9 +56,103 @@ public class Character
 		this.buff = Buff.NORMAL;
 	}
 	
-	// ///// Methods ////////////////////////////////////////
+	/* ****************************************GETTERS / SETTERS *************************************** */
+				/* *****************************Buffs******************* */
+	/**
+	 * Change the buff for the current buff.
+	 * @param buff new buff the Character have.
+	 */
+	public void setBuff(Buff buff)
+	{
+		this.buff = buff;
+	}
 	
+	/**
+	 * @return this.buff
+	 */
+	public Buff getBuff()
+	{
+		return this.buff;
+	}
 	
+				/* *****************************Cells******************* */
+	/**
+	 * @return this.cellTraveled
+	 */
+	public Cell getCellTraveled()
+	{
+		return this.cellTraveled;
+	}
+	
+	/**
+	 * Set the cellTraveled with a given cell.
+	 * @param cell new cellTraveled by the Character.
+	 */
+	public void setCell(Cell cell)
+	{
+		this.cellTraveled = cell;
+	}
+	
+				/* *****************************Health******************* */
+	/**
+	 * @return this.maxHealthPoint
+	 */
+	public int getDefaultHealthPoint()
+	{
+		return this.maxHealthPoint;
+	}
+	
+	/**
+	 * @return  this.healthPoint
+	 */
+	public int getHealthPoint()
+	{
+		return this.healthPoint;
+	}
+	
+	/**
+	 * Heal given life points to this Character.
+	 * @param damages HP the character must win.
+	 */
+	public void heal(int hp)
+	{
+		this.healthPoint += hp;
+		if (this.healthPoint > this.maxHealthPoint)
+			this.healthPoint = this.maxHealthPoint;
+	}
+	
+	/**
+	 * Deal given damages to this Character.
+	 * @param damages HP the character must loose.
+	 */
+	public void inflict(int damages)
+	{
+		this.healthPoint -= damages;
+		if (!this.isAlive())
+		{
+			this.kill();
+		}
+	}
+	
+				/* *****************************Utility******************* */
+	/**
+	 * Modify the path of the picture representing this Character.
+	 * @param s "img/perso/" + s
+	 */
+	public void setPicture(String s)
+	{
+		this.picture = "img/perso/" + s;
+	}
+	
+	/**
+	 * @return this.map
+	 */
+	public Map getMap()
+	{
+		return this.map;
+	}
+
+	/* ****************************************UTILITY*************************************** */
 	/**
 	 * Method to check that character's still alive.
 	 */
@@ -60,11 +161,6 @@ public class Character
 		if (this.healthPoint <= 0)
 			return false;
 		return true;
-	}
-	
-	public String toString()
-	{
-		return this.picture+this.healthPoint+ ".png";
 	}
 	
 	/**
@@ -79,61 +175,13 @@ public class Character
 		this.map.getTeamController().checkWin();
 	}
 	
-	public Cell getCellTraveled()
+	/**
+	 * @return the path of the picture representing this Character.
+	 */
+	@Override
+	public String toString()
 	{
-		return this.cellTraveled;
-	}
-	
-	public void setCell(Cell cell)
-	{
-		this.cellTraveled = cell;
-	}
-	
-	public int getDefaultHealthPoint()
-	{
-		return this.maxHealthPoint;
-	}
-	
-	public int getHealthPoint()
-	{
-		return this.healthPoint;
-	}
-	
-	public void setPicture(String s)
-	{
-
-		this.picture = "img/perso/" + s;
-	}
-	
-	public Map getMap()
-	{
-		return this.map;
-	}
-
-	public void inflict(int damages)
-	{
-		this.healthPoint -= damages;
-		if (!this.isAlive())
-		{
-			this.kill();
-		}
-	}
-	
-	public void heal(int hp)
-	{
-		this.healthPoint += hp;
-		if (this.healthPoint > this.maxHealthPoint)
-			this.healthPoint = this.maxHealthPoint;
-	}
-	
-	public void setBuff(Buff buff)
-	{
-		this.buff = buff;
-	}
-	
-	public Buff getBuff()
-	{
-		return this.buff;
+		return this.picture+this.healthPoint+ ".png";
 	}
 
 }

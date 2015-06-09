@@ -105,7 +105,6 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/* ****************************************MAP DISPLAY TOOLS******************************************** */
-
 				/* *****************************Cells******************* */
 	public void paintGivenCell(CellPosition position, String picture)
 	{
