@@ -22,22 +22,14 @@ public class TeamController
 		this.team1 = new Team(TeamColor.BLUE,map);
 		this.team2 = new Team(TeamColor.RED,map);
 		this.playingTeam = team1;
-//		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
-//		{
-//			this.map.putCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
-//		}
-//		for(int indiceCharacter =0;indiceCharacter<this.team2.getNbCharacter();indiceCharacter++)
-//		{
-//			this.map.putCharacter(this.team2.getCharacter()[indiceCharacter],new CellPosition(10, indiceCharacter+1));
-//		}
 
-		this.map.putCharacter(this.team1.getCharacter()[0],new CellPosition(7, 4));
-		this.map.putCharacter(this.team1.getCharacter()[1],new CellPosition(6, 5));
-		this.map.putCharacter(this.team1.getCharacter()[2],new CellPosition(8, 5));
+		this.map.putCharacter(this.team1.getCharacter()[0],new CellPosition(6, 5));
+		this.map.putCharacter(this.team1.getCharacter()[1],new CellPosition(6, 6));
+		this.map.putCharacter(this.team1.getCharacter()[2],new CellPosition(7, 6));
 		
-		this.map.putCharacter(this.team2.getCharacter()[0],new CellPosition(7, 5));
-		this.map.putCharacter(this.team2.getCharacter()[1],new CellPosition(6, 4));
-		this.map.putCharacter(this.team2.getCharacter()[2],new CellPosition(8, 4));
+		this.map.putCharacter(this.team2.getCharacter()[0],new CellPosition(6, 4));
+		this.map.putCharacter(this.team2.getCharacter()[1],new CellPosition(8, 6));
+		this.map.putCharacter(this.team2.getCharacter()[2],new CellPosition(9, 3));
 	}
 
 	/**
@@ -45,16 +37,22 @@ public class TeamController
 	 * If a team is at 0, the playingTeam changes. 
 	 * @param deductedPoints
 	 */
-	public boolean deduct(int deductedPoints)
+	public boolean isDeductable(int deductedPoints)
 	{
 		if (deductedPoints > playingTeam.getActionPointsLeft())
 			return false;
-		
-		this.playingTeam.setActionPointsLeft(this.playingTeam.getActionPointsLeft() - deductedPoints);
-		
-		if (this.playingTeam.getActionPointsLeft() == 0)
-			changePlayingTeam();
 		return true;
+	}
+	
+	public void deduct(int deductedPoints)
+	{
+		if (this.isDeductable(deductedPoints))
+		{
+			this.playingTeam.setActionPointsLeft(this.playingTeam.getActionPointsLeft() - deductedPoints);
+			
+			if (this.playingTeam.getActionPointsLeft() == 0)
+				changePlayingTeam();
+		}
 	}
 	
 	public void skipTurn()

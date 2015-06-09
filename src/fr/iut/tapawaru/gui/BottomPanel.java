@@ -137,7 +137,7 @@ public class BottomPanel extends JPanel implements KeyListener
 			break;
 		}
 
-		g.drawImage(tmp, 113, 130, this);
+		g.drawImage(tmp, 9, 130, this);
 	}
 
 	@Override
