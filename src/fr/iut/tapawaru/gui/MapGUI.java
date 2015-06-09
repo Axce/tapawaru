@@ -536,7 +536,14 @@ public class MapGUI extends JPanel implements MouseListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		for (CellPosition cellpos : posList)
+		{
 
+			this.paintGivenCell(cellpos,this.octo);
+		}
+		
+		this.botPanel.repaint();
 	}
 
 	/**

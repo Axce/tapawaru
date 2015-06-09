@@ -172,7 +172,7 @@ public class TeamController
 		}
 		
 		this.playingTeam.setActionPointsLeft(Team.DEFAULT_ACTION_POINT);
-		
+
 		this.applyBuff();
 	}
 	
