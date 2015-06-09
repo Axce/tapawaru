@@ -31,13 +31,13 @@ public class TeamController
 //			this.map.putCharacter(this.team2.getCharacter()[indiceCharacter],new CellPosition(10, indiceCharacter+1));
 //		}
 
-		this.map.putCharacter(this.team1.getCharacter()[0],new CellPosition(7, 4));
-		this.map.putCharacter(this.team1.getCharacter()[1],new CellPosition(6, 5));
-		this.map.putCharacter(this.team1.getCharacter()[2],new CellPosition(8, 5));
+		this.map.putCharacter(this.team1.getCharacter()[0],new CellPosition(6, 5));
+		this.map.putCharacter(this.team1.getCharacter()[1],new CellPosition(6, 6));
+		this.map.putCharacter(this.team1.getCharacter()[2],new CellPosition(7, 6));
 		
-		this.map.putCharacter(this.team2.getCharacter()[0],new CellPosition(7, 5));
-		this.map.putCharacter(this.team2.getCharacter()[1],new CellPosition(6, 4));
-		this.map.putCharacter(this.team2.getCharacter()[2],new CellPosition(8, 4));
+		this.map.putCharacter(this.team2.getCharacter()[0],new CellPosition(6, 4));
+		this.map.putCharacter(this.team2.getCharacter()[1],new CellPosition(8, 6));
+		this.map.putCharacter(this.team2.getCharacter()[2],new CellPosition(9, 3));
 	}
 
 	/**

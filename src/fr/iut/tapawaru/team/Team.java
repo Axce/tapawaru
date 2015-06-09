@@ -18,8 +18,8 @@ public class Team
 
 	// TODO check enum
 	
-	public final static int	DEFAULT_NB_CHARACTER	= 3;
-	public final static int	DEFAULT_ACTION_POINT= 5;
+	public final static int	DEFAULT_NB_CHARACTER = 3;
+	public final static int	DEFAULT_ACTION_POINT = 3;
 	
 	/** Team's number of characters   (set to static if same in every Team). */
 	private final int nbCharacter;
