@@ -107,5 +107,53 @@ public class TeamController
 	{
 		return this.team2;
 	}
+
+	public void checkWin()
+	{
+		int countDead1 = 0;
+		
+		for (int i = 0 ; i < 3 ; i++)
+		{
+			if (  ! (this.getTeam1().getCharacter()[i].isAlive())  )
+			{
+				countDead1++;
+			}
+		}
+		
+		int countDead2 = 0;
+		
+		for (int i = 0 ; i < 3 ; i++)
+		{
+			if (  ! (this.getTeam2().getCharacter()[i].isAlive())  )
+			{
+				countDead2++;
+			}
+		}
+		
+		if (countDead1 == 3 && countDead2 < 3)
+		{
+			this.win(this.team2);
+		}
+
+		if (countDead2 == 3 && countDead1 < 3)
+		{
+			this.win(this.team1);
+		}
+		
+		if (countDead1 == 3 && countDead2 == 3)
+		{
+			this.win(null);
+		}
+		
+	}
+
+	/**
+	 * 
+	 * @param gloriousTeam if null : ex aequo
+	 */
+	private void win(Team gloriousTeam)
+	{
+		
+	}
 	
 }
