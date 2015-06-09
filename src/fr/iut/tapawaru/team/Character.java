@@ -97,7 +97,8 @@ public class Character
 	 */
 	public void kill()
 	{
-		// TODO complete
+		map.putCharacter(null, this.cellTraveled.getPosition());
+		this.cellTraveled = null;
 	}
 	
 	public Cell getCellTraveled()
