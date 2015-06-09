@@ -6,8 +6,18 @@ import javax.swing.WindowConstants;
 import fr.iut.tapawaru.map.Map;
 import fr.iut.tapawaru.team.Team;
 
+/**
+ * Create the Victory Frame.
+ * @author jpelloux
+ *
+ */
 public class VictoryFrame extends JFrame
 {
+	/**
+	 * Constructor for victory of one team.
+	 * @param map Map of the game which is win.
+	 * @param team The winner team
+	 */
 	public VictoryFrame(Map map, Team team)
 	{
 		//Main.mainFrame.dispose();
@@ -17,5 +27,17 @@ public class VictoryFrame extends JFrame
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 	
-	
+	/**
+	 * Constructor for equality.
+	 * @param map Map of the game which is win.
+	 */
+	public VictoryFrame(Map map)
+	{
+		//Main.mainFrame.dispose();
+		this.setTitle("Tapawaru");
+		this.pack();
+		this.setVisible(true);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+
 }
