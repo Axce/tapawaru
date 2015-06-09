@@ -129,7 +129,7 @@ public class Attack extends Spell
 	{
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 
-		if (map.getTeamController().deduct(1))
+		if (map.getTeamController().isDeductable(1))
 		{
 		
 			int deltaX = target.getPositionX() - caster.getCellTraveled().getPosition().getPositionX();
@@ -183,7 +183,8 @@ public class Attack extends Spell
 				}
 			}
 			
-			if (execute) executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			map.getTeamController().deduct(1);
 		}
 		
 		return cellList;
@@ -202,7 +203,7 @@ public class Attack extends Spell
 
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 		
-		if (map.getTeamController().deduct(1))
+		if (map.getTeamController().isDeductable(1))
 		{
 			int xCaster = caster.getCellTraveled().getPosition().getPositionX();
 			int yCaster = caster.getCellTraveled().getPosition().getPositionY();
@@ -218,7 +219,8 @@ public class Attack extends Spell
 				}
 			}
 			
-			if (execute) executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			map.getTeamController().deduct(1);
 
 		}
 
@@ -240,7 +242,7 @@ public class Attack extends Spell
 		
 		ArrayList<CellPosition> cellList = new ArrayList<CellPosition>();
 		
-		if (map.getTeamController().deduct(1))
+		if (map.getTeamController().isDeductable(1))
 		{
 			int x, y,
 				xTarget = target.getPositionX(),
@@ -271,7 +273,8 @@ public class Attack extends Spell
 				x < map.getXSize() && y < map.getYSize())
 				cellList.add(new CellPosition(x, y));
 			
-			if (execute) executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			executeAttack(map, cellList, getAttackType(map, caster.getCellTraveled()));
+			map.getTeamController().deduct(1);
 
 		}
 

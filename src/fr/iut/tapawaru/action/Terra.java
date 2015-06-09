@@ -25,7 +25,7 @@ public class Terra extends Spell
 	public static void glyphCWspin(Map map, CellPosition cellPosition)
 	{
 		
-		if (map.getTeamController().deduct(1))
+		if (map.getTeamController().isDeductable(1))
 		{
 			GlyphPosition[] glyphPosList = cellPosition
 					.generateAdjacentGlyphPosition();
@@ -43,17 +43,21 @@ public class Terra extends Spell
 			map.setGlyph(glyphPosList[1], map.getGlyph(glyphPosList[0]));
 			glyphBuffer.setGlyphPosition(glyphPosList[0]);
 			map.setGlyph(glyphPosList[0], glyphBuffer);
+			
+			map.getTeamController().deduct(1);
 		}
 		
 	}
 	
 	/**
-	 * Counter-clockwise glyph spin 01 -> 12 32 03
+	 * Counter-clockwise glyph spin
+	 * 01 -> 12
+	 * 32    03
 	 */
 	public static void glyphCCWspin(Map map, CellPosition cellPosition)
 	{
 		
-		if (map.getTeamController().deduct(1))
+		if (map.getTeamController().isDeductable(1))
 		{
 			GlyphPosition[] glyphPosList = cellPosition
 					.generateAdjacentGlyphPosition();
@@ -71,6 +75,8 @@ public class Terra extends Spell
 			map.setGlyph(glyphPosList[2], map.getGlyph(glyphPosList[3]));
 			glyphBuffer.setGlyphPosition(glyphPosList[3]);
 			map.setGlyph(glyphPosList[3], glyphBuffer);
+			
+			map.getTeamController().deduct(1);
 		}
 	}
 	
@@ -79,7 +85,7 @@ public class Terra extends Spell
 	 */
 	public static void glyphRandom(Map map, CellPosition cellPosition)
 	{
-		if (map.getTeamController().deduct(1))
+		if (map.getTeamController().isDeductable(1))
 		{
 			GlyphPosition[] glyphPosList = cellPosition
 					.generateAdjacentGlyphPosition();
@@ -92,6 +98,8 @@ public class Terra extends Spell
 					TypeGlyph.getRandomType());
 			map.getGlyph(glyphPosList[3]).setTypeGlyph(
 					TypeGlyph.getRandomType());
+			
+			map.getTeamController().deduct(1);
 		}
 		
 	}
@@ -104,7 +112,7 @@ public class Terra extends Spell
 	public static void glyphShift(Map map, CellPosition cellPos1,
 			CellPosition cellPos2) throws AdjacentCellsException
 	{
-		if (map.getTeamController().deduct(1))
+		if (map.getTeamController().isDeductable(1))
 		{
 			int deltaX = Math.abs(cellPos1.getPositionX()
 					- cellPos2.getPositionX());
@@ -138,6 +146,8 @@ public class Terra extends Spell
 			map.getGlyph(glyphPosList2[1]).setTypeGlyph(glyphTypebuffer[1]);
 			map.getGlyph(glyphPosList2[2]).setTypeGlyph(glyphTypebuffer[2]);
 			map.getGlyph(glyphPosList2[3]).setTypeGlyph(glyphTypebuffer[3]);
+			
+			map.getTeamController().deduct(1);
 		}
 		
 	}
@@ -150,13 +160,15 @@ public class Terra extends Spell
 	public static void cellShift(Map map, CellPosition cellPos1,
 			CellPosition cellPos2)
 	{
-		if (map.getTeamController().deduct(Team.DEFAULT_ACTION_POINT))
+		if (map.getTeamController().isDeductable(Team.DEFAULT_ACTION_POINT))
 		{
 			Cell cellBuffer = map.getCell(cellPos1);
 			map.getCell(cellPos2).setPosition(cellPos1);
 			map.setCell(cellPos1, map.getCell(cellPos2));
 			cellBuffer.setPosition(cellPos2);
 			map.setCell(cellPos2, cellBuffer);
+			
+			map.getTeamController().deduct(Team.DEFAULT_ACTION_POINT);
 		}
 		
 	}
