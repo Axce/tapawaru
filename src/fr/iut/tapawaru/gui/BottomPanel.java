@@ -458,6 +458,7 @@ public class BottomPanel extends JPanel implements KeyListener
 
 				} else
 				{
+					
 					Attack.laserBeam(this.map, this.characterSelected, this.map.getSelectedCell().getPosition());
 					this.repaint();
 					this.mapGui.printCell(this.mapGui.getGraphics());

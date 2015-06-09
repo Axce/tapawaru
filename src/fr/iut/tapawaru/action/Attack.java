@@ -32,6 +32,7 @@ public class Attack extends Spell
 	
 	private static void executeAttack(Map map, ArrayList<CellPosition> posList, TypeGlyph type)
 	{
+		map.getMapGui().spellAnimation(posList,type);
 		switch (type)
 		{
 			case HOLY:

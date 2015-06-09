@@ -22,15 +22,22 @@ public class TeamController
 		this.team1 = new Team(TeamColor.BLUE,map);
 		this.team2 = new Team(TeamColor.RED,map);
 		this.playingTeam = team1;
-		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
-		{
-			this.map.putCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
-		}
-		for(int indiceCharacter =0;indiceCharacter<this.team2.getNbCharacter();indiceCharacter++)
-		{
-			this.map.putCharacter(this.team2.getCharacter()[indiceCharacter],new CellPosition(10, indiceCharacter+1));
-		}
+//		for(int indiceCharacter =0;indiceCharacter<this.team1.getNbCharacter();indiceCharacter++)
+//		{
+//			this.map.putCharacter(this.team1.getCharacter()[indiceCharacter],new CellPosition(1, indiceCharacter+1));
+//		}
+//		for(int indiceCharacter =0;indiceCharacter<this.team2.getNbCharacter();indiceCharacter++)
+//		{
+//			this.map.putCharacter(this.team2.getCharacter()[indiceCharacter],new CellPosition(10, indiceCharacter+1));
+//		}
 
+		this.map.putCharacter(this.team1.getCharacter()[0],new CellPosition(7, 4));
+		this.map.putCharacter(this.team1.getCharacter()[1],new CellPosition(6, 5));
+		this.map.putCharacter(this.team1.getCharacter()[2],new CellPosition(8, 5));
+		
+		this.map.putCharacter(this.team2.getCharacter()[0],new CellPosition(7, 5));
+		this.map.putCharacter(this.team2.getCharacter()[1],new CellPosition(6, 4));
+		this.map.putCharacter(this.team2.getCharacter()[2],new CellPosition(8, 4));
 	}
 
 	/**
@@ -79,14 +86,18 @@ public class TeamController
 		for (int i = 0 ; i < 3 ; i++)
 		{
 			Character perso = this.playingTeam.getCharacter()[i];
+			
+			
 			switch (perso.getBuff())
 			{
 				case NORMAL:
 					break;
 				case BURNING:
+					this.map.getMapGui().buffAnimation(perso.getCellTraveled(),perso.getBuff());
 					perso.inflict(1);
 					break;
 				case FREEZING:
+					this.map.getMapGui().buffAnimation(perso.getCellTraveled(),perso.getBuff());
 					break;
 				case DEAD:
 					break;

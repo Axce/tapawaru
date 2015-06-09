@@ -7,15 +7,18 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import fr.iut.tapawaru.action.Move;
 import fr.iut.tapawaru.action.Terra;
 import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.GlyphPosition;
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.team.Buff;
 import fr.iut.tapawaru.team.Character;
 import fr.iut.tapawaru.map.TypeGlyph;
 
@@ -321,6 +324,8 @@ public class MapGUI extends JPanel implements MouseListener
 		printCharacter(this.getGraphics(), position.getPositionX(), position.getPositionY());
 		
 	}
+	
+	
 	public void setSelectedCharacterPosition(CellPosition position)
 	{
 		if(!(this.selectedCharacterPosition==null))
@@ -335,5 +340,59 @@ public class MapGUI extends JPanel implements MouseListener
 		return this.botPanel;
 	}
 
+	public void spellAnimation(ArrayList<CellPosition> posList,TypeGlyph typeGlyph)
+	{
+		Image tmp = null;
+		System.out.println(typeGlyph.toString());
+		try
+		{	
+			tmp = ImageIO.read(new File("img/spells/"+typeGlyph.toString()+".png"));
+		} catch (IOException k)
+		{
+			// TODO Auto-generated catch block
+			k.printStackTrace();
+		}
+		for (CellPosition cellpos : posList)
+		{
+
+			this.paintGivenCell(cellpos, tmp);
+		}
+		
+		try
+		{
+			Thread.sleep(500);
+		} catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void buffAnimation(Cell cellTraveled, Buff buff)
+	{
+		Image tmp = null;
+		System.out.println(buff.toString());
+		try
+		{	
+			tmp = ImageIO.read(new File("img/spells/"+buff.toString()+".png"));
+		} catch (IOException k)
+		{
+			// TODO Auto-generated catch block
+			k.printStackTrace();
+		}
+
+			this.paintGivenCell(cellTraveled.getPosition(), tmp);
+	
+		
+		try
+		{
+			Thread.sleep(500);
+		} catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		this.paintGivenCell(cellTraveled.getPosition(),this.octo);
+	}
 
 }
