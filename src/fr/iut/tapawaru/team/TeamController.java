@@ -199,6 +199,8 @@ public class TeamController
 					break;
 			}
 		}
+		
+		this.checkWin();
 	}
 
 }
