@@ -224,6 +224,14 @@ public class BottomPanel extends JPanel implements KeyListener
 			}
 			this.characterSelected = null;
 			this.mapGui.setSelectedCharacterPosition(null);
+			if(!(this.caseSelected == false))
+			{
+				this.mapGui.changeCellState(this.map.getSelectedCell().getPosition().getPositionX(), this.map.getSelectedCell().getPosition()
+						.getPositionY());
+			}
+
+			this.map.setSelectedCell(null);
+			this.caseSelected = false;
 			this.repaint();
 		}
 		
