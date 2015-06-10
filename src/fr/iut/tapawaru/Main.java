@@ -1,7 +1,6 @@
 package fr.iut.tapawaru;
 
 import fr.iut.tapawaru.gui.MainFrame;
-import fr.iut.tapawaru.gui.TutoFrame;
 import fr.iut.tapawaru.map.Map;
 
 /**

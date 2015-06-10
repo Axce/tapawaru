@@ -1,5 +1,4 @@
 package fr.iut.tapawaru.test;
-import static org.junit.Assert.*;
 import junit.framework.*;
 import fr.iut.tapawaru.map.*;
 import fr.iut.tapawaru.team.*;
