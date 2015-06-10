@@ -222,6 +222,8 @@ public class BottomPanel extends JPanel implements KeyListener
 				// TODO Auto-generated catch block
 				k.printStackTrace();
 			}
+			this.characterSelected = null;
+			this.mapGui.setSelectedCharacterPosition(null);
 			this.repaint();
 		}
 		
