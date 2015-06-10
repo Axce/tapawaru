@@ -211,6 +211,11 @@ public class BottomPanel extends JPanel implements KeyListener
 	public void keyPressed(KeyEvent e)
 	{
 		/* ****************************************END OF TURN******************************************** */		
+		
+		if (e.getKeyChar() == 'h')
+		{
+			TutoFrame tuto = new TutoFrame();
+		}
 		if (e.getKeyChar() == 'u')
 		{
 			this.map.getTeamController().skipTurn();

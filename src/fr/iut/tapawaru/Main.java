@@ -1,6 +1,7 @@
 package fr.iut.tapawaru;
 
 import fr.iut.tapawaru.gui.MainFrame;
+import fr.iut.tapawaru.gui.TutoFrame;
 import fr.iut.tapawaru.map.Map;
 
 /**
@@ -24,6 +25,7 @@ public class Main
 	{
 		Map map = new Map();
 		mainFrame = new MainFrame(map);
+
 	}
 	
 	

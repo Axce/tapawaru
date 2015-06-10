@@ -7,6 +7,8 @@ public class TestAudio
 	{
 		Audio audio = new Audio(Audio.ANIMATION_MUSIQUE,1);
 		audio.run();
+		
+
 	}
 
 }

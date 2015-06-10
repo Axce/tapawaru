@@ -1,6 +1,11 @@
 package fr.iut.tapawaru.gui;
 
+import java.awt.Component;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import fr.iut.tapawaru.map.Map;
@@ -22,10 +27,22 @@ public class VictoryFrame extends JFrame
 	public VictoryFrame(Map map, Team team)
 	{
 		//Main.mainFrame.dispose();
-		this.setTitle("Tapawaru");
+		this.setTitle("Victory");
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		JPanel panel = new JPanel();
+		JLabel imageVictory;
+		if(team == null)
+		{
+			imageVictory = new JLabel( new ImageIcon( "img/win/winNull.png"));
+		}else{
+			imageVictory = new JLabel( new ImageIcon( "img/win/"+ team.getColorTeam()+".png"));
+		}
+		
+		panel.add(imageVictory);
+		this.add(panel);
+		this.pack();
 	}
 	
 }
