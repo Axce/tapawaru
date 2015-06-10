@@ -32,6 +32,9 @@ public class Character
 	
 	/** Buff the character have*/
 	private Buff buff;
+
+	/** Index of the Charater. Used in picture selection */
+	private int index;
 	
 	/* ****************************************CONSTRUCTORS******************************************** */	
 	/**
@@ -42,7 +45,7 @@ public class Character
 	 * @param healthpoint
 	 *            : Character's life points.
 	 */
-	public Character(Team team,Map map)
+	public Character(Team team,Map map, int index)
 	{
 		this.team = team;
 		this.maxHealthPoint = DEFAULT_MAX_HP;
@@ -50,7 +53,8 @@ public class Character
 
 		this.cellTraveled = null;
 		
-		this.picture = "img/perso/" + this.team.getColorTeam().toString();
+		this.index = index;
+		this.picture = "img/perso/sorcerer"+index + this.team.getColorTeam().toString();
 		
 		this.map = map;
 		this.buff = Buff.NORMAL;

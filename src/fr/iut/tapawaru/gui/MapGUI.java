@@ -15,6 +15,7 @@ import fr.iut.tapawaru.map.Cell;
 import fr.iut.tapawaru.map.CellPosition;
 import fr.iut.tapawaru.map.GlyphPosition;
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.song.Audio;
 import fr.iut.tapawaru.team.Buff;
 import fr.iut.tapawaru.map.TypeGlyph;
 
@@ -28,7 +29,7 @@ import fr.iut.tapawaru.map.TypeGlyph;
 public class MapGUI extends JPanel implements MouseListener
 {
 	/*
-	 *  ****************************************ATTRIBUTS*************************
+	 * ****************************************ATTRIBUTS*************************
 	 * *******************
 	 */
 	/* *****************************Images size******************* */
@@ -91,7 +92,7 @@ public class MapGUI extends JPanel implements MouseListener
 	private CellPosition selectedCharacterPosition;
 
 	/*
-	 *  ****************************************CONSTRUCTORS**********************
+	 * ****************************************CONSTRUCTORS**********************
 	 * **********************
 	 */
 	/**
@@ -137,8 +138,8 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/*
-	 *  ****************************************GETTERS / SETTERS
-	 * ***************************************
+	 *  *****************************************GETTERS /
+	 * SETTERS***************************************
 	 */
 	/* *****************************BottomPanel******************* */
 	/**
@@ -187,7 +188,7 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/*
-	 *  ****************************************MAP DISPLAY
+	 * ****************************************MAP DISPLAY
 	 * TOOLS********************************************
 	 */
 	/* *****************************Cells******************* */
@@ -386,11 +387,10 @@ public class MapGUI extends JPanel implements MouseListener
 		if (!(this.map.getCharacter(xSize, ySize) == null))
 		{
 			Image imageBuffer = null;
-
 			try
 			{
 				imageBuffer = ImageIO
-						.read(new File("img/perso/" + picture + this.map.getCharacter(xSize, ySize).getHealthPoint() + ".png"));
+						.read(new File(this.map.getCharacter(xSize, ySize).toStringSelected()));
 			} catch (IOException e)
 			{
 				// TODO Auto-generated catch block
@@ -421,6 +421,7 @@ public class MapGUI extends JPanel implements MouseListener
 
 			try
 			{
+				System.out.println();
 				imageBuffer = ImageIO.read(new File(this.map.getCharacter(xSize, ySize).toString()));
 			} catch (IOException e)
 			{
@@ -488,7 +489,7 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/*
-	 *  ****************************************ANIMATION
+	 * ****************************************ANIMATION
 	 * DISPLAY********************************************
 	 */
 	/**
@@ -502,7 +503,7 @@ public class MapGUI extends JPanel implements MouseListener
 	public void spellAnimation(ArrayList<CellPosition> posList, TypeGlyph typeGlyph)
 	{
 		Image tmp = null;
-		for (int indexPict = 1; indexPict < 6; indexPict++)
+		for (int indexPict = 1; indexPict < 5; indexPict++)
 		{
 			try
 			{
@@ -536,13 +537,13 @@ public class MapGUI extends JPanel implements MouseListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		for (CellPosition cellpos : posList)
 		{
 
-			this.paintGivenCell(cellpos,this.octo);
+			this.paintGivenCell(cellpos, this.octo);
 		}
-		
+
 		this.botPanel.repaint();
 	}
 
@@ -557,7 +558,7 @@ public class MapGUI extends JPanel implements MouseListener
 	public void buffAnimation(Cell cellTraveled, Buff buff)
 	{
 		Image tmp = null;
-		for (int indexPict = 1; indexPict < 6; indexPict++)
+		for (int indexPict = 1; indexPict < 5; indexPict++)
 		{
 			try
 			{
@@ -591,7 +592,7 @@ public class MapGUI extends JPanel implements MouseListener
 	}
 
 	/*
-	 *  ****************************************MOUSE
+	 * ****************************************MOUSE
 	 * LISTENER********************************************
 	 */
 	/**
@@ -629,6 +630,8 @@ public class MapGUI extends JPanel implements MouseListener
 	public void mousePressed(MouseEvent e)
 	{
 		this.changeCellState((int) e.getX() / 50, (int) e.getY() / 50);
+		Audio click = new Audio(Audio.ANIMATION_MUSIQUE,1);
+		click.run();
 	}
 
 	/**

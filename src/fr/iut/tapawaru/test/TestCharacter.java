@@ -25,9 +25,9 @@ public class TestCharacter extends TestCase
 		Map mapTest = new Map();
 		try
 		{
-			Character character1 = new Character(new Team(TeamColor.RED,mapTest),mapTest);
-			Character character2 = new Character(new Team(TeamColor.RED,mapTest),mapTest);
-			Character character3 = new Character(new Team(TeamColor.RED,mapTest),mapTest);
+			Character character1 = new Character(new Team(TeamColor.RED,mapTest),mapTest,1);
+			Character character2 = new Character(new Team(TeamColor.RED,mapTest),mapTest,2);
+			Character character3 = new Character(new Team(TeamColor.RED,mapTest),mapTest,3);
 			character2.inflict(5);
 			character3.inflict(6);
 			

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import fr.iut.tapawaru.map.Map;
+import fr.iut.tapawaru.song.Audio;
 
 /**
  * The Main container of the game's GUI.
@@ -55,5 +56,10 @@ public class MainFrame extends JFrame
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		map.setMapGui(mapGui);
+		
+		Audio audio = new Audio(Audio.BACKGROUND_MUSIQUE);
+		audio.run();
+		
+	
 	}	
 }

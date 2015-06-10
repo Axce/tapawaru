@@ -45,7 +45,7 @@ public class Team
 		this.colorTeam = color;
 		for(int nbCharacterCreated =0; nbCharacterCreated<this.nbCharacter;nbCharacterCreated++)
 		{
-			this.listCharacter[nbCharacterCreated] = new Character(this, map);
+			this.listCharacter[nbCharacterCreated] = new Character(this, map,nbCharacterCreated+1);
 		}
 		this.actionPointLeft = DEFAULT_ACTION_POINT;
 	}
@@ -61,7 +61,7 @@ public class Team
 		this.colorTeam = color;	
 		for(int nbCharacterCreated =0; nbCharacterCreated<this.nbCharacter;nbCharacterCreated++)
 		{
-			this.listCharacter[nbCharacterCreated] = new Character(this,map);
+			this.listCharacter[nbCharacterCreated] = new Character(this,map,nbCharacterCreated+1);
 		}
 		this.actionPointLeft = DEFAULT_ACTION_POINT;
 	}
