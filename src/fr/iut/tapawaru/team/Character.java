@@ -176,7 +176,6 @@ public class Character
 		this.cellTraveled = null;
 		this.setBuff(Buff.DEAD);
 		this.map.getMapGui().repaint();
-		this.map.getTeamController().checkWin();
 	}
 	
 	/**

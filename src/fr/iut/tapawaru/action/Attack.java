@@ -83,22 +83,6 @@ public class Attack extends Spell
 				}
 				break;
 				
-			case WATER:
-				for (CellPosition cellPos : posList)
-				{
-					if (map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY()) != null)
-					{
-						Character pers = map.getCharacter(cellPos.getPositionX(), cellPos.getPositionY());
-						
-						if (pers.getBuff() == Buff.BURNING)
-							pers.setBuff(Buff.NORMAL);
-						
-						pers.inflict(1);
-					}
-
-				}
-				break;
-				
 			default:
 				for (CellPosition cellPos : posList)
 				{
@@ -111,6 +95,9 @@ public class Attack extends Spell
 
 		}
 		
+		
+		map.getTeamController().checkWin();
+
 	}
 	
 	/**
