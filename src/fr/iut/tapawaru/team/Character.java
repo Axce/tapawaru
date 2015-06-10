@@ -184,7 +184,7 @@ public class Character
 	 */
 	public String toStringSelected()
 	{
-		return this.picture+"Selected"+this.healthPoint+ ".png";
+		return this.picture + this.healthPoint + "selected" + ".png";
 	}
 	
 	/**
