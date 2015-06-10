@@ -57,8 +57,8 @@ public class MainFrame extends JFrame
 		this.setResizable(false);
 		map.setMapGui(mapGui);
 		
-		Audio audio = new Audio(Audio.BACKGROUND_MUSIQUE);
-		audio.run();
+//		Audio audio = new Audio(Audio.BACKGROUND_MUSIQUE);
+//		audio.run();
 		
 	
 	}	

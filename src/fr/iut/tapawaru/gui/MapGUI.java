@@ -502,6 +502,24 @@ public class MapGUI extends JPanel implements MouseListener
 	 */
 	public void spellAnimation(ArrayList<CellPosition> posList, TypeGlyph typeGlyph)
 	{
+		Audio audioAir = new Audio(Audio.SPELL_MUSIQUE,1);
+		Audio audioFire = new Audio(Audio.SPELL_MUSIQUE,4);
+		Audio audioHoly = new Audio(Audio.SPELL_MUSIQUE,3);
+		Audio audioIce = new Audio(Audio.SPELL_MUSIQUE,2);
+		Audio audio = null;
+		switch(typeGlyph)
+		{
+		case AIR:  audio = audioAir;
+					break;
+		case FIRE:  audio = audioFire;
+		break;
+		case HOLY: audio = audioHoly;
+		break;
+		case ICE:  audio = audioIce;
+		}
+		
+
+		audio.run();
 		Image tmp = null;
 		for (int indexPict = 1; indexPict < 5; indexPict++)
 		{
@@ -630,8 +648,7 @@ public class MapGUI extends JPanel implements MouseListener
 	public void mousePressed(MouseEvent e)
 	{
 		this.changeCellState((int) e.getX() / 50, (int) e.getY() / 50);
-		Audio click = new Audio(Audio.ANIMATION_MUSIQUE,1);
-		click.run();
+		
 	}
 
 	/**
