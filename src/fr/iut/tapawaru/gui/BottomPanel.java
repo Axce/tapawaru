@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
+import fr.iut.tapawaru.song.Audio;
 import fr.iut.tapawaru.team.Character;
 
 import javax.imageio.ImageIO;
@@ -56,6 +57,9 @@ public class BottomPanel extends JPanel implements KeyListener
 	
 	/** The character which is actually selected. */
 	private Character characterSelected;
+
+	/** Audio display */
+	private Audio audio;
 	
 
 	/* ****************************************CONSTRUCTORS******************************************** */
@@ -84,6 +88,11 @@ public class BottomPanel extends JPanel implements KeyListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+
+		this.audio = new Audio(Audio.BACKGROUND_MUSIQUE);
+		this.audio.run();
+		
 
 	}
 
@@ -197,6 +206,12 @@ public class BottomPanel extends JPanel implements KeyListener
 
 		this.printHp(g);
 
+		if(this.audio.getP().isEndOfMediaReached())
+		{
+			System.out.println("yolo");
+			this.audio = new Audio(Audio.BACKGROUND_MUSIQUE);
+			this.audio.run();
+		}
 	}
 	
 	/* ****************************************KEY LISTENER******************************************** */

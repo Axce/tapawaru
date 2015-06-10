@@ -1,6 +1,8 @@
 package fr.iut.tapawaru.gui;
 
 import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -8,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import fr.iut.tapawaru.Main;
 import fr.iut.tapawaru.map.Map;
 import fr.iut.tapawaru.team.Team;
 
@@ -16,7 +19,7 @@ import fr.iut.tapawaru.team.Team;
  * @author jpelloux
  *
  */
-public class VictoryFrame extends JFrame
+public class VictoryFrame extends JFrame implements MouseListener
 {
 	/**
 	 * Constructor for victory of one team.
@@ -26,7 +29,7 @@ public class VictoryFrame extends JFrame
 	 */
 	public VictoryFrame(Map map, Team team)
 	{
-		//Main.mainFrame.dispose();
+		this.addMouseListener(this);
 		this.setTitle("Victory");
 		this.pack();
 		this.setVisible(true);
@@ -43,6 +46,43 @@ public class VictoryFrame extends JFrame
 		panel.add(imageVictory);
 		this.add(panel);
 		this.pack();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+		Main.mainFrame.dispose();
+		this.dispose();
+		System.exit(0);
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
