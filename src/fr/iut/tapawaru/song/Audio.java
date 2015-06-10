@@ -7,7 +7,7 @@ import maryb.player.Player;
 public class Audio
 {
 
-	   private static final int NUMBER_OF_SONG_AVAILABLE = 3;
+	   private static final int NUMBER_OF_SONG_AVAILABLE = 12;
 	   
 	   public static final int BACKGROUND_MUSIQUE = 1;
 	   public static final int ANIMATION_MUSIQUE = 2;
