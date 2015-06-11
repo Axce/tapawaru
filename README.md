@@ -3,7 +3,7 @@
 
 Projet S2 IUT Valence
 
-DOWNLOAD LINK : intranet.iut-valence.fr/~cearda/tapawaru
+DOWNLOAD LINK : http://intranet.iut-valence.fr/~cearda/tapawaru
 
 ## Développeurs
 
