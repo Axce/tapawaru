@@ -3,7 +3,7 @@
 
 Projet S2 IUT Valence
 
-DOWNLOAD LINK : http://tapawaru.webmakers.fr/releases/
+DOWNLOAD LINK : http://tapawaru.webmakers.fr/static/releases/
 
 ## Développeurs
 
